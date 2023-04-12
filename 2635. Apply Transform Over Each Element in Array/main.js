@@ -9,3 +9,11 @@ Please solve it without the built-in Array.map method.
 */
 
 // solution
+
+var map = function (arr, fn) {
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        newArr.push(fn(arr[i], i));
+    }
+    return newArr;
+};
