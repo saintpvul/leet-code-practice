@@ -7,3 +7,11 @@ Write a function that accepts an integer n and returns a counter function. This 
 */
 
 // solution
+
+var createCounter = function (n) {
+    return function () {
+        let current = n;
+        n += 1;
+        return current;
+    };
+};
