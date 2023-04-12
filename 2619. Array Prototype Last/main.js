@@ -5,3 +5,8 @@ Write code that enhances all arrays such that you can call the array.last() meth
 */
 
 // solution
+
+Array.prototype.last = function () {
+    if (!this.length) return -1;
+    return this[this.length - 1];
+};
