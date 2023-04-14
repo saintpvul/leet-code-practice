@@ -17,3 +17,23 @@ For example, "10:2" is not valid. It should be "10:02".
 */
 
 // solution
+
+var readBinaryWatch = function (turnedOn) {
+    const hours = [1, 2, 4, 8];
+    const minutes = [...hours, 16, 32];
+    const results = [];
+
+    for (let hour = 0; hour < 12; hour++) {
+        for (let minute = 0; minute < 60; minute++) {
+            const hourCount = hours.filter((h) => (hour & h) !== 0).length;
+            const minuteCount = minutes.filter(
+                (m) => (minute & m) !== 0
+            ).length;
+            if (hourCount + minuteCount === turnedOn) {
+                results.push(`${hour}:${minute.toString().padStart(2, "0")}`);
+            }
+        }
+    }
+
+    return results;
+};
