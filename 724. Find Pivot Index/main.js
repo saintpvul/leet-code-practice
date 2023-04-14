@@ -11,3 +11,18 @@ Return the leftmost pivot index. If no such index exists, return -1.
 */
 
 // solution
+
+var pivotIndex = function (nums) {
+    let leftSum = 0;
+    let rightSum = nums.reduce((s, v) => s + v, 0);
+    for (let i = 0; i < nums.length; i++) {
+        if (i > 0) {
+            leftSum += nums[i - 1];
+        }
+        rightSum -= nums[i];
+        if (leftSum === rightSum) {
+            return i;
+        }
+    }
+    return -1;
+};
