@@ -9,3 +9,26 @@ You are given an API bool isBadVersion(version) which returns whether version is
 */
 
 // solution
+
+var solution = function (isBadVersion) {
+    /**
+     * @param {integer} n Total versions
+     * @return {integer} The first bad version
+     */
+    return function (n) {
+        if (n === 1) return n;
+        let min = 0,
+            max = n,
+            bad;
+        while (min <= max) {
+            let mid = Math.floor((min + max) / 2);
+            if (isBadVersion(mid)) {
+                bad = mid;
+                max = mid - 1;
+            } else {
+                min = mid + 1;
+            }
+        }
+        return bad;
+    };
+};
