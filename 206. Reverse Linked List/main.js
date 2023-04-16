@@ -17,3 +17,14 @@ Output: []
 */
 
 // solution
+
+var reverseList = function (head) {
+    let reversedHead = null;
+    while (head !== null) {
+        let next = head.next;
+        head.next = reversedHead;
+        reversedHead = head;
+        head = next;
+    }
+    return reversedHead;
+};
