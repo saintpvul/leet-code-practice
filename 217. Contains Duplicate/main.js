@@ -6,13 +6,18 @@ Given an integer array nums, return true if any value appears at least twice in 
 
 //solution
 
+// var containsDuplicate = function (nums) {
+//   let curr = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     if (curr.indexOf(nums[i]) !== -1) {
+//       return true;
+//     }
+//     curr.push(nums[i]);
+//   }
+//   return false;
+// };
+
 var containsDuplicate = function (nums) {
-  let curr = [];
-  for (let i = 0; i < nums.length; i++) {
-    if (curr.indexOf(nums[i]) !== -1) {
-      return true;
-    }
-    curr.push(nums[i]);
-  }
-  return false;
+    let uniq = new Set(nums);
+    return nums.length === uniq.size ? false : true;
 };
