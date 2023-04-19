@@ -7,3 +7,13 @@ Nary-Tree input serialization is represented in their level order traversal. Eac
 */
 
 // solution
+
+var preorder = function (root) {
+    let res = [];
+    if (!root) return res;
+    res.push(root.val);
+    for (let child of root.children) {
+        res = res.concat(preorder(child));
+    }
+    return res;
+};
