@@ -11,3 +11,21 @@ If the reshape operation with given parameters is possible and legal, output the
 */
 
 // solution
+
+var matrixReshape = function (mat, r, c) {
+    let m = mat.length,
+        n = mat[0].length;
+    if (m * n !== r * c) return mat;
+    mat = mat.flat();
+    let res = [];
+    let curr = 0;
+    for (let i = 0; i < r; i++) {
+        let col = [];
+        for (let j = 0; j < c; j++) {
+            col.push(mat[curr]);
+            curr++;
+        }
+        res.push(col);
+    }
+    return res;
+};
