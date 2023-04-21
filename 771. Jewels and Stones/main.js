@@ -7,3 +7,15 @@ Letters are case sensitive, so "a" is considered a different type of stone from 
 */
 
 // solution
+
+var numJewelsInStones = function (jewels, stones) {
+    let count = 0;
+    for (let i = 0; i < jewels.length; i++) {
+        for (let j = 0; j < stones.length; j++) {
+            if (jewels[i] === stones[j]) {
+                count++;
+            }
+        }
+    }
+    return count;
+};
