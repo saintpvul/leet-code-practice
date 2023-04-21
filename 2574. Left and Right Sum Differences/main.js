@@ -13,3 +13,16 @@ Return the array answer.
 */
 
 // solution
+
+var leftRigthDifference = function (nums) {
+    let res = [];
+    for (let i = 0; i < nums.length; i++) {
+        res.push(
+            Math.abs(
+                nums.slice(0, i + 1).reduce((s, v) => (s += v), 0) -
+                    nums.slice(i).reduce((s, v) => (s += v), 0)
+            )
+        );
+    }
+    return res;
+};
