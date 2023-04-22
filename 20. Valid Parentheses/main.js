@@ -22,11 +22,11 @@ var isValid = function (s) {
         } else {
             if (!par.length) return false;
             let last = par[par.length - 1];
-            if (p === ")" && last === "(") {
-                par.pop();
-            } else if (p === "]" && last === "[") {
-                par.pop();
-            } else if (p === "}" && last === "{") {
+            if (
+                (p === ")" && last === "(") ||
+                (p === "]" && last === "[") ||
+                (p === "}" && last === "{")
+            ) {
                 par.pop();
             } else {
                 break;
