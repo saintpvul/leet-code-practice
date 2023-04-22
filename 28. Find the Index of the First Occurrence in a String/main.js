@@ -5,3 +5,7 @@ Given two strings needle and haystack, return the index of the first occurrence 
 */
 
 // solution
+
+var strStr = function (haystack, needle) {
+    return haystack.indexOf(needle);
+};
