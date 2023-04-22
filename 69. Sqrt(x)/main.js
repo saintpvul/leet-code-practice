@@ -9,3 +9,7 @@ For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.
 */
 
 // solution
+
+var mySqrt = function (x) {
+    return Math.floor(Math.sqrt(x));
+};
