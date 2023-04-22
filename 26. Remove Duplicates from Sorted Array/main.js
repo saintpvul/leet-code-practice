@@ -20,9 +20,18 @@ for (int i = 0; i < k; i++) {
     assert nums[i] == expectedNums[i];
 }
 If all assertions pass, then your solution will be accepted.
-
  
-
 */
 
 // solution
+
+var removeDuplicates = function (nums) {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[j] === nums[i]) {
+                nums.splice(j, 1);
+                j--;
+            }
+        }
+    }
+};
