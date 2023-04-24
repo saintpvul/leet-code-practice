@@ -14,3 +14,9 @@ Fahrenheit = Celsius * 1.80 + 32.00
 */
 
 // solution
+
+var convertTemperature = function (celsius) {
+    const K = celsius + 273.15;
+    const F = celsius * 1.8 + 32;
+    return [K, F];
+};
