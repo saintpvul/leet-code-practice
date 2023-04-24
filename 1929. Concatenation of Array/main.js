@@ -9,3 +9,15 @@ Return the array ans.
 */
 
 //solution
+
+var getConcatenation = function (nums) {
+    let ans = [];
+    let n = 2;
+    while (n > 0) {
+        for (let i = 0; i < nums.length; i++) {
+            ans.push(nums[i]);
+        }
+        n--;
+    }
+    return ans;
+};
