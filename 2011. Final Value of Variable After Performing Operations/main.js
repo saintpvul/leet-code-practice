@@ -11,3 +11,15 @@ Given an array of strings operations containing a list of operations, return the
 */
 
 // solution
+
+var finalValueAfterOperations = function (operations) {
+    let res = 0;
+    for (const op of operations) {
+        if (op === "--X" || op === "X--") {
+            res--;
+        } else {
+            res++;
+        }
+    }
+    return res;
+};
