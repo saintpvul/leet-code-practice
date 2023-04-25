@@ -7,3 +7,7 @@ Given the string command, return the Goal Parser's interpretation of command.
 */
 
 // solution
+
+var interpret = function (command) {
+    return command.replace(/(\(\))/g, "o").replace(/(\(al\))/g, "al");
+};
