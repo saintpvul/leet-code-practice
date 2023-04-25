@@ -11,3 +11,24 @@ Note that you are not allowed to change any of the two trees or the target node 
 */
 
 // solution
+
+var getTargetCopy = function (original, cloned, target) {
+    let stack = [original];
+    let cloneStack = [cloned];
+    while (stack.length > 0) {
+        let node = stack.pop();
+        let clonedNode = cloneStack.pop();
+        if (node === target) {
+            return clonedNode;
+        }
+        if (node.left) {
+            stack.push(node.left);
+            cloneStack.push(clonedNode.left);
+        }
+        if (node.right) {
+            stack.push(node.right);
+            cloneStack.push(clonedNode.right);
+        }
+    }
+    return null;
+};
