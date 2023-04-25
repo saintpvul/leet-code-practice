@@ -8,3 +8,26 @@ Return the minimum possible sum of new1 and new2.
 */
 
 // solution
+
+var minimumSum = function (num) {
+    const digits = String(num).split("").map(Number);
+    let minSum = Infinity;
+    const genPairs = (i) => {
+        if (i === digits.length) {
+            const new1 = Number(digits.slice(0, 2).join(""));
+            const new2 = Number(digits.slice(2).join(""));
+            const sum = new1 + new2;
+            if (sum < minSum) {
+                minSum = sum;
+            }
+            return;
+        }
+        for (let j = i; j < digits.length; j++) {
+            [digits[i], digits[j]] = [digits[j], digits[i]];
+            genPairs(i + 1);
+            [digits[i], digits[j]] = [digits[j], digits[i]];
+        }
+    };
+    genPairs(0);
+    return minSum;
+};
