@@ -7,3 +7,9 @@ A customer's wealth is the amount of money they have in all their bank accounts.
 */
 
 // solution
+
+var maximumWealth = function (accounts) {
+    return Math.max(
+        ...accounts.map((customer) => customer.reduce((s, v) => (s += v), 0))
+    );
+};
