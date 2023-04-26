@@ -25,3 +25,49 @@ The judge will then create the linked structure based on these inputs and pass t
 */
 
 // solution
+
+var getIntersectionNode = function (headA, headB) {
+    //get lenA
+    let lenA = 0;
+    let currA = headA;
+    while (currA != null) {
+        lenA++;
+        currA = currA.next;
+    }
+
+    //get lenB
+    let lenB = 0;
+    let currB = headB;
+    while (currB != null) {
+        lenB++;
+        currB = currB.next;
+    }
+
+    // move pointer to eq level
+    currA = headA;
+    currB = headB;
+    if (lenA > lenB) {
+        let diff = lenA - lenB;
+        while (diff > 0) {
+            currA = currA.next;
+            diff--;
+        }
+    } else {
+        let diff = lenB - lenA;
+        while (diff > 0) {
+            currB = currB.next;
+            diff--;
+        }
+    }
+
+    // find intersect
+
+    while (currA != null && currB != null) {
+        if (currA === currB) {
+            return currA;
+        }
+        currA = currA.next;
+        currB = currB.next;
+    }
+    return null;
+};
