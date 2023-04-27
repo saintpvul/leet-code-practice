@@ -8,3 +8,9 @@ Given an integer num, reverse num to get reversed1, then reverse reversed1 to ge
 */
 
 // solution
+
+var isSameAfterReversals = function (num) {
+    if (!num) return true;
+    let reversed = +num.toString().replace(/0+$/, "");
+    return num === reversed;
+};
