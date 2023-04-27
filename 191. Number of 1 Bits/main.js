@@ -10,3 +10,7 @@ In Java, the compiler represents the signed integers using 2's complement notati
 */
 
 // solution
+
+var hammingWeight = function (n) {
+    return n.toString(2).replace(/[0]/gi, "").length;
+};
