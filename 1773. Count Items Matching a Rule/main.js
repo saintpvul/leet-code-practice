@@ -12,3 +12,13 @@ Return the number of items that match the given rule.
 */
 
 // solution
+
+var countMatches = function (items, ruleKey, ruleValue) {
+    return items.filter((e) =>
+        ruleKey === "type"
+            ? e[0] === ruleValue
+            : ruleKey === "color"
+            ? e[1] === ruleValue
+            : e[2] === ruleValue
+    ).length;
+};
