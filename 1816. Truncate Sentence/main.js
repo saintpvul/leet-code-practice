@@ -8,3 +8,8 @@ You are given a sentence s​​​​​​ and an integer k​​​​​​.
 */
 
 // solution
+
+var truncateSentence = function (s, k) {
+    s = s.split(" ");
+    return s.slice(0, k).join(" ");
+};
