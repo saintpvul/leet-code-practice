@@ -10,3 +10,9 @@ In Java, the compiler represents the signed integers using 2's complement notati
 */
 
 // solution
+
+var reverseBits = function (n) {
+    let binStr = n.toString(2);
+    binStr = "0".repeat(32 - binStr.length) + binStr;
+    return parseInt(binStr.split("").reverse().join(""), 2);
+};
