@@ -28,3 +28,5 @@ var similarPairs = function (words) {
     }
     return count;
 };
+
+// most slowest solution
