@@ -11,3 +11,20 @@ Return the number of pairs (i, j) such that 0 <= i < j <= word.length - 1 and th
 */
 
 // solution
+
+var similarPairs = function (words) {
+    let count = 0;
+    for (let i = 0; i < words.length - 1; i++) {
+        let currentWord = words[i].split("").sort();
+        for (let j = i + 1; j < words.length; j++) {
+            let nextWord = words[j].split("").sort();
+            if (
+                Array.from(new Set(currentWord)).join("") ===
+                Array.from(new Set(nextWord)).join("")
+            ) {
+                count++;
+            }
+        }
+    }
+    return count;
+};
