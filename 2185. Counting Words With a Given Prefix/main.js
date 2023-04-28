@@ -9,3 +9,14 @@ A prefix of a string s is any leading contiguous substring of s.
 */
 
 // solution
+
+var prefixCount = function (words, pref) {
+    let count = 0;
+    for (let i = 0; i < words.length; i++) {
+        let currPref = words[i].slice(0, pref.length);
+        if (currPref === pref) {
+            count++;
+        }
+    }
+    return count;
+};
