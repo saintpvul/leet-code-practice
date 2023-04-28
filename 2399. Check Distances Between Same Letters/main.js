@@ -11,3 +11,24 @@ Return true if s is a well-spaced string, otherwise return false.
 */
 
 // solution
+
+var checkDistances = function (s, distance) {
+    let alph = "abcdefghijklmnopqrstuvwxyz";
+    let p = [];
+    for (let i = 0; i <= s.length; i++) {
+        let pos = alph.indexOf(s[i]);
+        if (pos !== -1) {
+            distance[pos] =
+                distance[pos] - (s.lastIndexOf(s[i]) - s.indexOf(s[i]) - 1);
+            s = s.replaceAll(s[i], "-");
+            p.push(pos);
+        }
+    }
+    let res = true;
+    for (let i = 0; i < p.length; i++) {
+        if (distance[p[i]] !== 0) {
+            res = false;
+        }
+    }
+    return res;
+};
