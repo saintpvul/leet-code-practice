@@ -11,3 +11,16 @@ Return the number of vowel strings words[i] where i belongs to the inclusive ran
 */
 
 // solution
+
+var vowelStrings = function (words, left, right) {
+    let count = 0;
+    for (let i = left; i <= right && i < words.length; i++) {
+        if (
+            /[aeiou]/.test(words[i][0]) &&
+            /[aeiou]/.test(words[i][words[i].length - 1])
+        ) {
+            count++;
+        }
+    }
+    return count;
+};
