@@ -9,3 +9,9 @@ Return names sorted in descending order by the people's heights.
 */
 
 // solution
+
+var sortPeople = function (names, heights) {
+    const nameHeightPairs = names.map((name, index) => [name, heights[index]]);
+    nameHeightPairs.sort((pair1, pair2) => pair2[1] - pair1[1]);
+    return nameHeightPairs.map((pair) => pair[0]);
+};
