@@ -7,3 +7,19 @@ Return the number of consistent strings in the array words.
 */
 
 // solution
+
+var countConsistentStrings = function (allowed, words) {
+    let count = 0;
+    for (let i = 0; i < words.length; i++) {
+        for (let j = 0; j < allowed.length; j++) {
+            let char = allowed[j];
+            if (words[i].includes(char)) {
+                words[i] = words[i].replaceAll(char, "");
+            }
+        }
+        if (!words[i]) {
+            count++;
+        }
+    }
+    return count;
+};
