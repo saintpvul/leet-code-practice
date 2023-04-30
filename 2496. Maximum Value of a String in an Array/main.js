@@ -11,3 +11,19 @@ Given an array strs of alphanumeric strings, return the maximum value of any str
 */
 
 // solution
+
+var maximumValue = function (strs) {
+    let max = 0;
+    for (let i = 0; i < strs.length; i++) {
+        let currentMax = 0;
+        if (/^\d+$/.test(strs[i])) {
+            currentMax = parseInt(strs[i], 10);
+        } else {
+            currentMax = strs[i].length;
+        }
+        if (currentMax >= max) {
+            max = currentMax;
+        }
+    }
+    return max;
+};
