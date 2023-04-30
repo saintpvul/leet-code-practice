@@ -7,3 +7,13 @@ A string is palindromic if it reads the same forward and backward.
 */
 
 // solution
+
+var firstPalindrome = function (words) {
+    const isPal = (word) => word && word === word.split("").reverse().join("");
+    for (let word of words) {
+        if (isPal(word)) {
+            return word;
+        }
+    }
+    return "";
+};
