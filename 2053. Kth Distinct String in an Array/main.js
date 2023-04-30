@@ -9,3 +9,13 @@ Note that the strings are considered in the order in which they appear in the ar
 */
 
 // solution
+
+var kthDistinct = function (arr, k) {
+    let dist = [];
+    for (let item of arr) {
+        if (arr.indexOf(item) === arr.lastIndexOf(item)) {
+            dist.push(item);
+        }
+    }
+    return dist.length + 1 < k || !dist.length ? "" : dist[k - 1];
+};
