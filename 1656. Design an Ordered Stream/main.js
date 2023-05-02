@@ -12,3 +12,20 @@ String[] insert(int idKey, String value) Inserts the pair (idKey, value) into th
 */
 
 // solution
+
+class OrderedStream {
+    constructor(n) {
+        this.n = n;
+        this.ptr = 0;
+        this.buffer = new Array(n + 1).fill(null);
+    }
+
+    insert(idKey, value) {
+        this.buffer[idKey] = value;
+        const result = [];
+        while (this.ptr < this.n && this.buffer[this.ptr + 1] !== null) {
+            result.push(this.buffer[++this.ptr]);
+        }
+        return result;
+    }
+}
