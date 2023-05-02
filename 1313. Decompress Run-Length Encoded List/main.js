@@ -9,3 +9,13 @@ Return the decompressed list.
 */
 
 // solution
+
+var decompressRLElist = function (nums) {
+    let res = [];
+    for (let i = 0; i < nums.length; i += 2) {
+        for (let j = nums[i]; j > 0; j--) {
+            res.push(nums[i + 1]);
+        }
+    }
+    return res;
+};
