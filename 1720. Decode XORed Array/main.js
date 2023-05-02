@@ -11,3 +11,11 @@ Return the original array arr. It can be proved that the answer exists and is un
 */
 
 // solution
+
+var decode = function (encoded, first) {
+    let decoded = [first];
+    for (let i = 0; i < encoded.length; i++) {
+        decoded.push(decoded[i] ^ encoded[i]);
+    }
+    return decoded;
+};
