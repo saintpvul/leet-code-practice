@@ -7,3 +7,11 @@ Return an integer denoting the sum of all numbers in the given range satisfying 
 */
 
 // solution
+
+var sumOfMultiples = function (n) {
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+        if (!(i % 3) || !(i % 5) || !(i % 7)) sum += i;
+    }
+    return sum;
+};
