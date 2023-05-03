@@ -14,3 +14,17 @@ An array a is a subset of an array b if a can be obtained from b by deleting som
 */
 
 // solution
+
+var subsetXORSum = function (nums) {
+    let res = 0;
+    const helper = (i, currXOR) => {
+        if (i === nums.length) {
+            res += currXOR;
+            return;
+        }
+        helper(i + 1, currXOR ^ nums[i]);
+        helper(i + 1, currXOR);
+    };
+    helper(0, 0);
+    return res;
+};
