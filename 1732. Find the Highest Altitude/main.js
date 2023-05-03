@@ -7,3 +7,15 @@ You are given an integer array gain of length n where gain[i] is the net gain in
 */
 
 // solution
+
+var largestAltitude = function (gain) {
+    let maxAltitude = 0;
+    let currentAltitude = 0;
+    for (let i = 0; i < gain.length; i++) {
+        currentAltitude += gain[i];
+        if (currentAltitude > maxAltitude) {
+            maxAltitude = currentAltitude;
+        }
+    }
+    return maxAltitude;
+};
