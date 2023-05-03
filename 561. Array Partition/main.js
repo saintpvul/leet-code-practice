@@ -5,3 +5,12 @@ Given an integer array nums of 2n integers, group these integers into n pairs (a
 */
 
 // solution
+
+var arrayPairSum = function (nums) {
+    nums = nums.sort((a, b) => a - b);
+    let sum = 0;
+    for (let i = 0; i < nums.length; i += 2) {
+        sum += nums[i];
+    }
+    return sum;
+};
