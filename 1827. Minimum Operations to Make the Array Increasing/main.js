@@ -10,3 +10,16 @@ An array nums is strictly increasing if nums[i] < nums[i+1] for all 0 <= i < num
 */
 
 // solution
+
+var minOperations = function (nums) {
+    let ops = 0;
+    let prev = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] <= prev) {
+            ops += prev - nums[i] + 1;
+            nums[i] = prev + 1;
+        }
+        prev = nums[i];
+    }
+    return ops;
+};
