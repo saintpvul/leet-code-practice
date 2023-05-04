@@ -10,3 +10,13 @@ Return the maximum such product difference.
 */
 
 // solution
+
+var maxProductDifference = function (nums) {
+    let x = Math.max(...nums);
+    nums.splice(nums.indexOf(x), 1);
+    let w = Math.max(...nums);
+    let y = Math.min(...nums);
+    nums.splice(nums.indexOf(y), 1);
+    let z = Math.min(...nums);
+    return x * w - y * z;
+};
