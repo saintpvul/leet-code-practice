@@ -16,3 +16,73 @@ Return the number of different transformations among all words we have.
 */
 
 // solution
+
+var uniqueMorseRepresentations = function (words) {
+    const morse = [
+        ".-",
+        "-...",
+        "-.-.",
+        "-..",
+        ".",
+        "..-.",
+        "--.",
+        "....",
+        "..",
+        ".---",
+        "-.-",
+        ".-..",
+        "--",
+        "-.",
+        "---",
+        ".--.",
+        "--.-",
+        ".-.",
+        "...",
+        "-",
+        "..-",
+        "...-",
+        ".--",
+        "-..-",
+        "-.--",
+        "--..",
+    ];
+    const alph = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+    ];
+
+    let uniq = new Set();
+
+    for (const word of words) {
+        let currentMorse = "";
+        for (let i = 0; i < word.length; i++) {
+            currentMorse += morse[alph.indexOf(word[i])];
+        }
+        uniq.add(currentMorse);
+    }
+    return uniq.size;
+};
