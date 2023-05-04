@@ -11,3 +11,14 @@ Return the maximum score you can achieve after performing the operation exactly 
 */
 
 // solution
+
+var maximizeSum = function (nums, k) {
+    let m = Math.max(...nums);
+    let res = 0;
+    while (k > 0) {
+        res += m;
+        m++;
+        k--;
+    }
+    return res;
+};
