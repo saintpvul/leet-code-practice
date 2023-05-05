@@ -13,3 +13,21 @@ You are given two integer arrays students and sandwiches where sandwiches[i] is 
 */
 
 // solution
+
+var countStudents = function (students, sandwiches) {
+    let step = 0;
+
+    while (step <= students.length) {
+        if (students.length === 0) break;
+        if (students[0] !== sandwiches[0]) {
+            students.push(students.shift());
+            step++;
+        } else if (students[0] === sandwiches[0]) {
+            students.shift();
+            sandwiches.shift();
+            step = 0;
+        }
+    }
+
+    return students.length;
+};
