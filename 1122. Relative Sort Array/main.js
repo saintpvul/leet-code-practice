@@ -7,3 +7,31 @@ Sort the elements of arr1 such that the relative ordering of items in arr1 are t
 */
 
 // solution
+
+var relativeSortArray = function (arr1, arr2) {
+    let res = Array.from({ length: arr1.length }, () => 0);
+    let numbers = {};
+
+    for (let num of arr1) {
+        numbers[num] ? numbers[num]++ : (numbers[num] = 1);
+    }
+
+    let pointer = 0;
+    for (let val of arr2) {
+        while (numbers[val] > 0) {
+            res[pointer] = val;
+            pointer++;
+            numbers[val]--;
+        }
+    }
+
+    for (let i = 0; i <= 1000; i++) {
+        while (numbers[i] > 0) {
+            res[pointer] = i;
+            pointer++;
+            numbers[i]--;
+        }
+    }
+
+    return res;
+};
