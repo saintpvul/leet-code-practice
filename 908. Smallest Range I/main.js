@@ -11,3 +11,12 @@ Return the minimum score of nums after applying the mentioned operation at most 
 */
 
 // solution
+
+var smallestRangeI = function (nums, k) {
+    const mult = k * 2;
+    const max = Math.max(...nums);
+    const min = Math.min(...nums);
+    const calc = max - min - mult;
+    if (calc < 0) return 0;
+    return calc;
+};
