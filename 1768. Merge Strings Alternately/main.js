@@ -7,3 +7,16 @@ Return the merged string.
 */
 
 // solution
+
+var mergeAlternately = function (word1, word2) {
+    let big = word1.length > word2.length ? word1 : word2;
+    let small = big === word1 ? word2 : word1;
+
+    let res = "";
+
+    for (let i = 0; i < small.length; i++) {
+        res += word1[i];
+        res += word2[i];
+    }
+    return (res += big.slice(small.length));
+};
