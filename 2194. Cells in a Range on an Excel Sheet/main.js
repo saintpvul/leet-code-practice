@@ -14,3 +14,21 @@ Return the list of cells (x, y) such that r1 <= x <= r2 and c1 <= y <= c2. The c
 */
 
 // solution
+
+var cellsInRange = function (s) {
+    let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let range = s.split(":");
+    let startCol = alph.indexOf(range[0][0]) + 1;
+    let endCol = alph.indexOf(range[1][0]) + 1;
+    let startRow = parseInt(range[0].substring(1));
+    let endRow = parseInt(range[1].substring(1));
+    let cells = [];
+
+    for (let col = startCol; col <= endCol; col++) {
+        for (let row = startRow; row <= endRow; row++) {
+            cells.push(alph[col - 1] + row);
+        }
+    }
+
+    return cells;
+};
