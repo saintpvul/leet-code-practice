@@ -12,3 +12,22 @@ Return the decoded message.
 */
 
 // solution
+
+var decodeMessage = function (key, message) {
+    let code = "";
+    for (let i = 0; i < key.length; i++) {
+        if (key[i] != " " && !code.includes(key[i])) {
+            code += key[i];
+        }
+    }
+    let alph = "abcdefghijklmnopqrstuvwxyz";
+    let res = "";
+    for (let i = 0; i < message.length; i++) {
+        if (message[i] != " ") {
+            res += alph[code.indexOf(message[i])];
+        } else {
+            res += message[i];
+        }
+    }
+    return res;
+};
