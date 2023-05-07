@@ -14,3 +14,15 @@ You are allowed to pass through points that appear later in the order, but these
 */
 
 // solution
+
+var minTimeToVisitAllPoints = function (points) {
+    let total = 0;
+    for (let i = 0; i < points.length - 1; i++) {
+        const [x1, y1] = points[i];
+        const [x2, y2] = points[i + 1];
+        const x = Math.abs(x1 - x2);
+        const y = Math.abs(y1 - y2);
+        total += Math.max(x, y);
+    }
+    return total;
+};
