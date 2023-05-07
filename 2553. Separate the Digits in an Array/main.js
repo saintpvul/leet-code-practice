@@ -9,3 +9,23 @@ For example, for the integer 10921, the separation of its digits is [1,0,9,2,1].
 */
 
 // solution
+
+// var separateDigits = function (nums) {
+//     nums = nums.join("").split("").map(Number);
+//     return nums;
+// };
+
+var separateDigits = function (nums) {
+    let res = [];
+    for (let i = 0; i < nums.length; i++) {
+        let digits = [];
+        while (nums[i] >= 10) {
+            digits.push(nums[i] % 10);
+            nums[i] = Math.floor(nums[i] / 10);
+        }
+        digits.push(nums[i]);
+        res.push(digits.reverse());
+    }
+    return res.flat();
+};
+// a little faster
