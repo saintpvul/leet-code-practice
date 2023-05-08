@@ -9,3 +9,10 @@ Return an array containing the index of the row, and the number of ones in it.
 */
 
 // solution
+
+var rowAndMaximumOnes = function (mat) {
+    mat = mat.map((row) => row.reduce((s, v) => (s += v), 0));
+    let row = mat.indexOf(Math.max(...mat));
+    let number = Math.max(...mat);
+    return [row, number];
+};
