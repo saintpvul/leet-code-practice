@@ -11,3 +11,17 @@ Return the number of rectangles that can make a square with a side length of max
 */
 
 // solution
+
+var countGoodRectangles = function (rectangles) {
+    let maxLen = 0;
+
+    rectangles.forEach((rect) => {
+        let minSide = Math.min(rect[0], rect[1]);
+        maxLen = Math.max(maxLen, minSide);
+    });
+
+    return rectangles.filter((rect) => {
+        let minSide = Math.min(rect[0], rect[1]);
+        return minSide === maxLen;
+    }).length;
+};
