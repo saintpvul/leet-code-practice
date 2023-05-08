@@ -11,3 +11,35 @@ Given m, n, and indices, return the number of odd-valued cells in the matrix aft
 */
 
 // solution
+
+var oddCells = function (m, n, indices) {
+    let matrix = Array(m)
+        .fill()
+        .map(() => Array(n).fill(0));
+    let oddCount = 0;
+
+    for (let i = 0; i < indices.length; i++) {
+        let row = indices[i][0];
+        let col = indices[i][1];
+
+        for (let j = 0; j < n; j++) {
+            matrix[row][j]++;
+            if (matrix[row][j] % 2 !== 0) {
+                oddCount++;
+            } else {
+                oddCount--;
+            }
+        }
+
+        for (let j = 0; j < m; j++) {
+            matrix[j][col]++;
+            if (matrix[j][col] % 2 !== 0) {
+                oddCount++;
+            } else {
+                oddCount--;
+            }
+        }
+    }
+
+    return oddCount;
+};
