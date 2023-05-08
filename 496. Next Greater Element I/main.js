@@ -11,3 +11,18 @@ Return an array ans of length nums1.length such that ans[i] is the next greater 
 */
 
 // solution
+
+var nextGreaterElement = function (nums1, nums2) {
+    let next = [];
+    for (let i = 0; i < nums1.length; i++) {
+        for (let j = nums2.indexOf(nums1[i]); j < nums2.length; j++) {
+            if (nums2[j] > nums1[i]) {
+                next.push(nums2[j]);
+                break;
+            } else if (j === nums2.length - 1 && nums2[-1] != nums1[i]) {
+                next.push(-1);
+            }
+        }
+    }
+    return next;
+};
