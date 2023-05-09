@@ -9,3 +9,8 @@ Return the number of indices where heights[i] != expected[i].
 */
 
 // solution
+
+var heightChecker = function (heights) {
+    let ordered = [...heights].sort((a, b) => a - b);
+    return heights.filter((e, i) => e != ordered[i]).length;
+};
