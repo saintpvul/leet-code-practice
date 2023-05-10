@@ -11,3 +11,14 @@ Return true if nums can be divided into n pairs, otherwise return false.
 */
 
 // solution
+
+var divideArray = function (nums) {
+    let keeper = {};
+    for (let i = 0; i < nums.length; i++) {
+        keeper[nums[i]] ? keeper[nums[i]]++ : (keeper[nums[i]] = 1);
+        if (keeper[nums[i]] % 2 && nums.lastIndexOf(nums[i]) === i) {
+            return false;
+        }
+    }
+    return true;
+};
