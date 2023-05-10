@@ -11,3 +11,36 @@ Return the maximum total number of units that can be put on the truck.
 */
 
 // solution
+
+// var maximumUnits = function (boxTypes, truckSize) {
+//     boxTypes.sort((a, b) => b[1] - a[1]);
+//     console.log(boxTypes);
+//     let max = 0;
+//     outerloop: for (let i = 0; i < boxTypes.length; i++) {
+//         for (let j = boxTypes[i][0]; j > 0; j--) {
+//             if (truckSize === 0) {
+//                 break outerloop;
+//             }
+//             max += boxTypes[i][1];
+//             truckSize--;
+//         }
+//     }
+//     return max;
+// };
+
+var maximumUnits = function (boxTypes, truckSize) {
+    boxTypes.sort((a, b) => b[1] - a[1]);
+    let res = 0;
+    for (let box of boxTypes) {
+        if (truckSize) {
+            if (box[0] <= truckSize) {
+                res += box[0] * box[1];
+                truckSize -= box[0];
+            } else {
+                res += truckSize * box[1];
+                truckSize = 0;
+            }
+        }
+    }
+    return res;
+};
