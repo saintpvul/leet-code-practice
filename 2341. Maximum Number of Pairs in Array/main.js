@@ -11,3 +11,21 @@ Return a 0-indexed integer array answer of size 2 where answer[0] is the number 
 */
 
 // solution
+
+var numberOfPairs = function (nums) {
+    let frequency = {};
+    let left = 0,
+        pairs = 0;
+    for (let i = 0; i < nums.length; i++) {
+        let lastOccur = nums.lastIndexOf(nums[i]);
+        frequency[nums[i]] ? frequency[nums[i]]++ : (frequency[nums[i]] = 1);
+        if (!(frequency[nums[i]] % 2)) {
+            pairs++;
+            frequency[nums[i]] = 0;
+        }
+        if (frequency[nums[i]] % 2 && i === lastOccur) {
+            left++;
+        }
+    }
+    return [pairs, left];
+};
