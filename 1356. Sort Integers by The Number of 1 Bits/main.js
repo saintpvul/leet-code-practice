@@ -8,16 +8,35 @@ Return the array after sorting it.
 
 // solution
 
-var sortByBits = function (arr) {
-    let bin = new Map();
+// var sortByBits = function (arr) {
+//     let bin = new Map();
 
-    for (let val of arr) {
-        bin.set(val, val.toString(2).replace(/[0]/gi, "").length);
-    }
+//     for (let val of arr) {
+//         bin.set(val, val.toString(2).replace(/[0]/gi, "").length);
+//     }
+
+//     return arr.sort((a, b) => {
+//         let countA = bin.get(a);
+//         let countB = bin.get(b);
+//         return countA === countB ? a - b : countA - countB;
+//     });
+// };
+
+//using bitwise operators
+
+var sortByBits = function (arr) {
+    const countBits = (num) => {
+        let count = 0;
+        while (num) {
+            count += num & 1;
+            num >>= 1;
+        }
+        return count;
+    };
 
     return arr.sort((a, b) => {
-        let countA = bin.get(a);
-        let countB = bin.get(b);
+        const countA = countBits(a);
+        const countB = countBits(b);
         return countA === countB ? a - b : countA - countB;
     });
 };
