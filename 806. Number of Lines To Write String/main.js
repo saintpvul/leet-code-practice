@@ -12,3 +12,46 @@ result[1] is the width of the last line in pixels.
 */
 
 // solution
+
+var numberOfLines = function (widths, s) {
+    let alph = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+    ];
+    let lines = 1;
+    let currentWidth = 0;
+    for (let i = 0; i < s.length; i++) {
+        let charWidth = widths[alph.indexOf(s[i])];
+        if (currentWidth + charWidth > 100) {
+            lines++;
+            currentWidth = charWidth;
+        } else {
+            currentWidth += charWidth;
+        }
+    }
+    return [lines, currentWidth];
+};
