@@ -11,3 +11,29 @@ Note: ret should be returned in ascending order by value.
 */
 
 // solution
+
+var mergeSimilarItems = function (items1, items2) {
+    const map = new Map();
+
+    for (let i = 0; i < items1.length; i++) {
+        const [value, weight] = items1[i];
+        if (!map.has(value)) {
+            map.set(value, weight);
+        } else {
+            map.set(value, map.get(value) + weight);
+        }
+    }
+
+    for (let i = 0; i < items2.length; i++) {
+        const [value, weight] = items2[i];
+        if (!map.has(value)) {
+            map.set(value, weight);
+        } else {
+            map.set(value, map.get(value) + weight);
+        }
+    }
+
+    const ret = [...map].sort((a, b) => a[0] - b[0]);
+
+    return ret;
+};
