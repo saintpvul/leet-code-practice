@@ -8,3 +8,19 @@ Note that 0 is neither positive nor negative.
 */
 
 // solution
+
+// var maximumCount = function (nums) {
+//     let pos = [...nums].filter((e) => e > 0).length;
+//     let neg = [...nums].filter((e) => e < 0).length;
+
+//     return Math.max(pos, neg);
+// };
+
+var maximumCount = function (nums) {
+    let pos = 0,
+        neg = 0;
+    for (let num of nums) {
+        num > 0 ? pos++ : num < 0 ? neg++ : 0;
+    }
+    return pos > neg ? pos : neg;
+};
