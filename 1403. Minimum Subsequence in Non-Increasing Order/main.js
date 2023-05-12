@@ -9,3 +9,21 @@ Note that the solution with the given constraints is guaranteed to be unique. Al
 */
 
 // solution
+
+var minSubsequence = function (nums) {
+    nums.sort((a, b) => b - a);
+    const totalSum = nums.reduce((sum, num) => sum + num, 0);
+    let subSum = 0;
+    let subsequence = [];
+
+    for (let i = 0; i < nums.length; i++) {
+        subSum += nums[i];
+        subsequence.push(nums[i]);
+
+        if (subSum > totalSum - subSum) {
+            break;
+        }
+    }
+
+    return subsequence;
+};
