@@ -15,3 +15,18 @@ Return the resulting array. The returned array must be sorted in ascending order
 */
 
 // solution
+
+var mergeArrays = function (nums1, nums2) {
+    let map = {};
+    let nums = [...nums1, ...nums2];
+    for (let i = 0; i < nums.length; i++) {
+        let [id, value] = nums[i];
+        map[id] ? (map[id] += value) : (map[id] = value);
+    }
+    let result = [];
+    for (let element in map) {
+        result.push([+element, map[element]]);
+    }
+    return result;
+};
+Console;
