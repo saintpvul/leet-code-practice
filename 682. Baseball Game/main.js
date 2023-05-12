@@ -19,3 +19,20 @@ The test cases are generated such that the answer and all intermediate calculati
 */
 
 // solution
+
+var calPoints = function (operations) {
+    let scores = [];
+    for (let i = 0; i < operations.length; i++) {
+        if (!isNaN(+operations[i])) {
+            scores.push(+operations[i]);
+        } else if (operations[i] === "+") {
+            scores.push(scores.slice(-2).reduce((s, v) => (s += v), 0));
+        } else if (operations[i] === "D") {
+            scores.push(scores[scores.length - 1] * 2);
+        } else if (operations[i] === "C") {
+            scores.pop();
+        }
+    }
+    let record = scores.reduce((s, v) => (s += v), 0);
+    return record;
+};
