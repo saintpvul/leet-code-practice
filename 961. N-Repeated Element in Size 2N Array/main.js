@@ -10,3 +10,11 @@ Return the element that is repeated n times.
 */
 
 // solution
+
+var repeatedNTimes = function (nums) {
+    let elements = {};
+    for (let element of nums) {
+        if (elements[element]) return element;
+        elements[element] = 1;
+    }
+};
