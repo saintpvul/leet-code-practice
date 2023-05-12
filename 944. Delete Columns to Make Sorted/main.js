@@ -15,3 +15,20 @@ Return the number of columns that you will delete.
 */
 
 // solution
+
+var minDeletionSize = function (strs) {
+    const n = strs.length;
+    const m = strs[0].length;
+    let count = 0;
+
+    for (let col = 0; col < m; col++) {
+        for (let row = 1; row < n; row++) {
+            if (strs[row][col] < strs[row - 1][col]) {
+                count++;
+                break;
+            }
+        }
+    }
+
+    return count;
+};
