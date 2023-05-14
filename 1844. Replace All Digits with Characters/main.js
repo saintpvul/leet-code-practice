@@ -12,3 +12,16 @@ Return s after replacing all digits. It is guaranteed that shift(s[i-1], s[i]) w
 */
 
 // solution
+
+var replaceDigits = function (s) {
+    s = s.split("");
+    function shift(c, x) {
+        let alph = "abcdefghijklmnopqrstuvwxyz";
+        return alph[alph.indexOf(c) + +x];
+    }
+
+    for (let i = 0; i < s.length; i += 2) {
+        s[i + 1] = shift(s[i], s[i + 1]);
+    }
+    return s.join("");
+};
