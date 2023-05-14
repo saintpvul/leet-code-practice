@@ -11,3 +11,17 @@ Return the minimum cost needed to move all the chips to the same position.
 */
 
 // solution
+
+var minCostToMoveChips = function (position) {
+    let oddCount = 0;
+
+    for (let i = 0; i < position.length; i++) {
+        if (!(position[i] % 2)) {
+            oddCount++;
+        }
+    }
+
+    let evenCount = position.length - oddCount;
+
+    return oddCount < evenCount ? oddCount : evenCount;
+};
