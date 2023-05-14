@@ -18,3 +18,19 @@ Given a VPS represented as string s, return the nesting depth of s.
 */
 
 // solution
+
+var maxDepth = function (s) {
+    let depth = 0;
+    let maxDepth = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "(") {
+            depth++;
+            maxDepth = Math.max(depth, maxDepth);
+        } else if (s[i] === ")") {
+            depth--;
+        }
+    }
+
+    return maxDepth;
+};
