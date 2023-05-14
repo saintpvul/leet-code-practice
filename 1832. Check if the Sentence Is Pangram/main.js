@@ -7,3 +7,11 @@ Given a string sentence containing only lowercase English letters, return true i
 */
 
 // solution
+
+var checkIfPangram = function (sentence) {
+    let alph = "abcdefghijklmnopqrstuvwxyz";
+    for (let i = 0; i < alph.length; i++) {
+        if (!sentence.includes(alph[i])) return false;
+    }
+    return true;
+};
