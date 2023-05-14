@@ -12,3 +12,23 @@ Return s after removing the outermost parentheses of every primitive string in t
 */
 
 // solution
+
+var removeOuterParentheses = function (s) {
+    let res = "";
+    let count = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "(") {
+            if (count > 0) {
+                res += "(";
+            }
+            count++;
+        } else if (s[i] === ")") {
+            count--;
+            if (count > 0) {
+                res += ")";
+            }
+        }
+    }
+    return res;
+};
