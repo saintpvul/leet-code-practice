@@ -11,3 +11,31 @@ Return the indices of the k weakest rows in the matrix ordered from weakest to s
 */
 
 // solution
+
+var kWeakestRows = function (mat, k) {
+    const rows = mat.length;
+    const cols = mat[0].length;
+
+    const counts = [];
+
+    for (let i = 0; i < rows; i++) {
+        let count = 0;
+
+        for (let j = 0; j < cols && mat[i][j] === 1; j++) {
+            count++;
+        }
+        counts.push({ row: i, count: count });
+    }
+
+    counts.sort((a, b) =>
+        a.count === b.count ? a.row - b.row : a.count - b.count
+    );
+
+    const res = [];
+
+    for (let i = 0; i < k; i++) {
+        res.push(counts[i].row);
+    }
+
+    return res;
+};
