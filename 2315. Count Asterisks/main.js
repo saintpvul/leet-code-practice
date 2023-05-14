@@ -9,3 +9,9 @@ Note that each '|' will belong to exactly one pair.
 */
 
 // solution
+
+const countAsterisks = function (s) {
+    const modifiedString = s.replace(/\|.*?\|/g, "");
+    const count = modifiedString.split("*").length - 1;
+    return count;
+};
