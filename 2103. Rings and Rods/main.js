@@ -13,3 +13,15 @@ Return the number of rods that have all three colors of rings on them.
 */
 
 // solution
+
+var countPoints = function (rings) {
+    const colors = new Array(10).fill(0);
+
+    for (let i = 0; i < rings.length; i += 2) {
+        const c = rings[i];
+        const color = c === "R" ? 1 : c === "G" ? 2 : 4;
+        colors[parseInt(rings[i + 1])] |= color;
+    }
+
+    return colors.filter((color) => color === 7).length;
+};
