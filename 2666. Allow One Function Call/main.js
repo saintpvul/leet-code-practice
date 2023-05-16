@@ -8,3 +8,15 @@ Every subsequent time it is called, it should return undefined.
 */
 
 // solution
+
+var once = function (fn) {
+    let called = false;
+
+    return (...args) => {
+        if (!called) {
+            called = true;
+            return fn.apply(this, args);
+        }
+        return undefined;
+    };
+};
