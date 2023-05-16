@@ -7,3 +7,15 @@ A string s is lexicographically sorted if for all valid i, s[i] is the same as o
 */
 
 // solution
+
+var countVowelStrings = function (n) {
+    let result = 1;
+    let vowels = 5;
+
+    for (let i = 1; i <= n; i++) {
+        result *= vowels + i - 1;
+        result /= i;
+    }
+
+    return result;
+};
