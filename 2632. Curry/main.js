@@ -9,3 +9,10 @@ In practical terms, if you called the original function like sum(1,2,3), you wou
 */
 
 // solution
+
+var curry = function (fn) {
+    return function curried(...args) {
+        if (args.length >= fn.length) return fn.apply(this, args);
+        return curried.bind(this, ...args);
+    };
+};
