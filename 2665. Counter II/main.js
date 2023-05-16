@@ -11,3 +11,20 @@ reset() sets the current value to init and then returns it.
 */
 
 // solution
+
+var createCounter = function (init) {
+    let current = init;
+    const operations = {
+        increment() {
+            return ++current;
+        },
+        decrement() {
+            return --current;
+        },
+        reset() {
+            current = init;
+            return current;
+        },
+    };
+    return operations;
+};
