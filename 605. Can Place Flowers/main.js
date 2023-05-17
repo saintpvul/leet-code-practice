@@ -7,3 +7,24 @@ Given an integer array flowerbed containing 0's and 1's, where 0 means empty and
 */
 
 // solution
+
+var canPlaceFlowers = function (flowerbed, n) {
+    if (n === 0) {
+        return true;
+    }
+
+    for (let i = 0; i < flowerbed.length; ++i) {
+        if (
+            flowerbed[i] === 0 &&
+            (i === 0 || flowerbed[i - 1] === 0) &&
+            (i === flowerbed.length - 1 || flowerbed[i + 1] === 0)
+        ) {
+            flowerbed[i] = 1;
+            if (--n === 0) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+};
