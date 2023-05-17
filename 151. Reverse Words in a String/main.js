@@ -11,3 +11,10 @@ Note that s may contain leading or trailing spaces or multiple spaces between tw
 */
 
 // solution
+
+var reverseWords = function (s) {
+    let words = s.split(/\s+/);
+    words = words.filter((word) => word.length > 0);
+    words.reverse();
+    return words.join(" ");
+};
