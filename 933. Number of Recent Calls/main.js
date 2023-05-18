@@ -11,3 +11,18 @@ It is guaranteed that every call to ping uses a strictly larger value of t than 
 */
 
 // solution
+
+class RecentCounter {
+    constructor() {
+        this.requests = [];
+    }
+}
+
+RecentCounter.prototype.ping = function (t) {
+    this.requests.push(t);
+
+    while (this.requests[0] < t - 3000) {
+        this.requests.shift();
+    }
+    return this.requests.length;
+};
