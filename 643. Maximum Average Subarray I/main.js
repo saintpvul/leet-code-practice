@@ -7,3 +7,18 @@ Find a contiguous subarray whose length is equal to k that has the maximum avera
 */
 
 // solution
+
+var findMaxAverage = function (nums, k) {
+    let sum = nums.slice(0, k).reduce((s, v) => (s += v), 0);
+    let maxSum = sum;
+
+    for (let i = k; i < nums.length; i++) {
+        sum += nums[i] - nums[i - k];
+        // maxSum = Math.max(maxSum, sum);
+        if (sum > maxSum) {
+            maxSum = sum;
+        }
+    }
+
+    return (maxSum / k).toFixed(5);
+};
