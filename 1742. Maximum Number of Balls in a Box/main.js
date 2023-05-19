@@ -35,6 +35,8 @@ Given two integers lowLimit and highLimit, return the number of balls in the box
 //      return maxBalls;
 //  };
 
+//a bit faster
+
 var countBalls = function (lowLimit, highLimit) {
     let box = new Map();
     let maxBalls = 0;
