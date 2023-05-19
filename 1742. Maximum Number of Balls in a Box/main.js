@@ -11,3 +11,51 @@ Given two integers lowLimit and highLimit, return the number of balls in the box
 */
 
 // solution
+
+//  var countBalls = function (lowLimit, highLimit) {
+//      let box = new Map();
+
+//      for (let i = lowLimit; i <= highLimit; i++) {
+//          let ball = String(i)
+//              .split("")
+//              .reduce((sum, digit) => sum + Number(digit), 0);
+
+//          if (box.has(ball)) {
+//              box.set(ball, box.get(ball) + 1);
+//          } else {
+//              box.set(ball, 1);
+//          }
+//      }
+
+//      let maxBalls = 0;
+//      for (let count of box.values()) {
+//          maxBalls = Math.max(maxBalls, count);
+//      }
+
+//      return maxBalls;
+//  };
+
+var countBalls = function (lowLimit, highLimit) {
+    let box = new Map();
+    let maxBalls = 0;
+
+    for (let i = lowLimit; i <= highLimit; i++) {
+        let digitSum = 0;
+        let num = i;
+
+        while (num > 0) {
+            digitSum += num % 10;
+            num = Math.floor(num / 10);
+        }
+
+        if (box.has(digitSum)) {
+            box.set(digitSum, box.get(digitSum) + 1);
+        } else {
+            box.set(digitSum, 1);
+        }
+
+        maxBalls = Math.max(maxBalls, box.get(digitSum));
+    }
+
+    return maxBalls;
+};
