@@ -16,3 +16,35 @@ Return the result string after sorting s with this algorithm.
 */
 
 // solution
+
+var sortString = function (s) {
+    const charCount = new Map();
+
+    for (let i = 0; i < s.length; i++) {
+        const char = s[i];
+        charCount.set(char, charCount.get(char) + 1 || 1);
+    }
+
+    let result = "";
+    let remainingChars = s.length;
+
+    while (remainingChars > 0) {
+        for (let char of [...charCount.keys()].sort()) {
+            if (charCount.get(char) > 0) {
+                result += char;
+                charCount.set(char, charCount.get(char) - 1);
+                remainingChars--;
+            }
+        }
+
+        for (let char of [...charCount.keys()].sort().reverse()) {
+            if (charCount.get(char) > 0) {
+                result += char;
+                charCount.set(char, charCount.get(char) - 1);
+                remainingChars--;
+            }
+        }
+    }
+
+    return result;
+};
