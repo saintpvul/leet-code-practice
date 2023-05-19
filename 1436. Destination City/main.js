@@ -7,3 +7,16 @@ It is guaranteed that the graph of paths forms a line without any loop, therefor
 */
 
 // solution
+
+var destCity = function (paths) {
+    let map = new Map();
+    for (let path of paths) {
+        map.set(path[0]);
+    }
+
+    for (let path of paths) {
+        if (!map.has(path[1])) {
+            return path[1];
+        }
+    }
+};
