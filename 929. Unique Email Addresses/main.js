@@ -17,3 +17,29 @@ Given an array of strings emails where we send one email to each emails[i], retu
 */
 
 // solution
+
+// var numUniqueEmails = function (emails) {
+//     let emailsSet = new Set();
+//     for (const email of emails) {
+//         const cleanedEmail =
+//             email
+//                 .substring(0, email.indexOf("@"))
+//                 .replace(/\./g, "")
+//                 .split("+")[0] + email.substring(email.indexOf("@"));
+//         emailsSet.add(cleanedEmail);
+//     }
+//     return emailsSet.size;
+// };
+
+var numUniqueEmails = function (emails) {
+    let emailsSet = new Set();
+    for (const email of emails) {
+        const atIndex = email.indexOf("@");
+        const local = email.substring(0, atIndex);
+        const domain = email.substring(atIndex);
+        const cleanedLocal = local.replace(/\./g, "").split("+")[0];
+        const cleanedEmail = cleanedLocal + domain;
+        emailsSet.add(cleanedEmail);
+    }
+    return emailsSet.size;
+};
