@@ -11,3 +11,21 @@ void remove(key) Removes the value key in the HashSet. If key does not exist in 
 */
 
 // solution
+
+class MyHashSet {
+    constructor() {
+        this.hash = new Set();
+    }
+
+    add(key) {
+        this.hash.add(key);
+    }
+
+    remove(key) {
+        this.hash.delete(key);
+    }
+
+    contains(key) {
+        return this.hash.has(key);
+    }
+}
