@@ -12,3 +12,22 @@ void remove(key) removes the key and its corresponding value if the map contains
 */
 
 // solution
+
+class MyHashMap {
+    constructor() {
+        this.map = new Map();
+    }
+
+    put(key, value) {
+        this.map.set(key, value);
+    }
+
+    get(key) {
+        let val = this.map.get(key);
+        return val !== undefined ? val : -1;
+    }
+
+    remove(key) {
+        this.map.delete(key);
+    }
+}
