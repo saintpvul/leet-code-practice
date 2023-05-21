@@ -9,3 +9,14 @@ Given the integer array candyType of length n, return the maximum number of diff
 */
 
 // solution
+
+var distributeCandies = function (candyType) {
+    const candies = new Map();
+
+    for (let i = 0; i < candyType.length; i++) {
+        const type = candyType[i];
+        candies.set(type, (candies.get(type) || 0) + 1);
+    }
+    const canEat = Math.floor(candyType.length / 2);
+    return Math.min(candies.size, canEat);
+};
