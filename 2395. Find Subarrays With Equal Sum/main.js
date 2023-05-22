@@ -9,3 +9,16 @@ A subarray is a contiguous non-empty sequence of elements within an array.
 */
 
 // solution
+
+var findSubarrays = function (nums) {
+    let sums = new Map();
+
+    for (let i = 0; i < nums.length - 1; i++) {
+        const sum = nums[i] + nums[i + 1];
+        if (sums.has(sum)) {
+            return true;
+        }
+        sums.set(sum, true);
+    }
+    return false;
+};
