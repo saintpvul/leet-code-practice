@@ -9,3 +9,25 @@ The frequency of a letter x is the number of times it occurs in the string.
 */
 
 // solution
+
+var checkAlmostEquivalent = function (word1, word2) {
+    const diff = new Map();
+
+    for (let i = 0; i < word1.length; i++) {
+        const char = word1[i];
+        diff.set(char, (diff.get(char) || 0) + 1);
+    }
+
+    for (let i = 0; i < word2.length; i++) {
+        const char = word2[i];
+        diff.set(char, (diff.get(char) || 0) - 1);
+    }
+
+    for (const [char, count] of diff.entries()) {
+        if (Math.abs(count) > 3) {
+            return false;
+        }
+    }
+
+    return true;
+};
