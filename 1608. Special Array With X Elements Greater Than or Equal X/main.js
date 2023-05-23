@@ -9,3 +9,17 @@ Return x if the array is special, otherwise, return -1. It can be proven that if
 */
 
 // solution
+
+var specialArray = function (nums) {
+    nums.sort((a, b) => a - b);
+    const len = nums.length;
+
+    for (let i = 0; i < n; i++) {
+        const count = len - i;
+        if (nums[i] >= count && (i === 0 || nums[i - 1] < count)) {
+            return count;
+        }
+    }
+
+    return -1;
+};
