@@ -18,7 +18,8 @@ var fairCandySwap = function (aliceSizes, bobSizes) {
 
     const aliceSet = new Set(aliceSizes);
 
-    for (const bobCandy of bobSizes) {
+    for (let i = 0; i < bobSizes.length; i++) {
+        const bobCandy = bobSizes[i];
         const aliceCandy = bobCandy + targetDiff;
         if (aliceSet.has(aliceCandy)) {
             return [aliceCandy, bobCandy];
