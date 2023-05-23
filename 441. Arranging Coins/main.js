@@ -7,3 +7,30 @@ Given the integer n, return the number of complete rows of the staircase you wil
 */
 
 // solution
+
+// math solution
+// var arrangeCoins = function (n) {
+//     return Math.floor((Math.sqrt(8 * n + 1) - 1) / 2);
+// };
+
+// using binary search
+var arrangeCoins = function (n) {
+    let left = 0;
+    let right = n;
+    let maxCompleted = 0;
+
+    while (left <= right) {
+        const pivot = Math.floor(left + (right - left) / 2);
+        const coins = (pivot * (pivot + 1)) / 2;
+
+        if (coins === n) {
+            return pivot;
+        } else if (coins < n) {
+            maxCompleted = pivot;
+            left = pivot + 1;
+        } else {
+            right = pivot - 1;
+        }
+    }
+    return maxCompleted;
+};
