@@ -9,3 +9,19 @@ Return an integer array answer where answer[0] is the number of candies in the b
 */
 
 // solution
+
+var fairCandySwap = function (aliceSizes, bobSizes) {
+    const aliceSum = aliceSizes.reduce((s, v) => s + v, 0);
+    const bobSum = bobSizes.reduce((s, v) => s + v, 0);
+
+    const targetDiff = (aliceSum - bobSum) / 2;
+
+    const aliceSet = new Set(aliceSizes);
+
+    for (const bobCandy of bobSizes) {
+        const aliceCandy = bobCandy + targetDiff;
+        if (aliceSet.has(aliceCandy)) {
+            return [aliceCandy, bobCandy];
+        }
+    }
+};
