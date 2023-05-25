@@ -10,6 +10,38 @@ arr[i] == 2 * arr[j]
 
 // solution
 
+// using binary search
+
+/* 
+
+ var checkIfExist = function(arr) {
+    arr.sort((a, b) => a - b);
+
+    for (let i = 0; i < arr.length; i++) {
+        const target1 = arr[i] * 2;
+        const target2 = arr[i] / 2;
+
+        let left = 0;
+        let right = arr.length - 1;
+
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+
+            if (mid !== i && (arr[mid] === target1 || arr[mid] === target2)) {
+                return true;
+            } else if (arr[mid] < target1) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+    }
+
+    return false;
+}
+
+*/
+
 var checkIfExist = function (arr) {
     const numsSet = new Set();
 
