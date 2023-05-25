@@ -10,3 +10,30 @@ The test cases are generated so that the answer fits in a 32-bits integer.
 */
 
 // solution
+
+var sumRootToLeaf = function (root) {
+    if (root === null) {
+        return 0;
+    }
+
+    let sum = 0;
+
+    function traverse(node, current) {
+        if (node.left === null && node.right === null) {
+            sum += parseInt(current + node.val, 2);
+        } else {
+            const newCurrent = current + node.val;
+
+            if (node.left !== null) {
+                traverse(node.left, newCurrent);
+            }
+            if (node.right !== null) {
+                traverse(node.right, newCurrent);
+            }
+        }
+    }
+
+    traverse(root, "");
+
+    return sum;
+};
