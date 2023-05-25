@@ -17,3 +17,16 @@ A leaf node is a node that has zero children.
 */
 
 // solution
+
+var evaluateTree = function (root) {
+    const isLeaf = (node) => !node.left && !node.right;
+    if (isLeaf(root)) {
+        return root.val === 1;
+    } else {
+        if (root.val === 2) {
+            return evaluateTree(root.left) || evaluateTree(root.right);
+        } else {
+            return evaluateTree(root.left) && evaluateTree(root.right);
+        }
+    }
+};
