@@ -7,3 +7,15 @@ Find the node in the BST that the node's value equals val and return the subtree
 */
 
 // solution
+
+var searchBST = function (root, val) {
+    if (!root || root.val === val) {
+        return root;
+    }
+
+    if (val < root.val) {
+        return searchBST(root.left, val);
+    } else {
+        return searchBST(root.right, val);
+    }
+};
