@@ -19,5 +19,6 @@ var checkIfExist = function (arr) {
         }
         numsSet.add(arr[i]);
     }
+
     return false;
 };
