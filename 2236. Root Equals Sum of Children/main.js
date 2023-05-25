@@ -7,3 +7,7 @@ Return true if the value of the root is equal to the sum of the values of its tw
 */
 
 // solution
+
+var checkTree = function (root) {
+    return root.val === root.left.val + root.right.val;
+};
