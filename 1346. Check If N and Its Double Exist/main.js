@@ -10,11 +10,9 @@ arr[i] == 2 * arr[j]
 
 // solution
 
-// using binary search
+// using binary search (slowest one)
 
-/* 
-
- var checkIfExist = function(arr) {
+var checkIfExist = function (arr) {
     arr.sort((a, b) => a - b);
 
     for (let i = 0; i < arr.length; i++) {
@@ -38,19 +36,17 @@ arr[i] == 2 * arr[j]
     }
 
     return false;
-}
-
-*/
-
-var checkIfExist = function (arr) {
-    const numsSet = new Set();
-
-    for (let i = 0; i < arr.length; i++) {
-        if (numsSet.has(arr[i] / 2) || numsSet.has(arr[i] * 2)) {
-            return true;
-        }
-        numsSet.add(arr[i]);
-    }
-
-    return false;
 };
+
+// var checkIfExist = function (arr) {
+//     const numsSet = new Set();
+
+//     for (let i = 0; i < arr.length; i++) {
+//         if (numsSet.has(arr[i] / 2) || numsSet.has(arr[i] * 2)) {
+//             return true;
+//         }
+//         numsSet.add(arr[i]);
+//     }
+
+//     return false;
+// };
