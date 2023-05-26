@@ -9,3 +9,16 @@ Nary-Tree input serialization is represented in their level order traversal, eac
 */
 
 // solution
+
+var maxDepth = function (root) {
+    if (!root) return 0;
+
+    let max = 0;
+
+    for (const child of root.children) {
+        const depth = maxDepth(child);
+        max = Math.max(max, depth);
+    }
+
+    return max + 1;
+};
