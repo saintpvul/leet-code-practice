@@ -8,3 +8,21 @@ Return the resulting string.
 */
 
 // solution
+
+// var reversePrefix = function (word, ch) {
+//     let prefixEnd = word.indexOf(ch) + 1;
+//     return (
+//         word.slice(0, prefixEnd).split("").reverse().join("") +
+//         word.slice(prefixEnd)
+//     );
+// };
+// the same but a bit faster
+var reversePrefix = function (word, ch) {
+    let prefixEnd = word.indexOf(ch) + 1;
+    let prefix = word.slice(0, prefixEnd);
+    let reversedPrefix = "";
+    for (let i = prefix.length - 1; i >= 0; i--) {
+        reversedPrefix += prefix[i];
+    }
+    return reversedPrefix + word.slice(prefixEnd);
+};
