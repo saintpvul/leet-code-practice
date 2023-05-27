@@ -11,3 +11,26 @@ Return the resulting palindrome string.
 */
 
 // solution
+
+var makeSmallestPalindrome = function (s) {
+    s = s.split("");
+
+    let l = 0;
+    let r = s.length - 1;
+
+    while (l <= r) {
+        if (s[l] !== s[r]) {
+            const leftChar = s[l].charCodeAt();
+            const rightChar = s[r].charCodeAt();
+
+            if (leftChar < rightChar) {
+                s[r] = s[l];
+            } else if (rightChar < leftChar) {
+                s[l] = s[r];
+            }
+        }
+        l++;
+        r--;
+    }
+    return s.join("");
+};
