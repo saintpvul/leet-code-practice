@@ -7,3 +7,7 @@ The returned string must contain only lowercase English letters. If there are mu
 */
 
 // solution
+
+var generateTheString = function (n) {
+    return n % 2 ? "a".repeat(n) : "a".repeat(n - 1) + "b";
+};
