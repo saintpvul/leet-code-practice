@@ -12,3 +12,18 @@ Given a string word, return the minimum number of seconds to type out the charac
 */
 
 // solution
+
+var minTimeToType = function (word) {
+    let total = 0;
+    let pointer = "a";
+
+    for (let i = 0; i < word.length; i++) {
+        const char = word[i];
+        const clockerwise = Math.abs(pointer.charCodeAt() - char.charCodeAt());
+        const counterClockerwise = 26 - clockerwise;
+        const sec = Math.min(clockerwise, counterClockerwise);
+        total += sec + 1;
+        pointer = char;
+    }
+    return total;
+};
