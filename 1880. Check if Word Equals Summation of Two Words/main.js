@@ -12,3 +12,25 @@ Return true if the summation of the numerical values of firstWord and secondWord
 */
 
 // solution
+
+var isSumEqual = function (firstWord, secondWord, targetWord) {
+    let first = "";
+    let second = "";
+    let target = "";
+    for (let i = 0; i < firstWord.length; i++) {
+        const char = firstWord[i];
+        first += char.charCodeAt() - 97;
+    }
+
+    for (let i = 0; i < secondWord.length; i++) {
+        const char = secondWord[i];
+        second += char.charCodeAt() - 97;
+    }
+
+    for (let i = 0; i < targetWord.length; i++) {
+        const char = targetWord[i];
+        target += char.charCodeAt() - 97;
+    }
+
+    return +first + +second === +target;
+};
