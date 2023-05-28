@@ -11,3 +11,15 @@ The coordinate will always represent a valid chessboard square. The coordinate w
 */
 
 // solution
+
+var squareIsWhite = function (coordinates) {
+    const char = coordinates[0];
+    const place = coordinates[1];
+    if (
+        (!(place % 2) && /[aceg]/.test(char)) ||
+        (place % 2 && /[bdfh]/.test(char))
+    ) {
+        return true;
+    }
+    return false;
+};
