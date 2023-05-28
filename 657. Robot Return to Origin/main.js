@@ -11,3 +11,20 @@ Note: The way that the robot is "facing" is irrelevant. 'R' will always make the
 */
 
 // solution
+
+var judgeCircle = function (moves) {
+    let res = 0;
+    for (let i = 0; i < moves.length; i++) {
+        let move = moves[i];
+        if (move === "U") {
+            res += 23;
+        } else if (move === "R") {
+            res += 100;
+        } else if (move === "D") {
+            res -= 23;
+        } else if (move === "L") {
+            res -= 100;
+        }
+    }
+    return res === 0;
+};
