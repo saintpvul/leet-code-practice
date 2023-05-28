@@ -11,3 +11,22 @@ A string is called palindrome if is one that reads the same backward as well as 
 */
 
 // solution
+
+var removePalindromeSub = function (s) {
+    return !s.length ? 0 : isPal(s) ? 1 : 2;
+};
+
+function isPal(s) {
+    let i = 0;
+    let j = s.length - 1;
+
+    while (i < j) {
+        if (s[i] !== s[j]) {
+            return false;
+        }
+        i++;
+        j--;
+    }
+
+    return true;
+}
