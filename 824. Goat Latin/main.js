@@ -15,3 +15,20 @@ Return the final sentence representing the conversion from sentence to Goat Lati
 */
 
 // solution
+
+var toGoatLatin = function (sentence) {
+    sentence = sentence.split(" ");
+    let res = [];
+    let count = 1;
+    for (let i = 0; i < sentence.length; i++) {
+        if (/[aeiou]/i.test(sentence[i][0])) {
+            res.push(sentence[i] + "ma" + "a".repeat(count));
+        } else if (!/[aeiou]/i.test(sentence[i][0])) {
+            res.push(
+                sentence[i].slice(1) + sentence[i][0] + "ma" + "a".repeat(count)
+            );
+        }
+        count++;
+    }
+    return res.join(" ");
+};
