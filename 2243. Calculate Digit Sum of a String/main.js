@@ -12,3 +12,17 @@ Return s after all rounds have been completed.
 */
 
 // solution
+var digitSum = function (s, k) {
+    let curr = s;
+    while (curr.length > k) {
+        let next = "";
+        for (let i = 0; i < curr.length; i += k) {
+            next += curr
+                .substring(i, i + k)
+                .split("")
+                .reduce((s, v) => (s += +v), 0);
+        }
+        curr = next;
+    }
+    return curr;
+};
