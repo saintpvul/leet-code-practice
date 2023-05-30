@@ -14,3 +14,27 @@ Return the phone number after formatting.
 */
 
 // solution
+
+var reformatNumber = function (number) {
+    const digits = number.replace(/[\s-]/g, "");
+    const length = digits.length;
+    let result = "";
+
+    let i = 0;
+    while (i < length) {
+        if (length - i > 4) {
+            result += digits.substring(i, i + 3) + "-";
+            i += 3;
+        } else if (length - i === 4) {
+            result += digits.substring(i, i + 2) + "-";
+            i += 2;
+            result += digits.substring(i, i + 2);
+            i += 2;
+        } else {
+            result += digits.substring(i);
+            i = length;
+        }
+    }
+
+    return result;
+};
