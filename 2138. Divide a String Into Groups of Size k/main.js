@@ -11,3 +11,16 @@ Given the string s, the size of each group k and the character fill, return a st
 */
 
 // solution
+
+var divideString = function (s, k, fill) {
+    let output = [];
+
+    for (let i = 0; i < s.length; i += k) {
+        let group = s.substring(i, i + k);
+        if (group.length < k) {
+            group += fill.repeat(k - group.length);
+        }
+        output.push(group);
+    }
+    return output;
+};
