@@ -16,3 +16,21 @@ Return the minimum number of operations needed to go back to the main folder aft
 */
 
 // solution
+
+var minOperations = function (logs) {
+    let count = 0;
+    for (let i = 0; i < logs.length; i++) {
+        if (logs[i] === "../") {
+            if (count === 0) {
+                continue;
+            } else {
+                count--;
+            }
+        } else if (logs[i] === "./") {
+            continue;
+        } else {
+            count++;
+        }
+    }
+    return count;
+};
