@@ -11,3 +11,33 @@ Return the minimum number of operations needed to convert current to correct.
 */
 
 // solution
+
+var convertTime = function (current, correct) {
+    const getTimeInMinutes = (time) => {
+        const [hour, min] = time.split(":");
+        const hoursInMin = hour[0] === "0" ? +hour[1] * 60 : +hour * 60;
+        const timeInMins = hoursInMin + +min;
+        return timeInMins;
+    };
+
+    let diff = Math.abs(getTimeInMinutes(current) - getTimeInMinutes(correct));
+
+    let count = 0;
+
+    while (diff > 0) {
+        if (diff >= 60) {
+            count += 1;
+            diff -= 60;
+        } else if (diff >= 15) {
+            count += 1;
+            diff -= 15;
+        } else if (diff >= 5) {
+            count += 1;
+            diff -= 5;
+        } else {
+            count += 1;
+            diff -= 1;
+        }
+    }
+    return count;
+};
