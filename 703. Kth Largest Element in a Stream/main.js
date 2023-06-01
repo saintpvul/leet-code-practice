@@ -10,3 +10,17 @@ int add(int val) Appends the integer val to the stream and returns the element r
 */
 
 // solution
+
+class KthLargest {
+    constructor(k, nums) {
+        this.k = k;
+        this.nums = nums.sort((a, b) => b - a).slice(0, k);
+    }
+
+    add(val) {
+        this.nums.push(val);
+        this.nums.sort((a, b) => b - a);
+        this.nums = this.nums.slice(0, this.k);
+        return this.nums[this.k - 1];
+    }
+}
