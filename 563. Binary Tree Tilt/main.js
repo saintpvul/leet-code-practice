@@ -7,3 +7,15 @@ The tilt of a tree node is the absolute difference between the sum of all left s
 */
 
 // solution
+
+const sumTree = (node) => {
+    if (!node) return 0;
+    return node.val + sumTree(node.left) + sumTree(node.right);
+};
+var findTilt = function (root) {
+    if (!root) return 0;
+    const leftSum = sumTree(root.left);
+    const rightSum = sumTree(root.right);
+    const tilt = Math.abs(leftSum - rightSum);
+    return tilt + findTilt(root.left) + findTilt(root.right);
+};
