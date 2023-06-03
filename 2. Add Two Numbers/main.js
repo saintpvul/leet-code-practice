@@ -14,15 +14,26 @@ You can return the answer in any order.
 
 // SOLUTION
 
-const addTwoNumbers = function (l1, l2) {
-  let firstDigit = l1.reverse().join("");
-  let secondDigit = l2.reverse().join("");
-  let result = +firstDigit + +secondDigit;
-  let resultToStr = result.toString();
-  let changeResult = resultToStr.split("").map(Number).reverse();
-  console.log(changeResult);
+var addTwoNumbers = function (l1, l2) {
+    return addLists(l1, l2, 0);
 };
 
-addTwoNumbers([1, 2], [1, 2]);
+function addLists(l1, l2, carry) {
+    if (l1 === null && l2 === null && carry === 0) {
+        return null;
+    }
 
-// can't pass the tests. don't know why. found some solutions using jquery. i'll be back soon, can't solve this problem yet
+    const val1 = l1 !== null ? l1.val : 0;
+    const val2 = l2 !== null ? l2.val : 0;
+    const sum = val1 + val2 + carry;
+
+    const newNode = new ListNode(sum % 10);
+    const nextCarry = Math.floor(sum / 10);
+
+    const next1 = l1 !== null ? l1.next : null;
+    const next2 = l2 !== null ? l2.next : null;
+
+    newNode.next = addLists(next1, next2, nextCarry);
+
+    return newNode;
+}
