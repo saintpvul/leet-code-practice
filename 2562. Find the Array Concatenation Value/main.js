@@ -14,3 +14,20 @@ Return the concatenation value of the nums.
 */
 
 // solution
+
+var findTheArrayConcVal = function (nums) {
+    let out = 0;
+    let first = 0;
+    let last = nums.length - 1;
+
+    while (first <= last) {
+        let concatVal = `${nums[first]}${nums[last]}`;
+        if (first === last) {
+            concatVal = nums[first];
+        }
+        out += +concatVal;
+        first++;
+        last--;
+    }
+    return out;
+};
