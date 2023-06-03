@@ -13,3 +13,19 @@ Return the weight of the last remaining stone. If there are no stones left, retu
 */
 
 // solution
+
+var lastStoneWeight = function (stones) {
+    while (stones.length > 1) {
+        stones = stones.sort((a, b) => b - a);
+        let y = stones[0];
+        let x = stones[1];
+
+        if (x === y) {
+            stones.splice(0, 2);
+        } else if (x !== y) {
+            stones.splice(0, 2);
+            stones.push(y - x);
+        }
+    }
+    return stones.length === 1 ? stones[0] : 0;
+};
