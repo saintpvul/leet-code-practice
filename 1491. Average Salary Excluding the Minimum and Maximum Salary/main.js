@@ -7,3 +7,15 @@ Return the average salary of employees excluding the minimum and maximum salary.
 */
 
 // solution
+
+var average = function (salary) {
+    let max = -Infinity;
+    let min = Infinity;
+    let result = 0;
+    for (let i = 0; i < salary.length; i++) {
+        max = Math.max(salary[i], max);
+        min = Math.min(salary[i], min);
+        result += salary[i];
+    }
+    return (result - (min + max)) / (salary.length - 2);
+};
