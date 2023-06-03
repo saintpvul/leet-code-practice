@@ -9,3 +9,21 @@ The distance between two cells (r1, c1) and (r2, c2) is |r1 - r2| + |c1 - c2|.
 */
 
 // solution
+
+var allCellsDistOrder = function (rows, cols, rCenter, cCenter) {
+    const result = [];
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            result.push([i, j]);
+        }
+    }
+
+    result.sort((a, b) => {
+        const distanceA = Math.abs(a[0] - rCenter) + Math.abs(a[1] - cCenter);
+        const distanceB = Math.abs(b[0] - rCenter) + Math.abs(b[1] - cCenter);
+        return distanceA - distanceB;
+    });
+
+    return result;
+};
