@@ -19,3 +19,28 @@ Return
 */
 
 // solution
+
+var isWinner = function (player1, player2) {
+    let score = [0, 0];
+    const n = player1.length;
+
+    for (let i = 0; i < player1.length; i++) {
+        if (i >= 1) {
+            if (player1[i - 2] === 10 || player1[i - 1] === 10) {
+                score[0] += player1[i] * 2;
+                continue;
+            }
+        }
+        score[0] += player1[i];
+    }
+    for (let i = 0; i < player2.length; i++) {
+        if (i >= 1) {
+            if (player2[i - 2] === 10 || player2[i - 1] === 10) {
+                score[1] += player2[i] * 2;
+                continue;
+            }
+        }
+        score[1] += player2[i];
+    }
+    return score[0] > score[1] ? 1 : score[0] < score[1] ? 2 : 0;
+};
