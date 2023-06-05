@@ -9,3 +9,14 @@ Given the two integers numBottles and numExchange, return the maximum number of 
 */
 
 // solution
+
+var numWaterBottles = function (numBottles, numExchange) {
+    let drink = numBottles;
+    let bottles = numBottles;
+
+    while (bottles >= 1) {
+        bottles = bottles / numExchange;
+        drink += bottles;
+    }
+    return Math.floor(drink);
+};
