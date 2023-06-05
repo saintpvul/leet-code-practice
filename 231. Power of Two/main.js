@@ -7,3 +7,18 @@ An integer n is a power of two, if there exists an integer x such that n == 2x.
 */
 
 // solution
+
+var isPowerOfTwo = function (n) {
+    if (n <= 0) {
+        return false;
+    }
+
+    while (n > 1) {
+        if (n % 2 !== 0) {
+            return false;
+        }
+        n = n / 2;
+    }
+
+    return true;
+};
