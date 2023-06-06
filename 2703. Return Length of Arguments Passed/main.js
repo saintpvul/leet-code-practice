@@ -5,3 +5,7 @@ Write a function argumentsLength that returns the count of arguments passed to i
 */
 
 // solution
+
+var argumentsLength = function (...args) {
+    return args.length;
+};
