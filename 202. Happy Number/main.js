@@ -12,3 +12,14 @@ Return true if n is a happy number, and false if not.
 */
 
 // solution
+
+var isHappy = function (n) {
+    let curr = n;
+    while (curr !== 1 && curr !== 4) {
+        curr = curr
+            .toString()
+            .split("")
+            .reduce((s, v) => s + Math.pow(+v, 2), 0);
+    }
+    return curr === 1;
+};
