@@ -17,3 +17,9 @@ Please solve this without using the built-in Function.call method.
 */
 
 // solution
+
+Function.prototype.callPolyfill = function (context, ...args) {
+    let fn = this;
+
+    return fn.apply(context, args);
+};
