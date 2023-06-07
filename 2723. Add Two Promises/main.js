@@ -5,3 +5,14 @@ Given two promises promise1 and promise2, return a new promise. promise1 and pro
 */
 
 // solution
+
+var addTwoPromises = async function (promise1, promise2) {
+    return Promise.all([promise1, promise2])
+        .then(([res1, res2]) => {
+            const sum = res1 + res2;
+            return Promise.resolve(sum);
+        })
+        .catch((error) => {
+            return Promise.refect(error);
+        });
+};
