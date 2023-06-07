@@ -5,3 +5,17 @@ Given a function fn, an array of arguments args, and an interval time t, return 
 */
 
 // solution
+
+var cancellable = function (fn, args, t) {
+    const interval = setInterval(() => {
+        fn(...args);
+    }, t);
+
+    const cancel = () => {
+        clearInterval(interval);
+    };
+
+    fn(...args);
+
+    return cancel;
+};
