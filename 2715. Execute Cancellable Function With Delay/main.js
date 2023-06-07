@@ -7,3 +7,15 @@ After a delay of t, fn should be called with args passed as parameters unless ca
 */
 
 // solution
+
+var cancellable = function (fn, args, t) {
+    const timeout = setTimeout(() => {
+        fn(...args);
+    }, t);
+
+    const cancelFn = () => {
+        clearTimeout(timeout);
+    };
+
+    return cancelFn;
+};
