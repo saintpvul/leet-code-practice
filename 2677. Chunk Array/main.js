@@ -9,3 +9,12 @@ Please solve it without using lodash's _.chunk function.
 */
 
 // solution
+
+var chunk = function (arr, size) {
+    let res = [];
+    for (let i = 0; i < arr.length; i += size) {
+        let chunk = arr.slice(i, i + size);
+        res.push(chunk);
+    }
+    return res;
+};
