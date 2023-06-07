@@ -8,3 +8,16 @@ When the String() function is called on the instance, it will return a comma sep
 */
 
 // solution
+
+class ArrayWrapper {
+    constructor(nums) {
+        this.nums = nums;
+    }
+    valueOf() {
+        return this.nums.reduce((s, v) => (s += v), 0);
+    }
+
+    toString() {
+        return `[${this.nums.join(",")}]`;
+    }
+}
