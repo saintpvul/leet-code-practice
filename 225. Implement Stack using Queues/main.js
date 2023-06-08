@@ -16,3 +16,25 @@ Depending on your language, the queue may not be supported natively. You may sim
 */
 
 // solution
+
+class MyStack {
+    constructor() {
+        this.stack = [];
+    }
+
+    push(x) {
+        this.stack.unshift(x);
+    }
+
+    pop() {
+        return this.stack.shift();
+    }
+
+    top() {
+        return this.stack[0];
+    }
+
+    empty() {
+        return !this.stack.length;
+    }
+}
