@@ -7,3 +7,20 @@ There are no constraints on the data types that can be passed to the function. F
 */
 
 // solution
+
+var checkIfInstanceOf = (obj, classFunction) => {
+    if (
+        obj === undefined ||
+        obj === null ||
+        typeof classFunction !== "function"
+    ) {
+        return false;
+    }
+    while (obj !== null) {
+        if (obj.constructor === classFunction) {
+            return true;
+        }
+        obj = Object.getPrototypeOf(obj);
+    }
+    return false;
+};
