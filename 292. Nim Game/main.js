@@ -11,3 +11,7 @@ Given n, the number of stones in the heap, return true if you can win the game a
 */
 
 // solution
+
+var canWinNim = function (n) {
+    return n % 4;
+};
