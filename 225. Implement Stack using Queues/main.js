@@ -17,24 +17,68 @@ Depending on your language, the queue may not be supported natively. You may sim
 
 // solution
 
+//without queues
+// class MyStack {
+//     constructor() {
+//         this.stack = [];
+//     }
+
+//     push(x) {
+//         this.stack.unshift(x);
+//     }
+
+//     pop() {
+//         return this.stack.shift();
+//     }
+
+//     top() {
+//         return this.stack[0];
+//     }
+
+//     empty() {
+//         return !this.stack.length;
+//     }
+// }
+
+//using queues
+
 class MyStack {
     constructor() {
-        this.stack = [];
+        this.queue1 = [];
+        this.queue2 = [];
     }
 
     push(x) {
-        this.stack.unshift(x);
+        this.queue1.push(x);
     }
 
     pop() {
-        return this.stack.shift();
+        while (this.queue1.length > 1) {
+            this.queue2.push(this.queue1.shift());
+        }
+
+        const popped = this.queue1.shift();
+
+        [this.queue1, this.queue2] = [this.queue2, this.queue1];
+
+        return popped;
     }
 
     top() {
-        return this.stack[0];
+        while (this.queue1.length > 1) {
+            this.queue2.push(this.queue1.shift());
+        }
+
+        const topElement = this.queue1[0];
+
+        this.queue2.push(this.queue1.shift());
+
+        [this.queue1, this.queue2] = [this.queue2, this.queue1];
+
+        return topElement;
     }
 
     empty() {
-        return !this.stack.length;
+        return this.queue1.length === 0 && this.queue2.length === 0;
     }
 }
