@@ -16,3 +16,36 @@ Depending on your language, the stack may not be supported natively. You may sim
 */
 
 // solution
+
+class MyQueue {
+    constructor() {
+        this.stack1 = [];
+        this.stack2 = [];
+    }
+
+    push(x) {
+        this.stack1.push(x);
+    }
+
+    getStackVals() {
+        if (!this.stack2.length) {
+            while (this.stack1.length > 0) {
+                this.stack2.push(this.stack1.pop());
+            }
+        }
+    }
+
+    pop() {
+        this.getStackVals();
+        return this.stack2.pop();
+    }
+
+    peek() {
+        this.getStackVals();
+        return this.stack2[this.stack2.length - 1];
+    }
+
+    empty() {
+        return !this.stack1.length && !this.stack2.length;
+    }
+}
