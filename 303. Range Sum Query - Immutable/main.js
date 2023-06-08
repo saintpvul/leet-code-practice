@@ -11,3 +11,17 @@ int sumRange(int left, int right) Returns the sum of the elements of nums betwee
 */
 
 // solution
+
+class NumArray {
+    constructor(nums) {
+        this.arr = nums;
+    }
+
+    sumRange(left, right) {
+        let sum = 0;
+        for (let i = left; i <= right; i++) {
+            sum += this.arr[i];
+        }
+        return sum;
+    }
+}
