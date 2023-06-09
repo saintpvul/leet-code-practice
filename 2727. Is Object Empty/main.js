@@ -9,3 +9,11 @@ You may assume the object or array is the output of JSON.parse.
 */
 
 // solution
+
+var isEmpty = function (obj) {
+    return Array.isArray(obj)
+        ? !obj.length
+        : typeof obj === "object" && obj !== null
+        ? !Object.keys(obj).length
+        : true;
+};
