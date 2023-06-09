@@ -8,3 +8,22 @@ notToBe(val) accepts another value and returns true if the two values !== each o
 */
 
 // solution
+
+var expect = function (val) {
+    return {
+        toBe: function (exp) {
+            if (val !== exp) {
+                throw new Error("Not Equal");
+            } else {
+                return true;
+            }
+        },
+        notToBe: function (unexp) {
+            if (val === unexp) {
+                throw new Error("Equal");
+            } else {
+                return true;
+            }
+        },
+    };
+};
