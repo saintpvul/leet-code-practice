@@ -15,3 +15,17 @@ Please solve it without using lodash's _.debounce() function.
 */
 
 // solution
+
+var debounce = function (fn, t) {
+    let timer = null;
+    const debounced = (...args) => {
+        if (timer !== null) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+            fn(...args);
+            timer = null;
+        }, t);
+    };
+    return debounced;
+};
