@@ -13,3 +13,16 @@ Please solve it without lodash's _.groupBy function.
 */
 
 // solution
+
+Array.prototype.groupBy = function (fn) {
+    const groups = {};
+
+    for (let item of this) {
+        key = fn(item);
+        if (!groups[key]) {
+            groups[key] = [];
+        }
+        groups[key].push(item);
+    }
+    return groups;
+};
