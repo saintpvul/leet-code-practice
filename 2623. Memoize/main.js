@@ -13,3 +13,18 @@ factorial accepts a single integer n and returns 1 if n <= 1 or factorial(n - 1)
 */
 
 // solution
+
+function memoize(fn) {
+    const cache = new Map();
+    return function (...args) {
+        const key = JSON.stringify(args);
+
+        if (cache.has(key)) {
+            return cache.get(key);
+        }
+
+        const res = fn(...args);
+        cache.set(key, res);
+        return res;
+    };
+}
