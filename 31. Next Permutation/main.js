@@ -15,3 +15,38 @@ The replacement must be in place and use only constant extra memory.
 */
 
 // solution
+
+var nextPermutation = function (nums) {
+    const swap = (arr, num1, num2) => {
+        let temp = arr[num1];
+        arr[num1] = arr[num2];
+        arr[num2] = temp;
+    };
+
+    const reverse = (arr, start) => {
+        let i = start,
+            j = arr.length - 1;
+        while (i < j) {
+            swap(arr, i, j);
+            i++;
+            j--;
+        }
+    };
+
+    let n = nums.length;
+    let i = n - 2;
+
+    while (i >= 0 && nums[i] >= nums[i + 1]) {
+        i--;
+    }
+
+    if (i >= 0) {
+        let j = n - 1;
+        while (j >= 0 && nums[j] <= nums[i]) {
+            j--;
+        }
+        swap(nums, i, j);
+    }
+
+    reverse(nums, i + 1);
+};
