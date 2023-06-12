@@ -12,3 +12,24 @@ Return the 2D grid after applying shift operation k times.
 */
 
 // solution
+
+var shiftGrid = function (grid, k) {
+    const m = grid.length;
+    const n = grid[0].length;
+
+    const shifts = k % (m * n);
+
+    for (let s = 0; s < shifts; s++) {
+        let prev = grid[m - 1][n - 1];
+
+        for (let i = 0; i < m; i++) {
+            for (let j = 0; j < n; j++) {
+                let temp = grid[i][j];
+                grid[i][j] = prev;
+                prev = temp;
+            }
+        }
+    }
+
+    return grid;
+};
