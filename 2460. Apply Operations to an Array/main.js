@@ -15,3 +15,23 @@ Note that the operations are applied sequentially, not all at once.
 */
 
 // solution
+
+// var applyOperations = function (nums) {
+//     let res = [];
+
+//     for (let i = 0; i < nums.length; i++) {
+//         if (nums[i] === nums[i + 1]) {
+//             nums[i] *= 2;
+//             res.push(nums[i]);
+//             nums[i + 1] = 0;
+//         } else if (nums[i] !== nums[i + 1] && nums[i] !== 0) {
+//             res.push(nums[i]);
+//         } else {
+//             continue;
+//         }
+//     }
+//     while (res.push < nums.length) {
+//         res.push(0);
+//     }
+//     return res
+// };
