@@ -13,3 +13,15 @@ Return the leftmost middleIndex that satisfies the condition, or -1 if there is 
 */
 
 // solution
+
+var findMiddleIndex = function (nums) {
+    for (let i = 0; i < nums.length; i++) {
+        let mid = nums[i];
+        let left = nums.slice(0, i).reduce((s, v) => s + v, 0);
+        let right = nums.slice(i + 1).reduce((s, v) => s + v, 0);
+        if (left === right) {
+            return i;
+        }
+    }
+    return -1;
+};
