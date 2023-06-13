@@ -9,3 +9,17 @@ The distance between the ith and jth houses is abs(i - j), where abs(x) is the a
 */
 
 // solution
+
+var maxDistance = function (colors) {
+    let maxDist = -1;
+
+    for (let i = 0; i < colors.length - 1; i++) {
+        for (let j = i + 1; j < colors.length; j++) {
+            if (colors[i] !== colors[j]) {
+                maxDist = Math.max(maxDist, Math.abs(j - i));
+            }
+        }
+    }
+
+    return maxDist;
+};
