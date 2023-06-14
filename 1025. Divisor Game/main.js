@@ -13,3 +13,31 @@ Return true if and only if Alice wins the game, assuming both players play optim
 */
 
 // solution
+
+var divisorGame = function (n) {
+    const memo = new Array(n + 1).fill(null);
+
+    const helper = (num) => {
+        if (num === 1) {
+            return false;
+        }
+
+        if (memo[num] !== null) {
+            return memo[num];
+        }
+
+        for (let x = 1; x < num; x++) {
+            if (num % x === 0) {
+                if (!helper(num - x)) {
+                    memo[num] = true;
+                    return true;
+                }
+            }
+        }
+
+        memo[num] = false;
+        return false;
+    };
+
+    return helper(n);
+};
