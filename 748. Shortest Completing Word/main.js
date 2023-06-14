@@ -11,3 +11,41 @@ Return the shortest completing word in words. It is guaranteed an answer exists.
 */
 
 // solution
+
+var shortestCompletingWord = function (licensePlate, words) {
+    const counter = new Map();
+    const sanitizedLicensePlate = licensePlate
+        .toLowerCase()
+        .replace(/[^a-z]/g, "");
+
+    for (let i = 0; i < sanitizedLicensePlate.length; i++) {
+        const letter = sanitizedLicensePlate[i];
+        counter.set(letter, (counter.get(letter) || 0) + 1);
+    }
+
+    let shortest = "";
+
+    for (let i = 0; i < words.length; i++) {
+        const word = words[i].toLowerCase();
+        const wordCounter = new Map(counter);
+
+        for (let j = 0; j < word.length; j++) {
+            const letter = word[j];
+            if (wordCounter.has(letter)) {
+                wordCounter.set(letter, wordCounter.get(letter) - 1);
+                if (wordCounter.get(letter) === 0) {
+                    wordCounter.delete(letter);
+                }
+            }
+        }
+
+        if (
+            wordCounter.size === 0 &&
+            (shortest === "" || word.length < shortest.length)
+        ) {
+            shortest = words[i];
+        }
+    }
+
+    return shortest;
+};
