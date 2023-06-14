@@ -7,3 +7,21 @@ Determine whether the largest element in the array is at least twice as much as 
 */
 
 // solution
+
+var dominantIndex = function (nums) {
+    let largest = -1;
+    let largestIdx = -1;
+    let nextLargest = -1;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > largest) {
+            largest = nums[i];
+            largestIdx = i;
+        }
+    }
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] < largest && nums[i] > nextLargest) {
+            nextLargest = nums[i];
+        }
+    }
+    return largest >= nextLargest * 2 ? largestIdx : -1;
+};
