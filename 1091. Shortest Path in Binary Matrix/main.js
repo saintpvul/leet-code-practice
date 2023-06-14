@@ -11,3 +11,54 @@ The length of a clear path is the number of visited cells of this path.
 */
 
 // solution
+
+var shortestPathBinaryMatrix = function (grid) {
+    const n = grid.length;
+    const dir = [
+        [-1, 0],
+        [1, 0],
+        [0, -1],
+        [0, 1],
+        [-1, -1],
+        [-1, 1],
+        [1, -1],
+        [1, 1],
+    ];
+
+    const isValid = (row, col, visited) =>
+        row >= 0 && row < n && col >= 0 && col < n && !visited[row][col];
+
+    const bfs = (grid, visited) => {
+        const que = [[0, 0, 1]];
+        visited[0][0] = true;
+
+        while (que.length > 0) {
+            const [row, col, dist] = que.shift();
+
+            if (row === n - 1 && col === n - 1) {
+                return dist;
+            }
+
+            for (const [r, c] of dir) {
+                const newR = row + r;
+                const newC = col + c;
+
+                if (isValid(newR, newC, visited) && grid[newR][newC] === 0) {
+                    visited[newR][newC] = true;
+                    que.push([newR, newC, dist + 1]);
+                }
+            }
+        }
+        return -1;
+    };
+
+    if (grid[0][0] === 1 || grid[n - 1][n - 1] === 1) {
+        return -1;
+    }
+
+    const visited = Array(n)
+        .fill(false)
+        .map(() => Array(n).fill(false));
+
+    return bfs(grid, visited);
+};
