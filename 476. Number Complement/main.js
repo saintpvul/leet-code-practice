@@ -8,3 +8,16 @@ Given an integer num, return its complement.
 */
 
 // solution
+
+var findComplement = function (num) {
+    num = num.toString(2);
+    let nextNum = "";
+    for (let i = 0; i < num.length; i++) {
+        if (num[i] === "1") {
+            nextNum += 0;
+        } else {
+            nextNum += 1;
+        }
+    }
+    return parseInt(nextNum, 2);
+};
