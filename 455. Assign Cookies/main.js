@@ -7,3 +7,24 @@ Each child i has a greed factor g[i], which is the minimum size of a cookie that
 */
 
 // solution
+
+var findContentChildren = function (g, s) {
+    g.sort((a, b) => a - b);
+    s.sort((a, b) => a - b);
+
+    let count = 0;
+    let i = 0;
+    let j = 0;
+
+    while (i < g.length && j < s.length) {
+        if (s[j] >= g[i]) {
+            count++;
+            i++;
+            j++;
+        } else {
+            j++;
+        }
+    }
+
+    return count;
+};
