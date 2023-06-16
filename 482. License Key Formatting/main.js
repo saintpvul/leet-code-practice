@@ -9,3 +9,31 @@ Return the reformatted license key.
 */
 
 // solution
+
+const licenseKeyFormatting = function (S, K) {
+    S = S.toUpperCase();
+    let sb = "";
+    let i = S.length - 1;
+    let j = 0;
+
+    while (i >= 0) {
+        let c = S.charAt(i);
+        if (c === "-") {
+            i--;
+            continue;
+        }
+        sb = c + sb;
+        j++;
+        if (j === K) {
+            sb = "-" + sb;
+            j = 0;
+        }
+        i--;
+    }
+
+    if (sb.length > 0 && sb.charAt(0) === "-") {
+        sb = sb.substring(1);
+    }
+
+    return sb;
+};
