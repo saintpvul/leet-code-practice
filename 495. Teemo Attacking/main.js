@@ -9,3 +9,16 @@ Return the total number of seconds that Ashe is poisoned.
 */
 
 // solution
+
+var findPoisonedDuration = function (timeSeries, duration) {
+    let total = 0;
+
+    for (let i = 0; i < timeSeries.length; i++) {
+        if (timeSeries[i] + (duration - 1) >= timeSeries[i + 1]) {
+            total += timeSeries[i + 1] - timeSeries[i];
+        } else {
+            total += duration;
+        }
+    }
+    return total;
+};
