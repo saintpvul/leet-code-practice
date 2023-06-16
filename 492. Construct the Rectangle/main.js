@@ -10,3 +10,31 @@ Return an array [L, W] where L and W are the length and width of the web page yo
 */
 
 // solution
+
+// var constructRectangle = function (area) {
+//     const sqrt = Math.sqrt(area);
+//     let L = Math.floor(sqrt);
+//     let W = Math.floor(sqrt);
+
+//     while (L * W !== area) {
+//         if (L * W > area) {
+//             W--;
+//         } else {
+//             L++;
+//         }
+//     }
+
+//     return [L, W];
+// };
+
+var constructRectangle = function (area) {
+    let W = Math.ceil(Math.sqrt(area));
+
+    while (area % W !== 0) {
+        W--;
+    }
+
+    let L = area / W;
+
+    return [Math.max(L, W), Math.min(L, W)];
+};
