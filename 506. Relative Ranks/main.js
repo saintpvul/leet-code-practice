@@ -14,19 +14,41 @@ Return an array answer of size n where answer[i] is the rank of the ith athlete.
 
 // solution
 
-var findRelativeRanks = function (score) {
-    const sort = [...score].sort((a, b) => b - a);
-    const medals = ["Gold Medal", "Silver Medal", "Bronze Medal"];
+// var findRelativeRanks = function (score) {
+//     const sort = [...score].sort((a, b) => b - a);
+//     const medals = ["Gold Medal", "Silver Medal", "Bronze Medal"];
 
-    let res = [];
+//     let res = [];
+
+//     for (let i = 0; i < score.length; i++) {
+//         let idx = sort.indexOf(score[i]);
+//         if (idx < 3) {
+//             res.push(medals[idx]);
+//         } else {
+//             res.push("" + (idx + 1));
+//         }
+//     }
+//     return res;
+// };
+
+// bit faster using hash table
+
+var findRelativeRanks = function (score) {
+    let sort = [...score].sort((a, b) => b - a);
+
+    let rank = {};
+    for (let i = 0; i < sort.length; i++) {
+        rank[sort[i]] = i + 1;
+    }
+
+    let medals = ["Gold Medal", "Silver Medal", "Bronze Medal"];
 
     for (let i = 0; i < score.length; i++) {
-        let idx = sort.indexOf(score[i]);
-        if (idx < 3) {
-            res.push(medals[idx]);
+        if (rank[score[i]] <= 3) {
+            score[i] = medals[rank[score[i]] - 1];
         } else {
-            res.push("" + (idx + 1));
+            score[i] = "" + rank[score[i]];
         }
     }
-    return res;
+    return score;
 };
