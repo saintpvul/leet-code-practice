@@ -13,3 +13,20 @@ Return an array answer of size n where answer[i] is the rank of the ith athlete.
 */
 
 // solution
+
+var findRelativeRanks = function (score) {
+    const sort = [...score].sort((a, b) => b - a);
+    const medals = ["Gold Medal", "Silver Medal", "Bronze Medal"];
+
+    let res = [];
+
+    for (let i = 0; i < score.length; i++) {
+        let idx = sort.indexOf(score[i]);
+        if (idx < 3) {
+            res.push(medals[idx]);
+        } else {
+            res.push("" + (idx + 1));
+        }
+    }
+    return res;
+};
