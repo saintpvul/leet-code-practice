@@ -14,36 +14,62 @@ Both the left and right subtrees must also be binary search trees.
 
 // solution
 
+// var findMode = function (root) {
+//     let count = {};
+//     let max = null;
+//     const dive = (node) => {
+//         if (node === null) return;
+
+//         if (!node.left && !node.right) {
+//             if (count[node.val]) {
+//                 count[node.val] += 1;
+//             } else {
+//                 count[node.val] = 1;
+//             }
+
+//             if (max === null || count[node.val] > count[max]) {
+//                 max = node.val;
+//             }
+//         } else {
+//             if (!count[node.val]) {
+//                 count[node.val] = 0;
+//             }
+//             count[node.val] += 1;
+
+//             if (max === null || count[node.val] > count[max]) {
+//                 max = node.val;
+//             }
+//         }
+//         dive(node.left);
+//         dive(node.right);
+//     };
+//     dive(root);
+
+//     return max;
+// };
+
+// optimized
 var findMode = function (root) {
     let count = {};
-    let max = null;
+    let maxFreq = 0;
+    let modes = [];
+
     const dive = (node) => {
         if (node === null) return;
 
-        if (!node.left && !node.right) {
-            if (count[node.val]) {
-                count[node.val] += 1;
-            } else {
-                count[node.val] = 1;
-            }
-
-            if (max === null || count[node.val] > count[max]) {
-                max = node.val;
-            }
-        } else {
-            if (!count[node.val]) {
-                count[node.val] = 0;
-            }
-            count[node.val] += 1;
-
-            if (max === null || count[node.val] > count[max]) {
-                max = node.val;
-            }
+        count[node.val] = (count[node.val] || 0) + 1;
+        if (count[node.val] > maxFreq) {
+            maxFreq = count[node.val];
+            modes = [node.val];
+        } else if (count[node.val] === maxFreq) {
+            modes.push(node.val);
         }
+
         dive(node.left);
         dive(node.right);
     };
+
     dive(root);
 
-    return max;
+    return modes;
 };
