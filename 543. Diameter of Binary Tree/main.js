@@ -9,3 +9,24 @@ The length of a path between two nodes is represented by the number of edges bet
 */
 
 // solution
+
+var diameterOfBinaryTree = function (root) {
+    let diameter = 0;
+
+    function traverse(node) {
+        if (node === null) {
+            return 0;
+        }
+
+        const leftDepth = traverse(node.left);
+        const rightDepth = traverse(node.right);
+
+        diameter = Math.max(diameter, leftDepth + rightDepth);
+
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+
+    traverse(root);
+
+    return diameter;
+};
