@@ -11,3 +11,11 @@ For example, "abc" is a subsequence of "aebdc" because you can delete the underl
 */
 
 // solution
+
+var findLUSlength = function (a, b) {
+    if (a === b) {
+        return -1;
+    } else {
+        return Math.max(a.length, b.length);
+    }
+};
