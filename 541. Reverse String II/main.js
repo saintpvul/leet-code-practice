@@ -7,3 +7,25 @@ If there are fewer than k characters left, reverse all of them. If there are les
 */
 
 // solution
+
+var reverseStr = function (s, k) {
+    let count = k * 2;
+    let res = [];
+    for (let i = 0; i < s.length; i++) {
+        if (count === k * 2) {
+            res.push(
+                s
+                    .slice(i, i + k)
+                    .split("")
+                    .reverse()
+                    .join("")
+            );
+            count -= k;
+            i += k - 1;
+        } else {
+            res.push(s[i]);
+            count++;
+        }
+    }
+    return res.join("");
+};
