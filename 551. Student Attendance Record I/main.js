@@ -14,3 +14,16 @@ Return true if the student is eligible for an attendance award, or false otherwi
 */
 
 // solution
+
+var checkRecord = function (s) {
+    let absented = (s.match(/A/gi) || []).length;
+    if (absented >= 2) {
+        return false;
+    }
+    for (let i = 0; i < s.length - 2; i++) {
+        if (s[i] === "L" && s[i + 1] === "L" && s[i + 2] === "L") {
+            return false;
+        }
+    }
+    return true;
+};
