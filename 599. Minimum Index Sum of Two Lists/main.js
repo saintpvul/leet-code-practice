@@ -11,3 +11,22 @@ Return all the common strings with the least index sum. Return the answer in any
 */
 
 // solution
+
+var findRestaurant = function (list1, list2) {
+    let minIndexSum = Infinity;
+    let commonStrings = [];
+
+    for (let i = 0; i < list1.length; i++) {
+        let elIdx = list2.indexOf(list1[i]);
+        if (elIdx !== -1) {
+            let indexSum = elIdx + i;
+            if (indexSum < minIndexSum) {
+                minIndexSum = indexSum;
+                commonStrings = [list1[i]];
+            } else if (indexSum === minIndexSum) {
+                commonStrings.push(list1[i]);
+            }
+        }
+    }
+    return commonStrings;
+};
