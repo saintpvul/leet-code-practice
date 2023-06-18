@@ -9,3 +9,20 @@ A subsequence of array is a sequence that can be derived from the array by delet
 */
 
 // solution
+
+var findLHS = function (nums) {
+    let countMap = new Map();
+    let maxLength = 0;
+
+    for (let num of nums) {
+        countMap.set(num, (countMap.get(num) || 0) + 1);
+    }
+
+    for (let [num, count] of countMap.entries()) {
+        if (countMap.has(num + 1)) {
+            maxLength = Math.max(maxLength, count + countMap.get(num + 1));
+        }
+    }
+
+    return maxLength;
+};
