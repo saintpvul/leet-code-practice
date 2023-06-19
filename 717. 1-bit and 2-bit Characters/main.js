@@ -9,3 +9,15 @@ Given a binary array bits that ends with 0, return true if the last character mu
 */
 
 // solution
+
+var isOneBitCharacter = function (bits) {
+    let i = 0;
+    while (i < bits.length - 1) {
+        if (bits[i] === 0) {
+            i++;
+        } else {
+            i += 2;
+        }
+    }
+    return i === bits.length - 1;
+};
