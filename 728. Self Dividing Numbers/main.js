@@ -10,3 +10,22 @@ Given two integers left and right, return a list of all the self-dividing number
 */
 
 // solution
+
+var selfDividingNumbers = function (left, right) {
+    let arr = new Array(right - left + 1)
+        .fill()
+        .map((_, i) => left + i)
+        .filter((n) => isSelfDividing(n));
+
+    function isSelfDividing(n) {
+        let digits = n.toString().split("");
+
+        for (let digit of digits) {
+            if (n % digit !== 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    return arr;
+};
