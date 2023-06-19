@@ -9,3 +9,25 @@ Find the number that occurs twice and the number that is missing and return them
 */
 
 // solution
+
+var findErrorNums = function (nums) {
+    let frequency = new Array(nums.length + 1).fill(0);
+    let duplicate, missing;
+
+    for (let i = 0; i < nums.length; i++) {
+        frequency[nums[i]]++;
+
+        if (frequency[nums[i]] === 2) {
+            duplicate = nums[i];
+        }
+    }
+
+    for (let i = 1; i < frequency.length; i++) {
+        if (frequency[i] === 0) {
+            missing = i;
+            break;
+        }
+    }
+
+    return [duplicate, missing];
+};
