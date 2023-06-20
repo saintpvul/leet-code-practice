@@ -9,3 +9,22 @@ For example, if s = "abcde", then it will be "bcdea" after one shift.
 */
 
 // solution
+
+var rotateString = function (s, goal) {
+    if (s.length !== goal.length) {
+        return false;
+    }
+
+    for (let i = 0; i < s.length; i++) {
+        s = shift(s);
+        if (s === goal) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+function shift(str) {
+    return str.slice(1) + str[0];
+}
