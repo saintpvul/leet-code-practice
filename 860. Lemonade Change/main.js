@@ -9,3 +9,31 @@ Given an integer array bills where bills[i] is the bill the ith customer pays, r
 */
 
 // solution
+
+var lemonadeChange = function (bills) {
+    let fiveCount = 0;
+    let tenCount = 0;
+
+    for (let bill of bills) {
+        if (bill === 5) {
+            fiveCount++;
+        } else if (bill === 10) {
+            if (fiveCount === 0) {
+                return false;
+            }
+            fiveCount--;
+            tenCount++;
+        } else if (bill === 20) {
+            if (tenCount > 0 && fiveCount > 0) {
+                tenCount--;
+                fiveCount--;
+            } else if (fiveCount >= 3) {
+                fiveCount -= 3;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    return true;
+};
