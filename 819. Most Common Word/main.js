@@ -7,3 +7,27 @@ The words in paragraph are case-insensitive and the answer should be returned in
 */
 
 // solution
+
+var mostCommonWord = function (paragraph, banned) {
+    const frequency = new Map();
+
+    paragraph = paragraph
+        .toLowerCase()
+        .replace(/[^\w\s]/g, " ")
+        .split(" ");
+
+    for (const word of paragraph) {
+        if (!banned.includes(word) && word !== "") {
+            frequency.set(word, (frequency.get(word) || 0) + 1);
+        }
+    }
+    let max = -1;
+    let common = "";
+    for (const [word, count] of frequency.entries()) {
+        if (count > max) {
+            max = count;
+            common = word;
+        }
+    }
+    return common;
+};
