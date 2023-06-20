@@ -13,3 +13,21 @@ Return the intervals of every large group sorted in increasing order by start in
 */
 
 // solution
+
+var largeGroupPositions = function (s) {
+    let largeGroups = [];
+    let count = 1;
+
+    for (let i = 0; i < s.length; i++) {
+        if (i === s.length - 1 || s[i] !== s[i + 1]) {
+            if (count >= 3) {
+                largeGroups.push([i - count + 1, i]);
+            }
+            count = 1;
+        } else {
+            count++;
+        }
+    }
+
+    return largeGroups;
+};
