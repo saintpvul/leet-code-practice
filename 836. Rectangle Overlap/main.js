@@ -9,3 +9,14 @@ Given two axis-aligned rectangles rec1 and rec2, return true if they overlap, ot
 */
 
 // solution
+
+var isRectangleOverlap = function (rec1, rec2) {
+    const [x1, y1, x2, y2] = rec1;
+    const [x3, y3, x4, y4] = rec2;
+
+    if (x1 >= x4 || x2 <= x3 || y1 >= y4 || y2 <= y3) {
+        return false;
+    }
+
+    return true;
+};
