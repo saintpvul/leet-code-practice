@@ -28,3 +28,13 @@ var rotateString = function (s, goal) {
 function shift(str) {
     return str.slice(1) + str[0];
 }
+
+// easiest way
+//  var rotateString = function (s, goal) {
+//      if (s.length !== goal.length) {
+//          return false;
+//      }
+
+//      const concatenated = s + s;
+//      return concatenated.includes(goal);
+//  };
