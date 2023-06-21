@@ -9,3 +9,19 @@ Given an integer array nums, return true if the given array is monotonic, or fal
 */
 
 // solution
+
+var isMonotonic = function (nums) {
+    let increasing = true;
+    let decreasing = true;
+
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] < nums[i - 1]) {
+            increasing = false;
+        }
+        if (nums[i] > nums[i - 1]) {
+            decreasing = false;
+        }
+    }
+
+    return increasing || decreasing;
+};
