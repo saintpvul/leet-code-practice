@@ -7,3 +7,18 @@ The transpose of a matrix is the matrix flipped over its main diagonal, switchin
 */
 
 // solution
+
+var transpose = function (matrix) {
+    let n = matrix.length;
+    let m = matrix[0].length;
+
+    let newMatrix = [];
+    for (let i = 0; i < m; i++) {
+        let row = [];
+        for (let j = 0; j < n; j++) {
+            row.push(matrix[j][i]);
+        }
+        newMatrix.push(row);
+    }
+    return newMatrix;
+};
