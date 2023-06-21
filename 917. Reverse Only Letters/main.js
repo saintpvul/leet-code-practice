@@ -9,3 +9,20 @@ Return s after reversing it.
 */
 
 // solution
+
+var reverseOnlyLetters = function (s) {
+    let letters = s.replace(/[^a-zA-Z]/g, "");
+    let reversed = "";
+
+    let j = letters.length - 1;
+    for (let i = 0; i < s.length; i++) {
+        if (/[a-zA-Z]/.test(s[i])) {
+            reversed += letters[j];
+            j--;
+        } else {
+            reversed += s[i];
+        }
+    }
+
+    return reversed;
+};
