@@ -11,3 +11,34 @@ Note: The bottom face of each shape counts toward its surface area.
 */
 
 // solution
+
+var surfaceArea = function (grid) {
+    let n = grid.length;
+    let area = 0;
+
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            const v = grid[i][j];
+            if (v > 0) {
+                area += 2;
+
+                const dir = [
+                    [0, 1],
+                    [0, -1],
+                    [1, 0],
+                    [-1, 0],
+                ];
+                for (const [dirX, dirY] of dir) {
+                    const ni = i + dirX;
+                    const nj = j + dirY;
+                    if (ni < 0 || ni >= n || nj < 0 || nj >= n) {
+                        area += v;
+                    } else {
+                        area += Math.max(0, v - grid[ni][nj]);
+                    }
+                }
+            }
+        }
+    }
+    return area;
+};
