@@ -8,3 +8,28 @@ Given num, the array-form of an integer, and an integer k, return the array-form
 */
 
 // solution
+
+var addToArrayForm = function (num, k) {
+    num.reverse();
+    let carry = 0;
+    let i = 0;
+
+    while (k > 0 || carry) {
+        if (i < num.length) {
+            carry += num[i];
+        } else {
+            num.push(0);
+            carry += 0;
+        }
+
+        carry += k % 10;
+        num[i] = carry % 10;
+        carry = Math.floor(carry / 10);
+
+        i++;
+        k = Math.floor(k / 10);
+    }
+
+    num.reverse();
+    return num;
+};
