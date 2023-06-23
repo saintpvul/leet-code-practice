@@ -9,3 +9,33 @@ Note that in a binary tree, the root node is at the depth 0, and children of eac
 */
 
 // solution
+
+var isCousins = function (root, x, y) {
+    let depthX = -1;
+    let depthY = -1;
+    let parentX = null;
+    let parentY = null;
+
+    const traverse = (node, depth, parent) => {
+        if (node === null) return;
+
+        if (node.val === x) {
+            depthX = depth;
+            parentX = parent;
+        } else if (node.val === y) {
+            depthY = depth;
+            parentY = parent;
+        }
+
+        if (depthX !== -1 && depthY !== -1) {
+            return;
+        }
+
+        traverse(node.left, depth + 1, node);
+        traverse(node.right, depth + 1, node);
+    };
+
+    traverse(root, 0, null);
+
+    return depthX === depthY && parentX !== parentY;
+};
