@@ -14,3 +14,24 @@ Return the label of the town judge if the town judge exists and can be identifie
 */
 
 // solution
+
+var findJudge = function (n, trust) {
+    let trustingCounts = new Map();
+    let trustedByCounts = new Map();
+
+    for (let [truster, trustee] of trust) {
+        trustingCounts.set(truster, (trustingCounts.get(truster) || 0) + 1);
+        trustedByCounts.set(trustee, (trustedByCounts.get(trustee) || 0) + 1);
+    }
+
+    for (let i = 1; i <= n; i++) {
+        if (
+            (trustingCounts.get(i) || 0) === 0 &&
+            (trustedByCounts.get(i) || 0) === n - 1
+        ) {
+            return i;
+        }
+    }
+
+    return -1;
+};
