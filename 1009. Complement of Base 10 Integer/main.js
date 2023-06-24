@@ -8,3 +8,18 @@ Given an integer n, return its complement.
 */
 
 // solution
+
+var bitwiseComplement = function (n) {
+    let binN = n.toString(2);
+    let complement = "";
+
+    for (let i = 0; i < binN.length; i++) {
+        if (binN[i] === "1") {
+            complement += "0";
+        } else {
+            complement += "1";
+        }
+    }
+
+    return parseInt(complement, 2);
+};
