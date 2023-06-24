@@ -10,3 +10,15 @@ Return an array of booleans answer where answer[i] is true if xi is divisible by
 */
 
 // solution
+
+var prefixesDivBy5 = function (nums) {
+    const res = [];
+    let dec = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        dec = (((dec * 2) % 5) + nums[i]) % 5;
+        res.push(dec === 0);
+    }
+
+    return res;
+};
