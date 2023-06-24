@@ -7,3 +7,14 @@ Return an array of all the words third for each occurrence of "first second thir
 */
 
 // solution
+
+var findOcurrences = function (text, first, second) {
+    text = text.split(" ");
+    let res = [];
+    for (let i = 0; i < text.length; i++) {
+        if (text[i - 2] === first && text[i - 1] === second) {
+            res.push(text[i]);
+        }
+    }
+    return res;
+};
