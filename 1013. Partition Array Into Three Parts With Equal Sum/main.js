@@ -7,3 +7,29 @@ Formally, we can partition the array if we can find indexes i + 1 < j with (arr[
 */
 
 // solution
+
+var canThreePartsEqualSum = function (arr) {
+    let sum = arr.reduce((s, v) => s + v, 0);
+    if (sum % 3 !== 0) {
+        return false;
+    }
+
+    const targetSum = sum / 3;
+    let currentSum = 0;
+    let partitionsFound = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        currentSum += arr[i];
+
+        if (currentSum === targetSum) {
+            partitionsFound++;
+            currentSum = 0;
+        }
+
+        if (partitionsFound === 2 && i !== arr.length - 1) {
+            return true;
+        }
+    }
+
+    return false;
+};
