@@ -13,3 +13,23 @@ Return an array (of length num_people and sum candies) that represents the final
 */
 
 // solution
+
+var distributeCandies = function (candies, num_people) {
+    let res = new Array(num_people).fill(0);
+    let currentCandiesCount = 1;
+    let i = 0;
+    while (candies > 0) {
+        if (i === res.length) {
+            i = 0;
+        }
+        if (candies < currentCandiesCount) {
+            res[i] += candies;
+            break;
+        }
+        res[i] += currentCandiesCount;
+        candies -= currentCandiesCount;
+        currentCandiesCount++;
+        i++;
+    }
+    return res;
+};
