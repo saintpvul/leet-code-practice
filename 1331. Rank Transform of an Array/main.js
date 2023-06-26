@@ -11,3 +11,18 @@ Rank should be as small as possible.
 */
 
 // solution
+
+var arrayRankTransform = function (arr) {
+    const sorted = [...arr].sort((a, b) => a - b);
+    const rank = {};
+
+    let currentRank = 1;
+    for (let i = 0; i < sorted.length; i++) {
+        if (!rank.hasOwnProperty(sorted[i])) {
+            rank[sorted[i]] = currentRank;
+            currentRank++;
+        }
+    }
+
+    return arr.map((num) => rank[num]);
+};
