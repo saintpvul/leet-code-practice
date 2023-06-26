@@ -14,3 +14,25 @@ DD denotes the 2 digit day.
 */
 
 // solution
+
+var reformatDate = function (date) {
+    const monthMap = {
+        Jan: "01",
+        Feb: "02",
+        Mar: "03",
+        Apr: "04",
+        May: "05",
+        Jun: "06",
+        Jul: "07",
+        Aug: "08",
+        Sep: "09",
+        Oct: "10",
+        Nov: "11",
+        Dec: "12",
+    };
+    date = date.split(" ");
+    const day = date[0].slice(0, -2);
+    const month = monthMap[date[1]];
+    const year = date[2];
+    return `${year}-${month}-${("0" + day).slice(-2)}`;
+};
