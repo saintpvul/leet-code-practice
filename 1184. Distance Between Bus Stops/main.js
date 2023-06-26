@@ -9,3 +9,23 @@ Return the shortest distance between the given start and destination stops.
 */
 
 // solution
+
+var distanceBetweenBusStops = function (distance, start, destination) {
+    const n = distance.length;
+
+    let clockwiseDistance = 0;
+    for (let i = start; i !== destination; i = (i + 1) % n) {
+        clockwiseDistance += distance[i];
+    }
+
+    let counterclockwiseDistance = 0;
+    for (let i = destination; i !== start; i = (i + 1) % n) {
+        counterclockwiseDistance += distance[i];
+    }
+
+    const shortestDistance = Math.min(
+        clockwiseDistance,
+        counterclockwiseDistance
+    );
+    return shortestDistance;
+};
