@@ -11,3 +11,35 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 */
 
 // solution
+
+var removeAnagrams = function (words) {
+    let res = [];
+
+    const isAnagram = (a, b) => {
+        const count = new Map();
+        for (let char of a) {
+            count.set(char, (count.get(char) || 0) + 1);
+        }
+        for (let char of b) {
+            count.set(char, (count.get(char) || 0) - 1);
+        }
+        for (let value of count.values()) {
+            if (value !== 0) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    let i = 0;
+    while (i < words.length) {
+        let j = i + 1;
+        while (j < words.length && isAnagram(words[i], words[j])) {
+            j += 1;
+        }
+        res.push(words[i]);
+        i = j;
+    }
+
+    return res;
+};
