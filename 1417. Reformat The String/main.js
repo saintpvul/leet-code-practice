@@ -9,3 +9,34 @@ Return the reformatted string or return an empty string if it is impossible to r
 */
 
 // solution
+
+var reformat = function (s) {
+    const digits = [];
+    const chars = [];
+
+    for (const c of s) {
+        if (/\d/.test(c)) {
+            digits.push(c);
+        } else {
+            chars.push(c);
+        }
+    }
+
+    if (Math.abs(digits.length - chars.length) > 1) {
+        return "";
+    }
+
+    let res = "";
+    let flag = digits.length >= chars.length;
+
+    for (let i = 0; i < s.length; i++) {
+        if (flag) {
+            res += digits.shift();
+        } else {
+            res += chars.shift();
+        }
+        flag = !flag;
+    }
+
+    return res;
+};
