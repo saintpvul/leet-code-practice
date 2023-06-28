@@ -11,3 +11,17 @@ The test cases are generated so that there is at least one valid solution. If th
 */
 
 // solution
+
+var getNoZeroIntegers = function (n) {
+    for (let i = 1; i < n; i++) {
+        const a = i;
+        const b = n - i;
+        if (hasZero(a) && hasZero(b)) {
+            return [a, b];
+        }
+    }
+};
+
+function hasZero(num) {
+    return !num.toString().includes("0");
+}
