@@ -13,3 +13,22 @@ You are given an integer income representing the amount of money you earned. Ret
 */
 
 // solution
+
+var calculateTax = function (brackets, income) {
+    let tax = 0;
+    let previousUpperBound = 0;
+    for (let i = 0; i < brackets.length; i++) {
+        const [upperBound, percent] = brackets[i];
+        const taxableAmount = Math.min(income, upperBound) - previousUpperBound;
+        const taxAmount = (taxableAmount * percent) / 100;
+        tax += taxAmount;
+
+        if (income <= upperBound) {
+            break;
+        }
+
+        previousUpperBound = upperBound;
+    }
+
+    return tax;
+};
