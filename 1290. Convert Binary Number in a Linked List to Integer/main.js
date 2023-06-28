@@ -9,3 +9,12 @@ The most significant bit is at the head of the linked list.
 */
 
 // solution
+
+var getDecimalValue = function (head) {
+    let bin = "";
+    while (head) {
+        bin += head.val;
+        head = head.next;
+    }
+    return parseInt(bin, 2);
+};
