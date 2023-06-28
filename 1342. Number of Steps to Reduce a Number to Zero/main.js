@@ -7,3 +7,16 @@ In one step, if the current number is even, you have to divide it by 2, otherwis
 */
 
 // solution
+
+var numberOfSteps = function (num) {
+    let steps = 0;
+    while (num > 0) {
+        if (num % 2) {
+            num--;
+        } else {
+            num /= 2;
+        }
+        steps++;
+    }
+    return steps;
+};
