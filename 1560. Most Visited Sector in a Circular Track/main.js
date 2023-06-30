@@ -9,3 +9,39 @@ Notice that you circulate the track in ascending order of sector numbers in the 
 */
 
 // solution
+
+var mostVisited = function (n, rounds) {
+    const frequency = new Array(n + 1).fill(0);
+
+    const m = rounds.length;
+    frequency[rounds[0]]++;
+
+    for (let i = 1; i < m; i++) {
+        const start = rounds[i - 1];
+        const end = rounds[i];
+
+        if (start <= end) {
+            for (let j = start + 1; j <= end; j++) {
+                frequency[j]++;
+            }
+        } else {
+            for (let j = start + 1; j <= n; j++) {
+                frequency[j]++;
+            }
+            for (let j = 1; j <= end; j++) {
+                frequency[j]++;
+            }
+        }
+    }
+
+    const maxFrequency = Math.max(...frequency);
+    const mostVisited = [];
+
+    for (let i = 1; i <= n; i++) {
+        if (frequency[i] === maxFrequency) {
+            mostVisited.push(i);
+        }
+    }
+
+    return mostVisited;
+};
