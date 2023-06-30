@@ -9,3 +9,20 @@ Return the string after rearranging the spaces.
 */
 
 // solution
+
+var reorderSpaces = function (text) {
+    const spaces = (text.match(/ /g) || []).length;
+    const words = text.trim().split(/\s+/);
+
+    if (words.length === 1) return words[0] + " ".repeat(spaces);
+
+    const gapSize = Math.floor(spaces / (words.length - 1));
+    const remains = spaces % (words.length - 1);
+
+    let res = "";
+    for (let i = 0; i < words.length - 1; ++i)
+        res += words[i] + " ".repeat(gapSize);
+    res += words[words.length - 1] + " ".repeat(remains);
+
+    return res;
+};
