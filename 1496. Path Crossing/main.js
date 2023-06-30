@@ -7,3 +7,37 @@ Return true if the path crosses itself at any point, that is, if at any time you
 */
 
 // solution
+
+var isPathCrossing = function (path) {
+    const visited = new Set();
+    let x = 0;
+    let y = 0;
+    visited.add(`${x},${y}`);
+
+    for (let i = 0; i < path.length; i++) {
+        const currentPath = path[i];
+
+        switch (currentPath) {
+            case "N":
+                y++;
+                break;
+            case "S":
+                y--;
+                break;
+            case "E":
+                x++;
+                break;
+            case "W":
+                x--;
+                break;
+        }
+
+        const currentPosition = `${x},${y}`;
+        if (visited.has(currentPosition)) {
+            return true;
+        }
+        visited.add(currentPosition);
+    }
+
+    return false;
+};
