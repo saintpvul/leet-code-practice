@@ -15,3 +15,20 @@ A substring is a contiguous sequence of characters in a string.
 */
 
 // solution
+
+var divisorSubstrings = function (num, k) {
+    let divisors = 0;
+
+    let str = num.toString();
+
+    for (let i = 0; i < str.length - k + 1; i++) {
+        const div = str.substring(i, i + k);
+        const divSum = div.split("").reduce((s, v) => s + +v, 0);
+        if (divSum != 0) {
+            if (num % +div === 0) {
+                divisors++;
+            }
+        }
+    }
+    return divisors;
+};
