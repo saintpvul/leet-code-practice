@@ -13,3 +13,22 @@ Return the key of the keypress that had the longest duration. If there are multi
 */
 
 // solution
+
+var slowestKey = function (releaseTimes, keysPressed) {
+    let maxDuration = releaseTimes[0];
+    let longestKeyPress = keysPressed[0];
+
+    for (let i = 1; i < releaseTimes.length; i++) {
+        const duration = releaseTimes[i] - releaseTimes[i - 1];
+
+        if (
+            duration > maxDuration ||
+            (duration === maxDuration && keysPressed[i] > longestKeyPress)
+        ) {
+            maxDuration = duration;
+            longestKeyPress = keysPressed[i];
+        }
+    }
+
+    return longestKeyPress;
+};
