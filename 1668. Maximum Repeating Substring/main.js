@@ -7,3 +7,17 @@ Given strings sequence and word, return the maximum k-repeating value of word in
 */
 
 // solution
+
+var maxRepeating = function (sequence, word) {
+    let k = 1;
+    let maxK = 0;
+    let concatenated = word;
+
+    while (sequence.includes(concatenated)) {
+        maxK = k;
+        k++;
+        concatenated += word;
+    }
+
+    return maxK;
+};
