@@ -14,3 +14,24 @@ Given the circular array code and an integer key k, return the decrypted code to
 */
 
 // solution
+
+var decrypt = function (code, k) {
+    const n = code.length;
+    const decrypted = new Array(n).fill(0);
+
+    if (k > 0) {
+        for (let i = 0; i < n; i++) {
+            for (let j = 1; j <= k; j++) {
+                decrypted[i] += code[(i + j) % n];
+            }
+        }
+    } else if (k < 0) {
+        for (let i = 0; i < n; i++) {
+            for (let j = -1; j >= k; j--) {
+                decrypted[i] += code[(i + n + j) % n];
+            }
+        }
+    }
+
+    return decrypted;
+};
