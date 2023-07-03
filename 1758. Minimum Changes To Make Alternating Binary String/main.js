@@ -9,3 +9,11 @@ Return the minimum number of operations needed to make s alternating.
 */
 
 // solution
+
+function minOperations(s) {
+    const cnt = Array.from(s).reduce(
+        (count, c, i) => count + (c !== "01"[i & 1]),
+        0
+    );
+    return Math.min(cnt, s.length - cnt);
+}
