@@ -9,3 +9,19 @@ Note: An array A rotated by x positions results in an array B of the same length
 */
 
 // solution
+
+var check = function (nums) {
+    const n = nums.length;
+    let rotated = false;
+
+    for (let i = 0; i < n; i++) {
+        if (nums[i] > nums[(i + 1) % n]) {
+            if (rotated) {
+                return false;
+            }
+            rotated = true;
+        }
+    }
+
+    return true;
+};
