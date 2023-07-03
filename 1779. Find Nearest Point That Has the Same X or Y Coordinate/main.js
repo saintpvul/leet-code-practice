@@ -9,3 +9,21 @@ The Manhattan distance between two points (x1, y1) and (x2, y2) is abs(x1 - x2) 
 */
 
 // solution
+
+var nearestValidPoint = function (x, y, points) {
+    let minDist = Infinity;
+    let minIndex = -1;
+
+    for (let i = 0; i < points.length; i++) {
+        const [px, py] = points[i];
+        if (px === x || py === y) {
+            const dist = Math.abs(px - x) + Math.abs(py - y);
+            if (dist < minDist) {
+                minDist = dist;
+                minIndex = i;
+            }
+        }
+    }
+
+    return minIndex;
+};
