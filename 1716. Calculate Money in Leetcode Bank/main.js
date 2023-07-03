@@ -8,3 +8,18 @@ Given n, return the total amount of money he will have in the Leetcode bank at t
 */
 
 // solution
+
+var totalMoney = function (n) {
+    let s = 1;
+    let ans = 0;
+
+    while (n > 0) {
+        for (let i = 0; i < 7 && n > 0; ++i) {
+            ans += s + i;
+            n--;
+        }
+        s++;
+    }
+
+    return ans;
+};
