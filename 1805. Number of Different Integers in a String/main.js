@@ -11,3 +11,25 @@ Two integers are considered different if their decimal representations without a
 */
 
 // solution
+
+var numDifferentIntegers = function (word) {
+    let nums = new Set();
+    let currentNumber = "";
+
+    for (let i = 0; i < word.length; i++) {
+        if (/\d/.test(word[i])) {
+            currentNumber += word[i];
+        } else if (currentNumber.length > 0) {
+            currentNumber = currentNumber.replace(/^0+/, "");
+            nums.add(currentNumber);
+            currentNumber = "";
+        }
+    }
+
+    if (currentNumber.length > 0) {
+        currentNumber = currentNumber.replace(/^0+/, "");
+        nums.add(currentNumber);
+    }
+
+    return nums.size;
+};
