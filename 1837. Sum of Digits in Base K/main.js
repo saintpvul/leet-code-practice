@@ -7,3 +7,8 @@ After converting, each digit should be interpreted as a base 10 number, and the 
 */
 
 // solution
+
+var sumBase = function (n, k) {
+    let based = n.toString(k).split("");
+    return based.reduce((s, v) => s + +v, 0);
+};
