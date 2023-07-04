@@ -9,3 +9,25 @@ Return the earliest year with the maximum population.
 */
 
 // solution
+
+var maximumPopulation = function (logs) {
+    const populationCount = new Array(101).fill(0);
+    const birthOffset = 1950;
+    for (let i = 0; i < logs.length; i++) {
+        const birthYear = logs[i][0] - birthOffset;
+        const deathYear = logs[i][1] - birthOffset;
+        populationCount[birthYear] += 1;
+        populationCount[deathYear] -= 1;
+    }
+    let currentPopulation = 0;
+    let maxPopulation = 0;
+    let maxYear = 0;
+    for (let i = 0; i < populationCount.length; i++) {
+        currentPopulation += populationCount[i];
+        if (currentPopulation > maxPopulation) {
+            maxPopulation = currentPopulation;
+            maxYear = i + birthOffset;
+        }
+    }
+    return maxYear;
+};
