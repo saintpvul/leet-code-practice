@@ -9,3 +9,29 @@ An integer x is covered by an interval ranges[i] = [starti, endi] if starti <= x
 */
 
 // solution
+
+var isCovered = function (ranges, left, right) {
+    let coverage = {};
+
+    for (let i = left; i <= right; i++) {
+        coverage[i] = 0;
+    }
+
+    for (let i = 0; i < ranges.length; i++) {
+        const [start, end] = ranges[i];
+
+        for (let j = start; j <= end; j++) {
+            if (j >= left && j <= right) {
+                coverage[j] = 1;
+            }
+        }
+    }
+
+    for (let i = left; i <= right; i++) {
+        if (coverage[i] === 0) {
+            return false;
+        }
+    }
+
+    return true;
+};
