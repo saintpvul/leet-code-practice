@@ -9,3 +9,21 @@ Return true if s is a prefix string of words, or false otherwise.
 */
 
 // solution
+
+var isPrefixString = function (s, words) {
+    let prefix = "";
+
+    for (let i = 0; i < words.length; i++) {
+        prefix += words[i];
+
+        if (prefix === s) {
+            return true;
+        }
+
+        if (s.startsWith(prefix) === false) {
+            return false;
+        }
+    }
+
+    return false;
+};
