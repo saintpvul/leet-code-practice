@@ -8,3 +8,31 @@ Note that if there are no 0's, then the longest continuous segment of 0's is con
 */
 
 // solution
+
+var checkZeroOnes = function (s) {
+    let countOnes = 0;
+    let countZeros = 0;
+    let currentCount = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "1") {
+            currentCount++;
+            countOnes = Math.max(countOnes, currentCount);
+        } else {
+            currentCount = 0;
+        }
+    }
+
+    currentCount = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "0") {
+            currentCount++;
+            countZeros = Math.max(countZeros, currentCount);
+        } else {
+            currentCount = 0;
+        }
+    }
+
+    return countOnes > countZeros;
+};
