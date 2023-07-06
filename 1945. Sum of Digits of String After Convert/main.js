@@ -15,6 +15,23 @@ Return the resulting integer after performing the operations described above.
 
 // solution
 
+// var getLucky = function (s, k) {
+//     let nums = "";
+
+//     for (let i = 0; i < s.length; i++) {
+//         nums += s.charCodeAt(i) - 96;
+//     }
+
+//     while (k > 0) {
+//         nums = nums
+//             .split("")
+//             .reduce((s, v) => s + +v, 0)
+//             .toString();
+//         k--;
+//     }
+//     return +nums;
+// };
+
 var getLucky = function (s, k) {
     let nums = "";
 
