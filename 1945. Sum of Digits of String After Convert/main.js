@@ -14,3 +14,24 @@ Return the resulting integer after performing the operations described above.
 */
 
 // solution
+
+var getLucky = function (s, k) {
+    let nums = "";
+
+    for (let i = 0; i < s.length; i++) {
+        nums += s.charCodeAt(i) - 96;
+    }
+    const calc = (num) => {
+        let sum = 0;
+        for (let i = 0; i < num.length; i++) {
+            sum += +num[i];
+        }
+        return sum.toString();
+    };
+
+    while (k > 0) {
+        nums = calc(nums);
+        k--;
+    }
+    return +nums;
+};
