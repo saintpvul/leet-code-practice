@@ -7,3 +7,15 @@ A substring is a contiguous sequence of characters within a string.
 */
 
 // solution
+
+var largestOddNumber = function (num) {
+    let largestOdd = "";
+
+    for (let i = 0; i < num.length; i++) {
+        if (+num[i] % 2 !== 0) {
+            largestOdd = num.substring(0, i + 1);
+        }
+    }
+
+    return largestOdd;
+};
