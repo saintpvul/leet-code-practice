@@ -9,3 +9,17 @@ Return the minimum number of moves required so that all the characters of s are 
 */
 
 // solution
+
+var minimumMoves = function (s) {
+    let moves = 0;
+    const n = s.length;
+
+    for (let i = 0; i < n; i++) {
+        if (s[i] === "X") {
+            moves++;
+            i += 2;
+        }
+    }
+
+    return moves;
+};
