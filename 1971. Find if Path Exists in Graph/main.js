@@ -9,3 +9,39 @@ Given edges and the integers n, source, and destination, return true if there is
 */
 
 // solution
+
+var validPath = function (n, edges, source, destination) {
+    const graph = {};
+    for (const [n1, n2] of edges) {
+        if (!graph[n1]) {
+            graph[n1] = [];
+        }
+        if (!graph[n2]) {
+            graph[n2] = [];
+        }
+        graph[n1].push(n2);
+        graph[n2].push(n1);
+    }
+
+    const visited = new Set();
+    const route = new Set([source]);
+
+    while (route.size > 0) {
+        const node = Array.from(route).pop();
+        if (node === destination) {
+            return true;
+        }
+
+        visited.add(node);
+        route.delete(node);
+
+        const neighbors = graph[node] || [];
+        for (const neighbor of neighbors) {
+            if (!visited.has(neighbor)) {
+                route.add(neighbor);
+            }
+        }
+    }
+
+    return false;
+};
