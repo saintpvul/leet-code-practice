@@ -9,3 +9,17 @@ Return the capitalized title.
 */
 
 // solution
+
+var capitalizeTitle = function (title) {
+    title = title.split(" ");
+    for (let i = 0; i < title.length; i++) {
+        if (title[i].length <= 2) {
+            title[i] = title[i].toLowerCase();
+        } else {
+            title[i] =
+                title[i].charAt(0).toUpperCase() +
+                title[i].slice(1).toLowerCase();
+        }
+    }
+    return title.join(" ");
+};
