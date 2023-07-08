@@ -13,3 +13,20 @@ Return the time taken for the person at position k (0-indexed) to finish buying 
 */
 
 // solution
+
+var timeRequiredToBuy = function (tickets, k) {
+    let len = tickets.length;
+    let time = 0;
+    while (tickets[k] > 0) {
+        for (let i = 0; i < len; i++) {
+            if (tickets[i] > 0) {
+                tickets[i]--;
+                time++;
+                if (i === k && tickets[i] === 0) {
+                    return time;
+                }
+            }
+        }
+    }
+    return time;
+};
