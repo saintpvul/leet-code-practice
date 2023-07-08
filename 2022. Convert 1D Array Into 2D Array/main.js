@@ -9,3 +9,12 @@ Return an m x n 2D array constructed according to the above procedure, or an emp
 */
 
 // solution
+
+var construct2DArray = function (original, m, n) {
+    if (original.length != m * n) return [];
+    let res = [];
+    for (let i = 0; i < original.length; i += n) {
+        res.push(original.slice(i, i + n));
+    }
+    return res;
+};
