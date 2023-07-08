@@ -9,3 +9,15 @@ A subsequence is an array that can be derived from another array by deleting som
 */
 
 // solution
+
+var maxSubsequence = function (nums, k) {
+    const sortedNums = nums.map((n, i) => [i, n]).sort((a, b) => b[1] - a[1]);
+    const subsequence = sortedNums.slice(0, k);
+    const res = Array(nums.length).fill(undefined);
+
+    for (let [index, value] of subsequence) {
+        res[index] = value;
+    }
+
+    return res.filter((i) => i !== undefined);
+};
