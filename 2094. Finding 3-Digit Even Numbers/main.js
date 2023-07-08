@@ -14,3 +14,24 @@ Return a sorted array of the unique integers.
 */
 
 // solution
+
+var findEvenNumbers = function (digits) {
+    const evens = new Set();
+
+    for (let i = 0; i < digits.length; i++) {
+        for (let j = 0; j < digits.length; j++) {
+            for (let k = 0; k < digits.length; k++) {
+                if (i === j || i === k || j === k) {
+                    continue;
+                }
+
+                const num = +("" + digits[i] + digits[j] + digits[k]);
+                if (num % 2 === 0 && num.toString().length === 3) {
+                    evens.add(num);
+                }
+            }
+        }
+    }
+
+    return Array.from(evens).sort((a, b) => a - b);
+};
