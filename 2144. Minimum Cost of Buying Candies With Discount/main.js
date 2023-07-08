@@ -10,3 +10,17 @@ Given a 0-indexed integer array cost, where cost[i] denotes the cost of the ith 
 */
 
 // solution
+
+var minimumCost = function (cost) {
+    let res = 0;
+
+    cost.sort((a, b) => b - a);
+
+    for (let i = 0; i < cost.length; ++i) {
+        if (i % 3 !== 2) {
+            res += cost[i];
+        }
+    }
+
+    return res;
+};
