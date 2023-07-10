@@ -11,3 +11,30 @@ Return the array formed after rearranging the values of nums.
 */
 
 // solution
+
+var sortEvenOdd = function (nums) {
+    let evens = [];
+    let odds = [];
+    let res = [];
+
+    for (let i = 0; i < nums.length; i++) {
+        if (i % 2 === 0) {
+            evens.push(nums[i]);
+        } else {
+            odds.push(nums[i]);
+        }
+    }
+
+    evens.sort((a, b) => a - b);
+    odds.sort((a, b) => b - a);
+
+    for (let i = 0; i < nums.length; i++) {
+        if (i % 2 === 0) {
+            res.push(evens.shift());
+        } else {
+            res.push(odds.shift());
+        }
+    }
+
+    return res;
+};
