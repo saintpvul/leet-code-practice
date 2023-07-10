@@ -66,3 +66,5 @@ var checkValid = function (matrix) {
 
     return true;
 };
+
+// both solutions are slow
