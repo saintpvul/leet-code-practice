@@ -9,3 +9,20 @@ Return the number of hills and valleys in nums.
 */
 
 // solution
+
+var countHillValley = function (nums) {
+    let count = 0;
+
+    let left = nums[0];
+
+    for (let i = 1; i < nums.length - 1; i++) {
+        if (
+            (left < nums[i] && nums[i] > nums[i + 1]) ||
+            (left > nums[i] && nums[i] < nums[i + 1])
+        ) {
+            count++;
+            left = nums[i];
+        }
+    }
+    return count;
+};
