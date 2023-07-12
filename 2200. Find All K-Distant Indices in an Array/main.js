@@ -7,3 +7,23 @@ Return a list of all k-distant indices sorted in increasing order.
 */
 
 // solution
+
+var findKDistantIndices = function (nums, key, k) {
+    const n = nums.length;
+    const res = [];
+
+    let j = 0;
+    for (let i = 0; i < n; i++) {
+        while (j < n && (nums[j] !== key || j < i - k)) {
+            j++;
+        }
+        if (j === n) {
+            break;
+        }
+        if (Math.abs(i - j) <= k) {
+            res.push(i);
+        }
+    }
+
+    return res;
+};
