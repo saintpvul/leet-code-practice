@@ -15,3 +15,34 @@ Return the minimum number of training hours required to defeat all n opponents.
 */
 
 // solution
+
+var minNumberOfHours = function (
+    initialEnergy,
+    initialExperience,
+    energy,
+    experience
+) {
+    let currentEnergy = initialEnergy;
+    let currentExperience = initialExperience;
+    const n = energy.length;
+    let totalTrainingHours = 0;
+    let delta = 0;
+
+    for (let i = 0; i < n; i++) {
+        if (currentEnergy <= energy[i]) {
+            delta = energy[i] + 1 - currentEnergy;
+            currentEnergy += delta;
+            totalTrainingHours += delta;
+        }
+        currentEnergy -= energy[i];
+
+        if (currentExperience <= experience[i]) {
+            delta = experience[i] + 1 - currentExperience;
+            currentExperience += delta;
+            totalTrainingHours += delta;
+        }
+        currentExperience += experience[i];
+    }
+
+    return totalTrainingHours;
+};
