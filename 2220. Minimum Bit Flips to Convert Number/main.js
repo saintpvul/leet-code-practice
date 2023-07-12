@@ -8,3 +8,18 @@ Given two integers start and goal, return the minimum number of bit flips to con
 */
 
 // solution
+
+//using bitwise op
+var minBitFlips = function (start, goal) {
+    let flips = 0;
+    let xorResult = start ^ goal;
+
+    while (xorResult !== 0) {
+        if (xorResult % 2 === 1) {
+            flips++;
+        }
+        xorResult = xorResult >> 1;
+    }
+
+    return flips;
+};
