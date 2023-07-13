@@ -11,3 +11,16 @@ Return the minimum number of operations needed such that there is at least one o
 */
 
 // solution
+
+var minimumRecolors = function (blocks, k) {
+    let countB = 0;
+    let maxCountB = 0;
+
+    for (let i = 0; i < blocks.length; ++i) {
+        if (blocks[i] === "B") ++countB;
+        if (i >= k && blocks[i - k] === "B") --countB;
+        maxCountB = Math.max(maxCountB, countB);
+    }
+
+    return k - maxCountB;
+};
