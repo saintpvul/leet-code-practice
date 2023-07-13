@@ -7,3 +7,16 @@ Return the resulting string after removing exactly one occurrence of digit from 
 */
 
 // solution
+
+var removeDigit = function (number, digit) {
+    let maxResult = "";
+    for (let i = 0; i < number.length; i++) {
+        if (number[i] === digit) {
+            let newNumber = number.slice(0, i) + number.slice(i + 1);
+            if (newNumber > maxResult) {
+                maxResult = newNumber;
+            }
+        }
+    }
+    return maxResult;
+};
