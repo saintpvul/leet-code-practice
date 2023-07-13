@@ -14,3 +14,17 @@ There may be leading zeroes in num or a good integer.
 */
 
 // solution
+
+var largestGoodInteger = function (num) {
+    let matches = num.match(/(\d)\1{2}/g);
+    if (!matches) {
+        return "";
+    }
+    let largest = "";
+    for (let i = 0; i < matches.length; i++) {
+        if (matches[i] > largest) {
+            largest = matches[i];
+        }
+    }
+    return largest;
+};
