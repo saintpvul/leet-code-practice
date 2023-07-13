@@ -14,3 +14,22 @@ Return the last number that remains in nums after applying the algorithm.
 */
 
 // solution
+
+var minMaxGame = function (nums) {
+    if (nums.length === 1) {
+        return nums[0];
+    }
+
+    var newNums = [];
+    var n = nums.length;
+
+    for (var i = 0; i < n / 2; i++) {
+        if (i % 2 === 0) {
+            newNums[i] = Math.min(nums[2 * i], nums[2 * i + 1]);
+        } else {
+            newNums[i] = Math.max(nums[2 * i], nums[2 * i + 1]);
+        }
+    }
+
+    return minMaxGame(newNums);
+};
