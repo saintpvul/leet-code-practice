@@ -7,3 +7,12 @@ You are given a 0-indexed integer array amount of length 3 where amount[0], amou
 */
 
 // solution
+
+var fillCups = function (amount) {
+    amount.sort((a, b) => a - b);
+    let [a, b, c] = amount;
+
+    let diff = a + b - c;
+    if (diff <= 0) return c;
+    return Math.floor((diff + 1) / 2) + c;
+};
