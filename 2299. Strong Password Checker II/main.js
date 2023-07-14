@@ -13,3 +13,54 @@ Given a string password, return true if it is a strong password. Otherwise, retu
 */
 
 // solution
+
+var strongPasswordCheckerII = function (password) {
+    if (password.length < 8) {
+        return false;
+    }
+
+    const hasLowerCase = password.split("").some((c) => /[a-z]/.test(c));
+    if (!hasLowerCase) {
+        return false;
+    }
+
+    const hasUpperCase = password.split("").some((c) => /[A-Z]/.test(c));
+    if (!hasUpperCase) {
+        return false;
+    }
+
+    const hasDigit = password.split("").some((c) => /\d/.test(c));
+    if (!hasDigit) {
+        return false;
+    }
+
+    const hasSpecial = password
+        .split("")
+        .some((c) =>
+            [
+                "!",
+                "@",
+                "#",
+                "$",
+                "%",
+                "^",
+                "&",
+                "*",
+                "(",
+                ")",
+                "-",
+                "+",
+            ].includes(c)
+        );
+    if (!hasSpecial) {
+        return false;
+    }
+
+    for (let i = 1; i < password.length; i++) {
+        if (password[i] === password[i - 1]) {
+            return false;
+        }
+    }
+
+    return true;
+};
