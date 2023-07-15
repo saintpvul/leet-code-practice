@@ -11,3 +11,35 @@ You can assume that all dates occur in the same calendar year, which is not a le
 */
 
 // solution
+
+var countDaysTogether = function (
+    arriveAlice,
+    leaveAlice,
+    arriveBob,
+    leaveBob
+) {
+    const [aMonth, aDay] = arriveAlice.split("-");
+    const [bMonth, bDay] = arriveBob.split("-");
+    const [cMonth, cDay] = leaveAlice.split("-");
+    const [dMonth, dDay] = leaveBob.split("-");
+    const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const getA =
+        days
+            .slice(0, parseInt(aMonth) - 1)
+            .reduce((acc, curr) => acc + curr, 0) + parseInt(aDay);
+    const getB =
+        days
+            .slice(0, parseInt(bMonth) - 1)
+            .reduce((acc, curr) => acc + curr, 0) + parseInt(bDay);
+    const getC =
+        days
+            .slice(0, parseInt(cMonth) - 1)
+            .reduce((acc, curr) => acc + curr, 0) + parseInt(cDay);
+    const getD =
+        days
+            .slice(0, parseInt(dMonth) - 1)
+            .reduce((acc, curr) => acc + curr, 0) + parseInt(dDay);
+    const maxArrival = Math.max(getA, getB);
+    const minDeparture = Math.min(getC, getD);
+    return Math.max(minDeparture - maxArrival + 1, 0);
+};
