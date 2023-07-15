@@ -9,3 +9,18 @@ Return an integer answer, the number of valid clock times that can be created by
 */
 
 // solution
+
+var countTime = function (time) {
+    let choices = 1;
+
+    if (time[0] === "?") {
+        choices = time[1] === "?" ? 24 : Number(time[1]) < 4 ? 3 : 2;
+    } else if (time[1] === "?") {
+        choices = time[0] === "2" ? 4 : 10;
+    }
+
+    if (time[3] === "?") choices *= 6;
+    if (time[4] === "?") choices *= 10;
+
+    return choices;
+};
