@@ -13,3 +13,21 @@ Return the id of the employee that worked the task with the longest time. If the
 */
 
 // solution
+
+var hardestWorker = function (n, logs) {
+    let [employee, max] = [-1, 0];
+    let currentTime = 0;
+    for (let i = 0; i < logs.length; i++) {
+        const [currentEmployee, time] = logs[i];
+        const timeUnits = Math.abs(currentTime - time);
+        if (
+            max < timeUnits ||
+            (max === timeUnits && currentEmployee < employee)
+        ) {
+            employee = currentEmployee;
+            max = timeUnits;
+        }
+        currentTime = time;
+    }
+    return employee;
+};
