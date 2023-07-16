@@ -16,3 +16,18 @@ Return the maximum number of enemy forts that can be captured. In case it is imp
 */
 
 // solution
+
+var captureForts = function (forts) {
+    let maxCaptured = 0;
+
+    for (let i = 0, j = 0; i < forts.length; ++i) {
+        if (forts[i] !== 0) {
+            if (forts[i] === -forts[j]) {
+                maxCaptured = Math.max(maxCaptured, i - j - 1);
+            }
+            j = i;
+        }
+    }
+
+    return maxCaptured;
+};
