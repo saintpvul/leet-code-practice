@@ -12,3 +12,38 @@ You must remove exactly one letter and cannot chose to do nothing.
 */
 
 // solution
+
+var equalFrequency = function (word) {
+    const count = new Map();
+
+    for (const char of word) {
+        count.set(char, (count.get(char) || 0) + 1);
+    }
+
+    for (const char of word) {
+        count.set(char, count.get(char) - 1);
+        if (equalCount(count)) {
+            return true;
+        }
+        count.set(char, count.get(char) + 1);
+    }
+
+    return false;
+};
+
+const equalCount = (count) => {
+    let freq = -1;
+
+    for (const c of count.values()) {
+        if (c === 0 || c === freq) {
+            continue;
+        }
+        if (freq === -1) {
+            freq = c;
+        } else {
+            return false;
+        }
+    }
+
+    return true;
+};
