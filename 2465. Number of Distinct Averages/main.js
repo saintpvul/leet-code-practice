@@ -17,3 +17,21 @@ Note that when there is a tie for a minimum or maximum number, any can be remove
 */
 
 // solution
+
+var distinctAverages = function (nums) {
+    let sums = new Set();
+    while (nums.length > 0) {
+        let min = Math.min(...nums);
+        let minIdx = nums.indexOf(min);
+        nums.splice(minIdx, 1);
+
+        let max = Math.max(...nums);
+        let maxIdx = nums.indexOf(max);
+        nums.splice(maxIdx, 1);
+
+        let average = (min + max) / 2;
+        sums.add(average);
+    }
+
+    return sums.size;
+};
