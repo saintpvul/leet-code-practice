@@ -10,3 +10,19 @@ Return the shortest distance needed to reach the string target. If the string ta
 */
 
 // solution
+
+var closetTarget = function (words, target, startIndex) {
+    let minDistance = Infinity;
+
+    for (let i = 0; i < words.length; i++) {
+        if (words[i] === target) {
+            const distance = Math.min(
+                Math.abs(i - startIndex),
+                words.length - Math.abs(i - startIndex)
+            );
+            minDistance = Math.min(minDistance, distance);
+        }
+    }
+
+    return minDistance === Infinity ? -1 : minDistance;
+};
