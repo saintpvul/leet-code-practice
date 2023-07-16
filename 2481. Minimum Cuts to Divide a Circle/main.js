@@ -12,3 +12,13 @@ Given the integer n, return the minimum number of cuts needed to divide a circle
 */
 
 // solution
+
+var numberOfCuts = function (n) {
+    if (n === 1) {
+        return 0;
+    }
+    if (n % 2) {
+        return n;
+    }
+    return n / 2;
+};
