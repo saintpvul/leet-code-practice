@@ -12,3 +12,28 @@ Return the string in words that has different difference integer array.
 */
 
 // solution
+
+var oddString = function (words) {
+    let diffs = {};
+    for (let i = 0; i < words.length; i++) {
+        let diff = [];
+        for (let j = 0; j < words[i].length - 1; j++) {
+            diff.push(
+                words[i].charCodeAt(j + 1) - 97 - (words[i].charCodeAt(j) - 97)
+            );
+        }
+        diffs[diff] ? diffs[diff]++ : (diffs[diff] = 1);
+    }
+
+    for (const word of words) {
+        let diff = [];
+        for (let j = 0; j < word.length - 1; j++) {
+            diff.push(word.charCodeAt(j + 1) - 97 - (word.charCodeAt(j) - 97));
+        }
+        if (diffs[diff] === 1) {
+            return word;
+        }
+    }
+
+    return null;
+};
