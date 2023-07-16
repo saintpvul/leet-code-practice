@@ -8,3 +8,9 @@ Return the pivot integer x. If no such integer exists, return -1. It is guarante
 */
 
 // solution
+
+var pivotInteger = function (n) {
+    const y = (n * n + n) / 2;
+    const x = Math.floor(Math.sqrt(y));
+    return x * x === y ? x : -1;
+};
