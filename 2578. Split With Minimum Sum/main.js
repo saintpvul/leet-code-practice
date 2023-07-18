@@ -15,3 +15,24 @@ The order of occurrence of the digits in num1 and num2 may differ from the order
 */
 
 // solution
+
+var splitNum = function (num) {
+    const str = String(num);
+    const sorted = str.split("").sort();
+    let num1 = "";
+    let num2 = "";
+
+    for (let i = 0; i < sorted.length; i++) {
+        if (sorted[i] === "0" && num1 === "") {
+            num1 += sorted[i];
+        } else {
+            if (num1.length <= num2.length) {
+                num1 += sorted[i];
+            } else {
+                num2 += sorted[i];
+            }
+        }
+    }
+
+    return Number(num1) + Number(num2);
+};
