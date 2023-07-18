@@ -8,3 +8,20 @@ Given the two positive integers n and time, return the index of the person holdi
 */
 
 // solution
+
+var passThePillow = function (n, time) {
+    let currentIndex = 1;
+    let direction = 1;
+
+    for (let i = 1; i <= time; i++) {
+        if (currentIndex === n) {
+            direction = -1;
+        } else if (currentIndex === 1) {
+            direction = 1;
+        }
+
+        currentIndex += direction;
+    }
+
+    return currentIndex;
+};
