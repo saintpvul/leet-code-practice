@@ -9,3 +9,14 @@ Return the sum of all digits with their corresponding sign.
 */
 
 // solution
+
+var alternateDigitSum = function (n) {
+    let res = 0;
+    let isPos = 1;
+    while (n) {
+        res += (n % 10) * isPos;
+        isPos = -isPos;
+        n = Math.floor(n / 10);
+    }
+    return res * -isPos;
+};
