@@ -15,3 +15,30 @@ Note that the volume of the box is the product of its length, width and height.
 */
 
 // solution
+
+var categorizeBox = function (length, width, height, mass) {
+    const isBulky = (l, w, h) => {
+        if (
+            l >= Math.pow(10, 4) ||
+            w >= Math.pow(10, 4) ||
+            h >= Math.pow(10, 4) ||
+            l * w * h >= Math.pow(10, 9)
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    const isHeavy = (m) => m >= 100;
+
+    const bulky = isBulky(length, width, height);
+    const heavy = isHeavy(mass);
+
+    return bulky && heavy
+        ? "Both"
+        : !bulky && !heavy
+        ? "Neither"
+        : bulky
+        ? "Bulky"
+        : "Heavy";
+};
