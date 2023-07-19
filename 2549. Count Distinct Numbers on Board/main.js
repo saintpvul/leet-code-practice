@@ -14,3 +14,7 @@ Once a number is placed on the board, it will remain on it until the end.
 */
 
 // solution
+
+var distinctIntegers = function (n) {
+    return Math.max(n - 1, 1);
+};
