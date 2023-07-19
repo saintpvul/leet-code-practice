@@ -12,3 +12,23 @@ Return the maximum number of children who may receive exactly 8 dollars if you d
 */
 
 // solution
+
+var distMoney = function (money, children) {
+    money -= children;
+    if (money < 0) {
+        return -1;
+    }
+
+    const count7 = Math.floor(money / 7);
+    const remaining = money % 7;
+
+    if (count7 === children && remaining === 0) {
+        return count7;
+    }
+
+    if (count7 === children - 1 && remaining === 3) {
+        return count7 - 1;
+    }
+
+    return Math.min(children - 1, count7);
+};
