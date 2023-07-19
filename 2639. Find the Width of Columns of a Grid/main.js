@@ -10,3 +10,19 @@ The length of an integer x with len digits is equal to len if x is non-negative,
 */
 
 // solution
+
+var findColumnWidth = function (grid) {
+    const n = grid[0].length;
+    let ans = [];
+
+    for (let i = 0; i < n; i++) {
+        let currentMax = 0;
+        for (let j = 0; j < grid.length; j++) {
+            let current = grid[j][i].toString().length;
+            currentMax = Math.max(current, currentMax);
+        }
+        ans.push(currentMax);
+    }
+
+    return ans;
+};
