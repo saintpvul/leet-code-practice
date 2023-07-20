@@ -11,3 +11,30 @@ A substring is a contiguous sequence of characters within a string.
 */
 
 // solution
+
+var findTheLongestBalancedSubstring = function (s) {
+    const n = s.length;
+    let max = 0;
+
+    const check = (i, j) => {
+        let cnt = 0;
+        for (let k = i; k <= j; k++) {
+            if (s[k] === "1") {
+                cnt++;
+            } else if (cnt > 0) {
+                return false;
+            }
+        }
+        return cnt * 2 === j - i + 1;
+    };
+
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j += 2) {
+            if (check(i, j)) {
+                max = Math.max(max, j - i + 1);
+            }
+        }
+    }
+
+    return max;
+};
