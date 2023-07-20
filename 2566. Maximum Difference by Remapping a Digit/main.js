@@ -15,3 +15,22 @@ We mentioned "Danny Mittal" to congratulate him on being in the top 10 in Weekly
 */
 
 // solution
+
+function minMaxDifference(num) {
+    const s = num.toString();
+    const to9 = s[firstNotNineIndex(s)];
+    const to0 = s[0];
+    return (
+        parseInt(s.replace(new RegExp(to9, "g"), "9")) -
+        parseInt(s.replace(new RegExp(to0, "g"), "0"))
+    );
+}
+
+function firstNotNineIndex(s) {
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] !== "9") {
+            return i;
+        }
+    }
+    return 0;
+}
