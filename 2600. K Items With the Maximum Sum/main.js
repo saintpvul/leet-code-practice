@@ -14,3 +14,13 @@ We want to pick exactly k items among the available items. Return the maximum po
 */
 
 // solution
+
+var kItemsWithMaximumSum = function (numOnes, numZeros, numNegOnes, k) {
+    if (numOnes >= k) {
+        return k;
+    }
+    if (numZeros >= k - numOnes) {
+        return numOnes;
+    }
+    return numOnes - (k - numOnes - numZeros);
+};
