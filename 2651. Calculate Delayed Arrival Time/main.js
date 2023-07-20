@@ -9,3 +9,7 @@ Note that the time in this problem is in 24-hours format.
 */
 
 // solution
+
+var findDelayedArrivalTime = function (arrivalTime, delayedTime) {
+    return (arrivalTime + delayedTime) % 24;
+};
