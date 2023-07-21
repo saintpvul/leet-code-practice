@@ -20,3 +20,25 @@ Given the number of friends, n, and an integer k, return the array answer, which
 */
 
 // solution
+
+var circularGameLosers = function (n, k) {
+    const seen = new Array(n).fill(false);
+    let friendIndex = 0;
+    let turn = 1;
+
+    while (!seen[friendIndex]) {
+        seen[friendIndex] = true;
+        friendIndex += turn * k;
+        friendIndex %= n;
+        turn += 1;
+    }
+
+    const losers = [];
+    for (let friendIndex = 0; friendIndex < n; friendIndex++) {
+        if (!seen[friendIndex]) {
+            losers.push(friendIndex + 1);
+        }
+    }
+
+    return losers;
+};
