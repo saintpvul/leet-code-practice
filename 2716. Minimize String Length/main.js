@@ -10,3 +10,8 @@ Return an integer denoting the length of the minimized string.
 */
 
 // solution
+
+var minimizedStringLength = function (s) {
+    s = new Set(s.split(""));
+    return s.size;
+};
