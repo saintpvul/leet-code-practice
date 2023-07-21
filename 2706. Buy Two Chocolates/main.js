@@ -9,3 +9,9 @@ Return the amount of money you will have leftover after buying the two chocolate
 */
 
 // solution
+
+var buyChoco = function (prices, money) {
+    prices.sort((a, b) => a - b);
+    const cost = prices[0] + prices[1];
+    return money < cost ? money : money - cost;
+};
