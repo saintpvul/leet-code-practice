@@ -12,3 +12,10 @@ A permutation is a sequence of integers from 1 to n of length n containing each 
 */
 
 // solution
+
+var semiOrderedPermutation = function (nums) {
+    const n = nums.length;
+    const idx1 = nums.indexOf(1);
+    const idxN = nums.indexOf(n);
+    return idx1 + (n - 1 - idxN) - (idx1 > idxN ? 1 : 0);
+};
