@@ -10,3 +10,7 @@ Return the maximum possible achievable number. It can be proven that there exist
 */
 
 // solution
+
+var theMaximumAchievableX = function (num, t) {
+    return num + 2 * t;
+};
