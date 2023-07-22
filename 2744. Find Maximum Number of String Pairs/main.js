@@ -13,3 +13,17 @@ Note that each string can belong in at most one pair.
 */
 
 // solution
+
+var maximumNumberOfStringPairs = function (words) {
+    let pairs = 0;
+
+    for (let i = 0; i < words.length; i++) {
+        let reversedCurrent = words[i].split("").reverse().join("");
+        for (let j = i + 1; j < words.length; j++) {
+            if (words[j] === reversedCurrent) {
+                pairs++;
+            }
+        }
+    }
+    return pairs;
+};
