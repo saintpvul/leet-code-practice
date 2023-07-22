@@ -9,3 +9,29 @@ Two integers x and y are coprime if there is no integer greater than 1 that divi
 */
 
 // solution
+
+var countBeautifulPairs = function (nums) {
+    let count = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (gcd(firstDigit(nums[i]), lastDigit(nums[j])) === 1) {
+                count++;
+            }
+        }
+    }
+
+    return count;
+};
+
+function firstDigit(num) {
+    return parseInt(num.toString()[0]);
+}
+
+function lastDigit(num) {
+    return num % 10;
+}
+
+function gcd(x, y) {
+    return y === 0 ? x : gcd(y, x % y);
+}
