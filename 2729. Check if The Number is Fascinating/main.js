@@ -12,3 +12,14 @@ Concatenating two numbers means joining them together. For example, the concaten
 */
 
 // solution
+
+var isFascinating = function (n) {
+    const concated = "" + n + 2 * n + 3 * n;
+    const dSet = new Set(concated);
+
+    if (dSet.size !== 9 || dSet.has("0") || concated.length !== 9) {
+        return false;
+    }
+
+    return true;
+};
