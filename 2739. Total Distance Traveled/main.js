@@ -11,3 +11,10 @@ Note: Injection from the additional tank is not continuous. It happens suddenly 
 */
 
 // solution
+
+var distanceTraveled = function (mainTank, additionalTank) {
+    return (
+        (mainTank + Math.min(Math.floor((mainTank - 1) / 4), additionalTank)) *
+        10
+    );
+};
