@@ -13,3 +13,10 @@ The resulting strings must maintain the same order as they were initially given.
 */
 
 // solution
+
+var splitWordsBySeparator = function (words, separator) {
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i].split(separator);
+    }
+    return words.flat().filter((word) => word != "");
+};
