@@ -11,3 +11,15 @@ Note: A permutation of integers represents an arrangement of these numbers.
 */
 
 // solution
+
+var isGood = function (nums) {
+    const n = nums.length - 1;
+    const count = nums.reduce(
+        (counter, num) => counter.set(num, (counter.get(num) || 0) + 1),
+        new Map()
+    );
+    return (
+        [...Array(n).keys()].slice(1).every((i) => count.get(i) === 1) &&
+        count.get(n) === 2
+    );
+};
