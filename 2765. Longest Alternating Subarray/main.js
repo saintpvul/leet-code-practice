@@ -12,3 +12,26 @@ A subarray is a contiguous non-empty sequence of elements within an array.
 */
 
 // solution
+
+var alternatingSubarray = function (nums) {
+    if (nums.length < 2) {
+        return -1;
+    }
+
+    let res = 0;
+    let m = 1;
+
+    for (let i = 1; i < nums.length; i++) {
+        const diff = m % 2 === 0 ? -1 : 1;
+        if (nums[i] - nums[i - 1] === diff) {
+            m += 1;
+        } else if (nums[i] - nums[i - 1] === 1) {
+            m = 2;
+        } else {
+            m = 1;
+        }
+        res = Math.max(res, m);
+    }
+
+    return res > 1 ? res : -1;
+};
