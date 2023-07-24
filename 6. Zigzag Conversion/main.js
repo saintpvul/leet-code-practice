@@ -14,3 +14,27 @@ string convert(string s, int numRows);
 */
 
 // solution
+
+var convert = function (s, numRows) {
+    if (s.length <= numRows || numRows === 1) {
+        return s;
+    }
+
+    const rows = Array.from({ length: numRows }, () => "");
+
+    let row = 0;
+
+    let direction = -1;
+
+    for (let i = 0; i < s.length; i++) {
+        rows[row] += s[i];
+
+        if (row === 0 || row === numRows - 1) {
+            direction = -direction;
+        }
+
+        row += direction;
+    }
+
+    return rows.join("");
+};
