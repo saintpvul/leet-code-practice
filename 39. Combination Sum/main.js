@@ -11,3 +11,27 @@ The test cases are generated such that the number of unique combinations that su
 */
 
 // solution
+
+var combinationSum = function (candidates, target) {
+    const res = [];
+
+    const backtrack = (start, currentCombi, currentSum) => {
+        if (currentSum === target) {
+            res.push([...currentCombi]);
+            return;
+        }
+
+        if (currentSum > target) {
+            return;
+        }
+
+        for (let i = start; i < candidates.length; i++) {
+            currentCombi.push(candidates[i]);
+            backtrack(i, currentCombi, currentSum + candidates[i]);
+            currentCombi.pop();
+        }
+    };
+
+    backtrack(0, [], 0);
+    return res;
+};
