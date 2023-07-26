@@ -14,3 +14,27 @@ Given a positive integer n, return the nth term of the count-and-say sequence.
 */
 
 // solution
+
+var countAndSay = function (n) {
+    if (n === 1) return "1";
+
+    const prevTerm = countAndSay(n - 1);
+
+    let res = "";
+    let count = 1;
+    let currentDigit = prevTerm[0];
+
+    for (let i = 1; i < prevTerm.length; i++) {
+        if (prevTerm[i] === currentDigit) {
+            count++;
+        } else {
+            res += count.toString() + currentDigit;
+            currentDigit = prevTerm[i];
+            count = 1;
+        }
+    }
+
+    res += count.toString() + currentDigit;
+
+    return res;
+};
