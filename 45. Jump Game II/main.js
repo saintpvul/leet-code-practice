@@ -11,3 +11,22 @@ Return the minimum number of jumps to reach nums[n - 1]. The test cases are gene
 */
 
 // solution
+
+var jump = function (nums) {
+    const n = nums.length;
+
+    let jumps = 0;
+    let curEnd = 0;
+    let max = 0;
+
+    for (let i = 0; i < n - 1; ++i) {
+        max = Math.max(max, i + nums[i]);
+
+        if (i === curEnd) {
+            curEnd = max;
+            jumps++;
+        }
+    }
+
+    return jumps;
+};
