@@ -11,3 +11,24 @@ Return an array answer, where answer[j] is the answer to the jth query.
 */
 
 // solution
+
+var countPoints = function (points, queries) {
+    const res = [];
+
+    for (const query of queries) {
+        const [xj, yj, rj] = query;
+        let count = 0;
+
+        for (const point of points) {
+            const [xi, yi] = point;
+            const dist = Math.sqrt((xi - xj) ** 2 + (yi - yj) ** 2);
+
+            if (dist <= rj) {
+                count++;
+            }
+        }
+        res.push(count);
+    }
+
+    return res;
+};
