@@ -8,6 +8,11 @@ Note: You must not use any built-in BigInteger library or convert the inputs to 
 
 // solution
 
+// not allowed
+// var multiply = function (num1, num2) {
+//     return (BigInt(num1) * BigInt(num2)).toString();
+// };
+
 var multiply = function (num1, num2) {
     const n = num1.length;
     const m = num2.length;
