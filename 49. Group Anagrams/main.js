@@ -7,3 +7,14 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 */
 
 // solution
+
+var groupAnagrams = function (strs) {
+    let map = {};
+    for (let i = 0; i < strs.length; i++) {
+        const currentLetters = strs[i].split("").sort().join("");
+        map[currentLetters]
+            ? map[currentLetters].push(strs[i])
+            : (map[currentLetters] = [strs[i]]);
+    }
+    return Object.values(map);
+};
