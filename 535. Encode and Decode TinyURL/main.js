@@ -14,3 +14,28 @@ String decode(String shortUrl) Returns the original long URL for the given short
 */
 
 // solution
+
+let codeDB = new Map(),
+    urlDB = new Map();
+const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+const getCode = () => {
+    let key = "http://tinyurl.com/";
+    for (let i = 0; i < 6; i++) {
+        key += Math.floor(Math.random() * chars.length);
+    }
+    return key;
+};
+
+var encode = function (longUrl) {
+    if (urlDB.has(longUrl)) return urlDB.get(longUrl);
+    let code = getCode();
+    while (codeDB.has(code)) code = getCode();
+    codeDB.set(code, longUrl);
+    urlDB.set(longUrl, code);
+    return code;
+};
+
+var decode = function (shortUrl) {
+    return codeDB.get(shortUrl);
+};
