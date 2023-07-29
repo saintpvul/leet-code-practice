@@ -7,3 +7,7 @@ Given a string n that represents a positive decimal integer, return the minimum 
 */
 
 // solution
+
+var minPartitions = function (n) {
+    return Math.max(...n.split("").map(Number));
+};
