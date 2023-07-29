@@ -9,3 +9,21 @@ Return the head of the modified linked list.
 */
 
 // solution
+
+var mergeNodes = function (head) {
+    const dummyHead = new ListNode();
+
+    let curr = dummyHead;
+    let sum = 0;
+
+    while (head) {
+        if (head.val === 0 && sum !== 0) {
+            curr.next = new ListNode(sum);
+            curr = curr.next;
+            sum = 0;
+        }
+        sum += head.val;
+        head = head.next;
+    }
+    return dummyHead.next;
+};
