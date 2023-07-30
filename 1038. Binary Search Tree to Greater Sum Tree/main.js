@@ -11,3 +11,15 @@ Both the left and right subtrees must also be binary search trees.
 */
 
 // solution
+
+var bstToGst = function (root) {
+    dfs(root, 0);
+    return root;
+};
+
+function dfs(node, count) {
+    if (node === null) return count;
+    let traverse = dfs(node.right, count);
+    node.val += traverse;
+    return dfs(node.left, node.val);
+}
