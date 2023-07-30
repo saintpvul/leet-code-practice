@@ -9,3 +9,7 @@ Return the matrix after sorting it.
 */
 
 // solution
+
+var sortTheStudents = function (score, k) {
+    return score.sort((a, b) => b[k] - a[k]);
+};
