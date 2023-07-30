@@ -11,3 +11,22 @@ Each person should appear in exactly one group, and every person must be in a gr
 */
 
 // solution
+
+var groupThePeople = function (groupSizes) {
+    const map = new Map();
+    const res = [];
+
+    for (let i = 0; i < groupSizes.length; i++) {
+        const size = groupSizes[i];
+        const group = map.get(size) || [];
+        group.push(i);
+        map.set(size, group);
+
+        if (group.length === size) {
+            res.push(group);
+            map.delete(size);
+        }
+    }
+
+    return res;
+};
