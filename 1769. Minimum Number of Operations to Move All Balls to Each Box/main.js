@@ -11,3 +11,21 @@ Each answer[i] is calculated considering the initial state of the boxes.
 */
 
 // solution
+
+var minOperations = function (boxes) {
+    let answer = Array.from({ length: boxes.length }, () => 0);
+
+    for (let i = 0; i < answer.length; i++) {
+        let count = 0;
+        for (let j = 0; j < boxes.length; j++) {
+            if (j === i) {
+                continue;
+            }
+            if (boxes[j] === "1") {
+                count += Math.abs(i - j);
+            }
+        }
+        answer[i] = count;
+    }
+    return answer;
+};
