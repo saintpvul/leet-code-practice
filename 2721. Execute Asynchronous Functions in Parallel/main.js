@@ -16,25 +16,12 @@ Please solve it without using the built-in Promise.all function.
 
 var promiseAll = async function (functions) {
     return new Promise(async (resolve, reject) => {
-        const res = [];
-        let success = 0;
-        let err = null;
-
-        for (const func of functions) {
-            try {
-                const result = await func();
-                res.push(result);
-                success++;
-            } catch (error) {
-                if (!err) {
-                    err = error;
-                }
-            }
-        }
-        if (success === functions.length) {
-            resolve(res);
-        } else {
-            reject(err);
-        }
+        Promise.all(functions.map((func) => func()))
+            .then((results) => {
+                resolve(results);
+            })
+            .catch((error) => {
+                reject(error);
+            });
     });
 };
