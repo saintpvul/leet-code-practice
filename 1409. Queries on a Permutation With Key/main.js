@@ -9,3 +9,14 @@ Return an array containing the result for the given queries.
 */
 
 // solution
+
+var processQueries = function (queries, m) {
+    let p = Array.from({ length: m }, (_, i) => i + 1);
+
+    for (let i = 0; i < queries.length; i++) {
+        let currentIdx = p.indexOf(queries[i]);
+        p.unshift(...p.splice(currentIdx, 1));
+        queries[i] = currentIdx;
+    }
+    return queries;
+};
