@@ -12,53 +12,54 @@ Return nums after the rearrangement.
 
 // solution
 
- const partition = (arr, pivot) => {
-    let left = [];
-    let mid = [];
-    let right = [];
+var pivotArray = function (nums, pivot) {
+    const partition = (arr, pivot) => {
+        let left = [];
+        let mid = [];
+        let right = [];
 
-    for (let num of arr) {
-      if (num < pivot) {
-        left.push(num);
-      } else if (num > pivot) {
-        right.push(num);
-      } else {
-        mid.push(num);
-      }
-    }
+        for (let num of arr) {
+            if (num < pivot) {
+                left.push(num);
+            } else if (num > pivot) {
+                right.push(num);
+            } else {
+                mid.push(num);
+            }
+        }
 
-    return [left, mid, right];
-  };
+        return [left, mid, right];
+    };
 
-  const [left, mid, right] = partition(nums, pivot);
+    const [left, mid, right] = partition(nums, pivot);
 
-  const merge = (arr1, arr2) => {
-    let result = [];
-    let i = 0;
-    let j = 0;
+    const merge = (arr1, arr2) => {
+        let result = [];
+        let i = 0;
+        let j = 0;
 
-    while (i < arr1.length && j < arr2.length) {
-      if (arr1[i] < arr2[j]) {
-        result.push(arr1[i]);
-        i++;
-      } else {
-        result.push(arr2[j]);
-        j++;
-      }
-    }
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] < arr2[j]) {
+                result.push(arr1[i]);
+                i++;
+            } else {
+                result.push(arr2[j]);
+                j++;
+            }
+        }
 
-    while (i < arr1.length) {
-      result.push(arr1[i]);
-      i++;
-    }
+        while (i < arr1.length) {
+            result.push(arr1[i]);
+            i++;
+        }
 
-    while (j < arr2.length) {
-      result.push(arr2[j]);
-      j++;
-    }
+        while (j < arr2.length) {
+            result.push(arr2[j]);
+            j++;
+        }
 
-    return result;
-  };
+        return result;
+    };
 
-  return merge(merge(left, mid), right);
+    return merge(merge(left, mid), right);
 };
