@@ -13,3 +13,34 @@ Return the minimum number of minutes needed to pick up all the garbage.
 */
 
 // solution
+
+
+ var garbageCollection = function(garbage, travel) {
+    const n = garbage.length;
+    const pTravel = new Array(n).fill(0);
+    for (let i = 1; i < n; i++) {
+        pTravel[i] = pTravel[i - 1] + travel[i - 1];
+    }
+    let m = 0, p = 0, g = 0;
+    let mLast = 0, pLast = 0, gLast = 0;
+    
+    for (let i = 0; i < garbage.length; i++) {
+        const str = garbage[i];
+        for (let j = 0; j < str.length; j++) {
+            if (str.charAt(j) === 'M') {
+                m++;
+                mLast = i;
+            }
+            if (str.charAt(j) === 'G') {
+                g++;
+                gLast = i;
+            }
+            if (str.charAt(j) === 'P') {
+                p++;
+                pLast = i;
+            }
+        }
+    }
+    
+    return pTravel[pLast] + pTravel[mLast] + pTravel[gLast] + m + p + g;
+}
