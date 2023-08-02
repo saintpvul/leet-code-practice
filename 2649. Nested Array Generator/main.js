@@ -9,3 +9,13 @@ inorder traversal iterates over each array from left to right, yielding any inte
 */
 
 // solution
+
+var inorderTraversal = function*(arr) {
+    for(const item of arr) {
+        if(Array.isArray(item)){
+            yield*inorderTraversal(item)
+        } else {
+            yield item
+        }
+    }
+};
