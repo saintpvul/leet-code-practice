@@ -12,3 +12,20 @@ Note that the 2D array can have a different number of elements on each row.
 */
 
 // solution
+
+var findMatrix = function(nums) {
+    let newArr = []
+    while(nums.reduce((s,v) => s + v, 0) > 0) { 
+    const currentVals = new Set()
+    for(let i = 0; i < nums.length; i++) {
+        if(currentVals.has(nums[i]) || nums[i] === 0){
+            continue
+        } else {
+            currentVals.add(nums[i])
+            nums[i] = 0
+        }
+    }
+    newArr.push(Array.from(currentVals))
+    }
+    return newArr
+};
