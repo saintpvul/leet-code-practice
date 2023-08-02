@@ -7,3 +7,25 @@ The graph is given as follows: graph[i] is a list of all nodes you can visit fro
 */
 
 // solution
+
+
+var allPathsSourceTarget = function(graph) {
+    const n = graph.length
+    let res = []
+
+    const dfs = (node, path) => {
+        path.push(node)
+
+        if(node === n - 1) {
+            res.push([...path])
+        } else {
+            for(const nextNode of graph[node]){
+                dfs(nextNode, path)
+            }
+        }
+        path.pop()
+    }
+
+    dfs(0, [])
+    return res
+};
