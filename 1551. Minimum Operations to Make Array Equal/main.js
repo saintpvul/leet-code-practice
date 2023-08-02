@@ -9,3 +9,23 @@ Given an integer n, the length of the array, return the minimum number of operat
 */
  
 // solution
+
+//using math
+
+//  var minOperations = function(n) {
+//     return Math.floor(n * n / 4);
+// }; 
+
+
+// it's slow but solves the problem
+ var minOperations = function(n) {
+    let givenArr = Array.from({length: n}, (_, i) => (2 * i) + 1);
+    let median = givenArr[Math.floor(n / 2)];
+    let operations = 0;
+
+    for (let num of givenArr) {
+        operations += Math.abs(num - median);
+    }
+
+    return operations  / 2;
+};
