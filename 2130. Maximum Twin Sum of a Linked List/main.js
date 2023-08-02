@@ -10,3 +10,26 @@ Given the head of a linked list with even length, return the maximum twin sum of
 */
 
 // solution
+
+var pairSum = function(head) {
+    let current = head
+    let maxTwinSum = Number.MIN_SAFE_INTEGER
+
+    const vals = []
+
+    while(current !== null) {
+        vals.push(current.val)
+        current = current.next
+    }
+
+    const length = vals.length
+
+    for(let i = 0; i < length / 2; i++) {
+        const twinIdx = length - 1 - i;
+        const twinSum = vals[i] + vals[twinIdx]
+
+        maxTwinSum = Math.max(maxTwinSum, twinSum)
+    }
+
+    return maxTwinSum
+};
