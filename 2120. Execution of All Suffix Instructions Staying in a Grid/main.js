@@ -13,3 +13,29 @@ Return an array answer of length m where answer[i] is the number of instructions
 */
 
 // solution
+
+ var executeInstructions = function(n, startPos, s) {
+    const m = s.length;
+    const res = Array.from({length: m});
+
+    for (let i = 0; i < m; i++) {
+        let [dirY, dirX] = startPos; 
+        for (j = i; j < m; j++) {
+            const c = s[j];
+            if (c === 'U') {
+                dirY--;
+            } else if (c === 'D') {
+                dirY++;
+            } else if (c === 'L') {
+                dirX--;
+            } else {
+                dirX++;
+            }
+            if (dirY === -1 || dirY === n || dirX === -1 || dirX === n) {
+                break;
+            }
+        }
+        res[i] = j - i;
+    }
+    return res;
+}
