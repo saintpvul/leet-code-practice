@@ -12,3 +12,42 @@ emit - This method takes in two arguments: the name of an event as a string and 
 */
 
 // solution
+
+class EventEmitter {
+  constructor() {
+        this.events = new Map();
+    }
+
+    subscribe(event, cb) {
+        if (!this.events.has(event)) {
+            this.events.set(event, []);
+        }
+
+        const eventListeners = this.events.get(event);
+        eventListeners.push(cb);
+
+        return {
+            unsubscribe: () => {
+                const index = eventListeners.indexOf(cb);
+                if (index !== -1) {
+                    eventListeners.splice(index, 1);
+                }
+            }
+        };
+    }
+
+   emit(event, args = []) {
+        if (!this.events.has(event)) {
+            return [];
+        }
+
+        const eventListeners = this.events.get(event);
+        const results = [];
+
+        for (const listener of eventListeners) {
+            results.push(listener(...args));
+        }
+
+        return results;
+    }
+}
