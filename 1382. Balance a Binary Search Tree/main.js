@@ -7,3 +7,27 @@ A binary search tree is balanced if the depth of the two subtrees of every node 
 */
 
 // solution
+
+var balanceBST = function (root) {
+    const inorderTraversal = (node, values) => {
+        if (node === null) return;
+        inorderTraversal(node.left, values);
+        values.push(node.val);
+        inorderTraversal(node.right, values);
+    };
+
+    const constructBST = (values, left, right) => {
+        if (left > right) return null;
+
+        const mid = Math.floor((left + right) / 2);
+        const node = new TreeNode(values[mid]);
+
+        node.left = constructBST(values, left, mid - 1);
+        node.right = constructBST(values, mid + 1, right);
+        return node;
+    };
+
+    const values = [];
+    inorderTraversal(root, values);
+    return constructBST(values, 0, values.length - 1);
+};
