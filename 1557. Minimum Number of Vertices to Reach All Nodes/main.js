@@ -9,3 +9,19 @@ Notice that you can return the vertices in any order.
 */
 
 // solution
+
+var findSmallestSetOfVertices = function (n, edges) {
+    const res = [];
+    const edgeSet = new Set();
+
+    for (const edge of edges) {
+        edgeSet.add(edge[1]);
+    }
+
+    for (let i = 0; i < n; i++) {
+        if (!edgeSet.has(i)) {
+            res.push(i);
+        }
+    }
+    return res;
+};
