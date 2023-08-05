@@ -12,3 +12,20 @@ Return the modified array after rearranging the elements to satisfy the aforemen
 */
 
 // solution
+
+var rearrangeArray = function (nums) {
+    let neg = 1;
+    let pos = 0;
+    const res = Array.from({ length: nums.length });
+
+    for (const num of nums) {
+        if (num > 0) {
+            res[pos] = num;
+            pos += 2;
+        } else {
+            res[neg] = num;
+            neg += 2;
+        }
+    }
+    return res;
+};
