@@ -13,3 +13,17 @@ Return the total number of laser beams in the bank.
 */
 
 // solution
+
+var numberOfBeams = function (bank) {
+    let pre = 0;
+    let count = 0;
+
+    for (let i = 0; i < bank.length; i++) {
+        const curr = bank[i].split("").filter((ch) => ch === "1").length;
+        if (curr >= 1) {
+            count += pre * curr;
+            pre = curr;
+        }
+    }
+    return count;
+};
