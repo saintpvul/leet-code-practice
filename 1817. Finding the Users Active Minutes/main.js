@@ -13,3 +13,23 @@ Return the array answer as described above.
 */
 
 // solution
+
+var findingUsersActiveMinutes = function (logs, k) {
+    const userActive = new Map();
+
+    for (const [userID, time] of logs) {
+        if (!userActive.has(userID)) {
+            userActive.set(userID, new Set());
+        }
+        userActive.get(userID).add(time);
+    }
+
+    const res = Array.from({ length: k }, () => 0);
+
+    for (const activeSet of userActive.values()) {
+        const active = activeSet.size;
+        res[active - 1]++;
+    }
+
+    return res;
+};
