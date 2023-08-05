@@ -17,3 +17,19 @@ Return a list of boolean elements answer, where answer[i] is true if the subarra
 */
 
 // solution
+
+var checkArithmeticSubarrays = function (nums, l, r) {
+    const isArithmetic = Array.from({ length: l.length }, () => true);
+
+    for (let i = 0; i < l.length; i++) {
+        const currentSub = nums.slice(l[i], r[i] + 1).sort((a, b) => b - a);
+        for (let j = 1; j < currentSub.length; j++) {
+            const diff = currentSub[0] - currentSub[1];
+            if (currentSub[j - 1] - currentSub[j] !== diff) {
+                isArithmetic[i] = false;
+                break;
+            }
+        }
+    }
+    return isArithmetic;
+};
