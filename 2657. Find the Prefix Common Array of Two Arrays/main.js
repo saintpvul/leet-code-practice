@@ -11,3 +11,23 @@ A sequence of n integers is called a permutation if it contains all integers fro
 */
 
 // solution
+
+var findThePrefixCommonArray = function (A, B) {
+    const res = Array.from({ length: A.length });
+    const hasA = new Set();
+    const hasB = new Set();
+    let count = 0;
+
+    for (let i = 0; i < res.length; i++) {
+        if (hasB.has(A[i])) {
+            count++;
+        }
+        hasA.add(A[i]);
+        if (hasA.has(B[i])) {
+            count++;
+        }
+        hasB.add(B[i]);
+        res[i] = count;
+    }
+    return res;
+};
