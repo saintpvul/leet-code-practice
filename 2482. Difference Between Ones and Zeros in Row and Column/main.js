@@ -14,3 +14,36 @@ Return the difference matrix diff.
 */
 
 // solution
+
+var onesMinusZeros = function (grid) {
+    const n = grid[0].length;
+    const m = grid.length;
+    const diff = Array.from({ length: m }, () =>
+        Array.from({ length: n }, () => 0)
+    );
+
+    const onesRow = Array.from({ length: m }, () => 0);
+    const zerosRow = Array.from({ length: m }, () => 0);
+    const onesCol = Array.from({ length: n }, () => 0);
+    const zerosCol = Array.from({ length: n }, () => 0);
+
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === 1) {
+                onesRow[i]++;
+                onesCol[j]++;
+            } else {
+                zerosRow[i]++;
+                zerosCol[j]++;
+            }
+        }
+    }
+
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            diff[i][j] = onesRow[i] + onesCol[j] - zerosRow[i] - zerosCol[j];
+        }
+    }
+
+    return diff;
+};
