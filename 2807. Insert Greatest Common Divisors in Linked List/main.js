@@ -11,3 +11,25 @@ The greatest common divisor of two numbers is the largest positive integer that 
 */
 
 // solution
+
+var insertGreatestCommonDivisors = function (head) {
+    const gcd = (val1, val2) => {
+        while (val2 !== 0) {
+            const temp = val2;
+            val2 = val1 % val2;
+            val1 = temp;
+        }
+        return val1;
+    };
+
+    let current = head;
+    while (current && current.next) {
+        const gcdVal = gcd(current.val, current.next.val);
+        const newNode = new ListNode(gcdVal, current.next);
+        current.next = newNode;
+
+        current = newNode.next;
+    }
+
+    return head;
+};
