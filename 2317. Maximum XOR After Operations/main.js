@@ -9,3 +9,27 @@ Return the maximum possible bitwise XOR of all elements of nums after applying t
 */
 
 // solution
+
+var maximumXOR = function (nums) {
+    const n = nums.length;
+    if (n === 1) return nums[0];
+
+    const x = Math.max(...nums);
+    let bits = Math.floor(Math.log2(x)) + 1;
+    let j = 0;
+    let res = 0;
+
+    while (bits--) {
+        let c = 0;
+        for (const i of nums) {
+            if (i & (1 << j)) {
+                c = 1;
+                res += Math.pow(2, j);
+                break;
+            }
+        }
+        j++;
+    }
+
+    return res;
+};
