@@ -14,3 +14,18 @@ Given a 0-indexed integer array plants of n integers, where plants[i] is the amo
 */
 
 // solution
+
+var wateringPlants = function (plants, capacity) {
+    let res = 0;
+    let water = 0;
+
+    for (let i = 0; i < plants.length; i++) {
+        if (water + plants[i] <= capacity) {
+            water += plants[i];
+        } else {
+            water = plants[i];
+            res += i * 2;
+        }
+    }
+    return res + plants.length;
+};
