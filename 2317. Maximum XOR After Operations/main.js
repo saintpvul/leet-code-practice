@@ -14,6 +14,16 @@ var maximumXOR = function (nums) {
     const n = nums.length;
     if (n === 1) return nums[0];
 
+    let hasNonZero = false;
+    for (const num of nums) {
+        if (num !== 0) {
+            hasNonZero = true;
+            break;
+        }
+    }
+
+    if (!hasNonZero) return 0;
+
     const x = Math.max(...nums);
     let bits = Math.floor(Math.log2(x)) + 1;
     let j = 0;
