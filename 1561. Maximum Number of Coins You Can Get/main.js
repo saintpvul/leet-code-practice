@@ -14,3 +14,16 @@ Return the maximum number of coins that you can have.
 */
 
 // solution
+
+var maxCoins = function (piles) {
+    piles.sort((a, b) => b - a);
+    let res = 0;
+    let i = 1;
+
+    while (i < 2 * Math.floor(piles.length / 3)) {
+        res += piles[i];
+        i += 2;
+    }
+
+    return res;
+};
