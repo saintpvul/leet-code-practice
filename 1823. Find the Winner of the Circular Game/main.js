@@ -14,3 +14,13 @@ Given the number of friends, n, and an integer k, return the winner of the game.
 */
 
 // solution
+
+var findTheWinner = function (n, k) {
+    const traverse = (n, k) => {
+        if (n === 1) {
+            return 0;
+        }
+        return (traverse(n - 1, k) + k) % n;
+    };
+    return traverse(n, k) + 1;
+};
