@@ -13,3 +13,28 @@ Return the triangular sum of nums.
 */
 
 // solution
+
+// too slow
+//  var triangularSum = function (nums) {
+//      while (true) {
+//          const n = nums.length;
+//          if (n === 1) return nums;
+//          const newNums = Array.from({ length: n - 1 });
+//          for (let i = 0; i < newNums.length; i++) {
+//              newNums[i] = (nums[i] + nums[i + 1]) % 10;
+//          }
+//          nums = newNums;
+//      }
+//  };
+
+//recursive
+var triangularSum = function (nums) {
+    if (nums.length === 1) return nums[0];
+
+    for (let i = 0; i < nums.length - 1; i++) {
+        nums[i] = (nums[i] + nums[i + 1]) % 10;
+    }
+    nums.pop();
+
+    return triangularSum(nums);
+};
