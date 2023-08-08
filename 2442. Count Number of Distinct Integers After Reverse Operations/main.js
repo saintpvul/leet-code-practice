@@ -9,3 +9,12 @@ Return the number of distinct integers in the final array.
 */
 
 // solution
+
+var countDistinctIntegers = function (nums) {
+    const dist = new Set();
+    for (let i = 0; i < nums.length; i++) {
+        dist.add(nums[i]);
+        dist.add(+String(nums[i]).split("").reverse().join(""));
+    }
+    return dist.size;
+};
