@@ -9,3 +9,20 @@ An Anagram of a string is a string that contains the same characters with a diff
 */
 
 // solution
+
+var minSteps = function (s, t) {
+    const alph = Array.from({ length: 26 }, () => 0);
+
+    for (let i = 0; i < s.length; i++) {
+        alph[s[i].charCodeAt() - 97]++;
+        alph[t[i].charCodeAt() - 97]--;
+    }
+
+    alph.filter((ch) => ch < 0);
+
+    let step = 0;
+    for (let i = 0; i < alph.length; i++) {
+        res += Math.abs(alph[i]);
+    }
+    return step / 2;
+};
