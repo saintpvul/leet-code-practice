@@ -16,3 +16,24 @@ Note that the first entry in the answer is considered to be the top of the deck.
 */
 
 // solution
+
+var deckRevealedIncreasing = function (deck) {
+    deck.sort((a, b) => a - b);
+
+    const N = deck.length;
+    let result = new Array(N).fill(0);
+
+    let queue = [];
+    for (let i = 0; i < N; i++) {
+        queue.push(i);
+    }
+
+    for (const card of deck) {
+        result[queue.shift()] = card;
+        if (queue.length > 0) {
+            queue.push(queue.shift());
+        }
+    }
+
+    return result;
+};
