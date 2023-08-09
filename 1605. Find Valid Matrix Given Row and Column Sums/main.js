@@ -9,3 +9,20 @@ Return a 2D array representing any matrix that fulfills the requirements. It's g
 */
 
 // solution
+
+var restoreMatrix = function (rowSum, colSum) {
+    const rowCount = rowSum.length;
+    const colCount = colSum.length;
+
+    const m = Array.from({ length: rowCount }, () =>
+        Array.from({ length: colCount }, () => 0)
+    );
+    for (let i = 0; i < rowCount; i++) {
+        for (let j = 0; j < colCount; j++) {
+            m[i][j] = Math.min(rowSum[i], colSum[j]);
+            rowSum[i] -= m[i][j];
+            colSum[j] -= m[i][j];
+        }
+    }
+    return m;
+};
