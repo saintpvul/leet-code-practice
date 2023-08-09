@@ -9,3 +9,27 @@ Recall that a permutation of letters is a bijection from letters to letters: eve
 */
 
 // solution
+
+var findAndReplacePattern = function (words, pattern) {
+    const res = [];
+    for (const w of words) {
+        const p = new Array(26).fill(0);
+        const s = new Array(26).fill(0);
+        let same = true;
+        for (let i = 0; i < w.length; i++) {
+            if (
+                s[w.charCodeAt(i) - 97] !==
+                p[pattern.charCodeAt(i) - "a".charCodeAt(0)]
+            ) {
+                same = false;
+                break;
+            } else {
+                s[w.charCodeAt(i) - 97] = p[
+                    pattern.charCodeAt(i) - "a".charCodeAt(0)
+                ] = i + 1;
+            }
+        }
+        if (same) res.push(w);
+    }
+    return res;
+};
