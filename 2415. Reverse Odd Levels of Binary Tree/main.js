@@ -12,3 +12,36 @@ The level of a node is the number of edges along the path between it and the roo
 */
 
 // solution
+
+var reverseOddLevels = function (root) {
+    const q = [root];
+    let depth = 0;
+
+    while (q.length !== 0) {
+        const nodes = [];
+
+        const prevDepthCount = q.length;
+        for (let i = 0; i < prevDepthCount; i++) {
+            const n = q.shift();
+
+            if (depth % 2 === 1) {
+                nodes.push(n);
+            }
+
+            n.left && q.push(n.left);
+            n.right && q.push(n.right);
+        }
+
+        const nodesCount = nodes.length;
+        for (let i = 0; i < nodesCount >> 1; i++) {
+            [nodes[i].val, nodes[nodesCount - 1 - i].val] = [
+                nodes[nodesCount - 1 - i].val,
+                nodes[i].val,
+            ];
+        }
+
+        depth++;
+    }
+
+    return root;
+};
