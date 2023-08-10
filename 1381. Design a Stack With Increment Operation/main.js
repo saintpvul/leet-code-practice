@@ -12,3 +12,27 @@ void inc(int k, int val) Increments the bottom k elements of the stack by val. I
 */
 
 // solution
+
+class CustomStack {
+    constructor(maxSize) {
+        this.maxSize = maxSize;
+        this.stack = [];
+    }
+
+    push(x) {
+        if (this.stack.length < this.maxSize) {
+            this.stack.push(x);
+        }
+    }
+
+    pop() {
+        return this.stack.pop() || -1;
+    }
+
+    increment(k, val) {
+        const count = Math.min(k, this.stack.length);
+        for (let i = 0; i < count; i++) {
+            this.stack[i] += val;
+        }
+    }
+}
