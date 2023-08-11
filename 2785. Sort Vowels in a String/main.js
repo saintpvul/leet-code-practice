@@ -11,3 +11,26 @@ The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in lowercase or 
 */
 
 // solution
+
+var sortVowels = function (s) {
+    let vowels = [];
+    for (let i = 0; i < s.length; i++) {
+        if (/[aeiou]/gi.test(s[i])) {
+            vowels.push(s[i]);
+        }
+    }
+
+    vowels.sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0));
+
+    let t = "";
+    let vowelIndex = 0;
+    for (let i = 0; i < s.length; i++) {
+        if (/[aeiou]/gi.test(s[i])) {
+            t += vowels[vowelIndex++];
+        } else {
+            t += s[i];
+        }
+    }
+
+    return t;
+};
