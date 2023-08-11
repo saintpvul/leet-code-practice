@@ -21,3 +21,13 @@ The output will be the entire list after calling your function.
 */
 
 // solution
+
+var deleteNode = function (node) {
+    if (node === null || node.next === null) {
+        return;
+    }
+
+    node.val = node.next.val;
+
+    node.next = node.next.next;
+};
