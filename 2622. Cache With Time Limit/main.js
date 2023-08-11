@@ -13,3 +13,45 @@ count(): returns the count of un-expired keys.
 */
 
 // solution
+
+class TimeLimitedCache {
+    constructor() {
+        this.cache = {};
+    }
+
+    set(key, value, duration) {
+        const currentTime = Date.now();
+        if (this.cache[key] && this.cache[key].expiration > currentTime) {
+            this.cache[key].value = value;
+            this.cache[key].expiration = currentTime + duration;
+            return true;
+        } else {
+            this.cache[key] = {
+                value: value,
+                expiration: currentTime + duration,
+            };
+            return false;
+        }
+    }
+
+    get(key) {
+        const currentTime = Date.now();
+        if (this.cache[key] && this.cache[key].expiration > currentTime) {
+            return this.cache[key].value;
+        } else {
+            return -1;
+        }
+    }
+
+    count() {
+        const currentTime = Date.now();
+        let count = 0;
+
+        for (const key in this.cache) {
+            if (this.cache[key].expiration > currentTime) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
