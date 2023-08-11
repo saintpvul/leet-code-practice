@@ -15,3 +15,23 @@ bool find(int target) Returns true if the target value exists in the recovered b
 */
 
 // solution
+
+class FindElements {
+    constructor(root) {
+        this.numbers = new Set();
+        this.recoverTree(root, 0);
+    }
+
+    recoverTree(node, v) {
+        if (!node) return;
+
+        node.val = v;
+        this.numbers.add(v);
+        if (node.left) this.recoverTree(node.left, v * 2 + 1);
+        if (node.right) this.recoverTree(node.right, v * 2 + 2);
+    }
+
+    find(target) {
+        return this.numbers.has(target);
+    }
+}
