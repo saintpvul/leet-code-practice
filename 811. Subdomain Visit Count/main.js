@@ -35,10 +35,7 @@ var subdomainVisits = function (cpdomains) {
         }
     }
 
-    const result = [];
-    domains.forEach((count, domain) => {
-        result.push(`${count} ${domain}`);
-    });
-
-    return result;
+    return Array.from(domains.entries()).map(
+        ([domain, count]) => `${count} ${domain}`
+    );
 };
