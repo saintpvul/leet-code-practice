@@ -10,3 +10,35 @@ Given an array of count-paired domains cpdomains, return an array of the count-p
 */
 
 // solution
+
+var subdomainVisits = function (cpdomains) {
+    let domains = new Map();
+
+    for (let i = 0; i < cpdomains.length; i++) {
+        const [countStr, domain] = cpdomains[i].split(" ");
+        const count = parseInt(countStr);
+        const domainParts = domain.split(".");
+
+        let currentDomain = "";
+        for (let j = domainParts.length - 1; j >= 0; j--) {
+            if (j !== domainParts.length - 1) {
+                currentDomain = domainParts[j] + "." + currentDomain;
+            } else {
+                currentDomain = domainParts[j] + currentDomain;
+            }
+
+            if (!domains.has(currentDomain)) {
+                domains.set(currentDomain, 0);
+            }
+
+            domains.set(currentDomain, domains.get(currentDomain) + count);
+        }
+    }
+
+    const result = [];
+    domains.forEach((count, domain) => {
+        result.push(`${count} ${domain}`);
+    });
+
+    return result;
+};
