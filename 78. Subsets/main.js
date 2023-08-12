@@ -9,3 +9,17 @@ The solution set must not contain duplicate subsets. Return the solution in any 
 */
 
 // solution
+
+var subsets = function (nums) {
+    const res = [[]];
+    let curr = [];
+    for (const num of nums) {
+        curr = [];
+        for (const subset of res) {
+            curr.push([...subset, num]);
+        }
+        res.push(...curr);
+    }
+
+    return res;
+};
