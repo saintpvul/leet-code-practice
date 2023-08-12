@@ -9,3 +9,25 @@ The bitwise OR of an array a is equal to a[0] OR a[1] OR ... OR a[a.length - 1] 
 */
 
 // solution
+
+var countMaxOrSubsets = function (nums) {
+    const n = nums.length;
+    let max = -Infinity;
+    let res = 0;
+
+    for (let i = 0; i < n; i++) {
+        max |= nums[i];
+    }
+
+    const dfs = (pre, depth) => {
+        if (depth === n) {
+            if (pre === max) res++;
+            return;
+        }
+        dfs(pre, depth + 1);
+        dfs(pre | nums[depth], depth + 1);
+    };
+
+    dfs(0, 0);
+    return res;
+};
