@@ -10,3 +10,10 @@ A substring is a contiguous sequence of characters in a string.
 */
 
 // solution
+
+var removeOccurrences = function (s, part) {
+    while (s.includes(part)) {
+        s = s.replace(part, "");
+    }
+    return s;
+};
