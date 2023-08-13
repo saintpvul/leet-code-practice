@@ -13,3 +13,24 @@ Return the minimum number of moves required to make s valid.
 */
 
 // solution
+
+var minAddToMakeValid = function (s) {
+    let openCount = 0;
+    let addCount = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "(") {
+            openCount++;
+        } else if (s[i] === ")") {
+            if (openCount > 0) {
+                openCount--;
+            } else {
+                addCount++;
+            }
+        }
+    }
+
+    addCount += openCount;
+
+    return addCount;
+};
