@@ -15,3 +15,22 @@ Return the number of triplets (i, j and k) Where a == b.
 */
 
 // solution
+
+var countTriplets = function (arr) {
+    let count = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        let a = 0;
+        for (let j = i; j < arr.length; j++) {
+            a ^= arr[j];
+            let b = 0;
+            for (let k = j + 1; k < arr.length; k++) {
+                b ^= arr[k];
+                if (a === b) {
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+};
