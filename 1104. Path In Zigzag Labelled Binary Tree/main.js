@@ -11,3 +11,26 @@ Given the label of a node in this tree, return the labels in the path from the r
 */
 
 // solution
+
+var pathInZigZagTree = function (label) {
+    let path = [];
+
+    while (label > 0) {
+        path.push(label);
+        label = Math.floor(label / 2);
+
+        let depth = 0;
+        let curr = label;
+        while (curr > 0) {
+            curr >>= 1;
+            depth++;
+        }
+
+        if (label > 0) {
+            const maxLabel = (1 << depth) - 1;
+            label = maxLabel - (label - (1 << (depth - 1)));
+        }
+    }
+
+    return path.reverse();
+};
