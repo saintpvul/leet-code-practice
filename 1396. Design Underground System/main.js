@@ -19,3 +19,37 @@ You may assume all calls to the checkIn and checkOut methods are consistent. If 
 */
 
 // solution
+
+class UndergroundSystem {
+    constructor() {
+        this.checkIns = new Map();
+        this.travelTimes = new Map();
+    }
+
+    checkIn(id, stationName, t) {
+        this.checkIns.set(id, { stationName, t });
+    }
+
+    checkOut(id, stationName, t) {
+        const checkInData = this.checkIns.get(id);
+        const startStation = checkInData.stationName;
+        const travelKey = `${startStation}-${stationName}`;
+
+        if (!this.travelTimes.has(travelKey)) {
+            this.travelTimes.set(travelKey, [0, 0]);
+        }
+
+        const [totalTime, count] = this.travelTimes.get(travelKey);
+        this.travelTimes.set(travelKey, [
+            totalTime + t - checkInData.t,
+            count + 1,
+        ]);
+        this.checkIns.delete();
+    }
+
+    getAverageTime(startStation, endStation) {
+        const travelKey = `${startStation}-${endStation}`;
+        const [totalTime, count] = this.travelTimes.get(travelKey);
+        return totalTime / count;
+    }
+}
