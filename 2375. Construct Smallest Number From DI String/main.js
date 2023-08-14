@@ -12,3 +12,44 @@ Return the lexicographically smallest possible string num that meets the conditi
 */
 
 // solution
+
+var smallestNumber = function (pattern) {
+    let res = null;
+    const nums = Array.from({ length: 10 }, () => false);
+    const table = [];
+
+    const dfs = (u) => {
+        if (res) return;
+
+        if (u === pattern.length + 1) {
+            res = table.join("");
+            return;
+        }
+
+        for (let i = 1; i <= 9; i++) {
+            if (!nums[i]) {
+                if (
+                    u &&
+                    pattern[u - 1] === "I" &&
+                    parseInt(table[table.length - 1]) >= i
+                ) {
+                    continue;
+                }
+                if (
+                    u &&
+                    pattern[u - 1] === "D" &&
+                    parseInt(table[table.length - 1]) <= i
+                ) {
+                    continue;
+                }
+                nums[i] = true;
+                table.push(i.toString());
+                dfs(u + 1);
+                nums[i] = false;
+                table.pop();
+            }
+        }
+    };
+    dfs(0);
+    return res;
+};
