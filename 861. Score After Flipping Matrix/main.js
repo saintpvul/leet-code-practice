@@ -11,3 +11,23 @@ Return the highest possible score after making any number of moves (including ze
 */
 
 // solution
+
+var matrixScore = function (grid) {
+    for (let i = 0; i < grid.length; i++) {
+        if (grid[i][0] === 0) {
+            for (let j = 0; j < grid[0].length; j++) {
+                grid[i][j] ^= 1;
+            }
+        }
+    }
+    let res = 0;
+    for (let j = 0; j < grid[0].length; j++) {
+        let cnt = 0;
+        for (let i = 0; i < grid.length; i++) {
+            cnt += grid[i][j];
+        }
+        res +=
+            Math.max(cnt, grid.length - cnt) * (1 << (grid[0].length - j - 1));
+    }
+    return res;
+};
