@@ -7,3 +7,18 @@ Note that once you delete a leaf node with value target, if its parent node beco
 */
 
 // solution
+
+var removeLeafNodes = function (root, target) {
+    if (!root) {
+        return null;
+    }
+
+    root.left = removeLeafNodes(root.left, target);
+    root.right = removeLeafNodes(root.right, target);
+
+    if (!root.left && !root.right && root.val === target) {
+        return null;
+    }
+
+    return root;
+};
