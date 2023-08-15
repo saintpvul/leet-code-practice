@@ -35,3 +35,44 @@ If the value of isLeaf or val is True we represent it as 1 in the list [isLeaf, 
 */
 
 // solution
+
+var construct = function (grid) {
+    const n = grid.length;
+
+    const isLeaf = (row, col, size, target) => {
+        for (let i = row; i < row + size; i++) {
+            for (let j = col; j < col + size; j++) {
+                if (grid[i][j] !== target) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    };
+
+    const build = (row, col, size) => {
+        if (isLeaf(row, col, size, 1)) {
+            return new Node(true, true, null, null, null, null);
+        }
+        if (isLeaf(row, col, size, 0)) {
+            return new Node(false, true, null, null, null, null);
+        }
+
+        const newSize = Math.floor(size / 2);
+        const topLeft = build(row, col, newSize);
+        const topRight = build(row, col + newSize, newSize);
+        const bottomLeft = build(row + newSize, col, newSize);
+        const bottomRight = build(row + newSize, col + newSize, newSize);
+
+        return new Node(
+            false,
+            false,
+            topLeft,
+            topRight,
+            bottomLeft,
+            bottomRight
+        );
+    };
+
+    return build(0, 0, n);
+};
