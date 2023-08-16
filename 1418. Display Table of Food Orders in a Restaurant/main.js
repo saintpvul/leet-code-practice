@@ -7,3 +7,45 @@ Return the restaurant's “display table”. The “display table” is a table 
 */
 
 // solution
+
+
+var displayTable = function(orders) { 
+    const dishes = new Set();
+    const ordersMap = new Map();
+
+    for (const order of orders) {
+        const table = parseInt(order[1]);
+        const dish = order[2];
+
+        if (!ordersMap.has(table)) {
+            ordersMap.set(table, new Map());
+        }
+
+        if (!ordersMap.get(table).has(dish)) {
+            ordersMap.get(table).set(dish, 0);
+        }
+
+        ordersMap.get(table).set(dish, ordersMap.get(table).get(dish) + 1);
+        dishes.add(dish);
+    }
+
+    const sortedDishes = Array.from(dishes).sort();
+    const res = [];
+    const header = ['Table', ...sortedDishes];
+    res.push(header);
+
+    const sortedTableNumbers = [...ordersMap.keys()].sort((a, b) => a - b);
+
+    for (const table of sortedTableNumbers) {
+        const dishMap = ordersMap.get(table);
+        const row = [table.toString()];
+
+        for (const dish of sortedDishes) {
+            row.push(dishMap.has(dish) ? dishMap.get(dish).toString() : '0');
+        }
+
+        res.push(row);
+    }
+
+    return res;
+}
