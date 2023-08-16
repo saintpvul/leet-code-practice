@@ -11,3 +11,26 @@ void addBack(int num) Adds a positive integer num back into the infinite set, if
 */
 
 // solution
+
+class SmallestInfiniteSet {
+    constructor() {
+        this.curr = 1;
+        this.container = new Set();
+    }
+
+    popSmallest() {
+        if (this.container.size === 0) {
+            return this.curr++;
+        }
+
+        const smallest = Math.min(...this.container);
+        this.container.delete(smallest);
+        return smallest;
+    }
+
+    addBack(num) {
+        if (num < this.curr) {
+            this.container.add(num);
+        }
+    }
+}
