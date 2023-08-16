@@ -9,3 +9,38 @@ Return an array of coordinates representing the positions of the grid in the ord
 */
 
 // solution
+
+var spiralMatrixIII = function (rows, cols, rStart, cStart) {
+    const direct = [
+        [-1, 0],
+        [0, 1],
+        [1, 0],
+        [0, -1],
+    ];
+    const res = [[rStart, cStart]];
+    const n = rows * cols;
+    let l = 1;
+    let ind = 1;
+
+    while (res.length < n) {
+        for (let _ = 0; _ < 2; _++) {
+            for (let __ = 0; __ < l; __++) {
+                rStart += direct[ind][0];
+                cStart += direct[ind][1];
+
+                if (
+                    rStart >= 0 &&
+                    rStart < rows &&
+                    cStart >= 0 &&
+                    cStart < cols
+                ) {
+                    res.push([rStart, cStart]);
+                }
+            }
+            ind = (ind + 1) % 4;
+        }
+        l++;
+    }
+
+    return res;
+};
