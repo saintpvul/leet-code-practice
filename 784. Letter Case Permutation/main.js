@@ -7,3 +7,25 @@ Return a list of all possible strings we could create. Return the output in any 
 */
 
 // solution
+
+var letterCasePermutation = function (s) {
+    const result = [];
+
+    function backtrack(current, index) {
+        if (current.length === s.length) {
+            result.push(current);
+            return;
+        }
+
+        const char = s[index];
+        if (/[a-zA-Z]/.test(char)) {
+            backtrack(current + char.toLowerCase(), index + 1);
+            backtrack(current + char.toUpperCase(), index + 1);
+        } else {
+            backtrack(current + char, index + 1);
+        }
+    }
+
+    backtrack("", 0);
+    return result;
+};
