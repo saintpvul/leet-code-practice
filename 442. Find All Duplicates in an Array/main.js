@@ -7,3 +7,17 @@ You must write an algorithm that runs in O(n) time and uses only constant extra 
 */
 
 // solution
+
+var findDuplicates = function (nums) {
+    const duplicates = new Set();
+    const numsSet = new Set();
+
+    for (let i = 0; i < nums.length; i++) {
+        if (numsSet.has(nums[i])) {
+            duplicates.add(nums[i]);
+        } else {
+            numsSet.add(nums[i]);
+        }
+    }
+    return Array.from(duplicates);
+};
