@@ -12,3 +12,29 @@ If a key is included in both objects, the value in the object from arr2 should o
 */
 
 // solution
+
+var join = function (arr1, arr2) {
+    let idSet = new Set();
+    let resultMap = new Map();
+
+    for (let obj of arr1) {
+        idSet.add(obj.id);
+        resultMap.set(obj.id, obj);
+    }
+
+    for (let obj of arr2) {
+        if (idSet.has(obj.id)) {
+            let existingObj = resultMap.get(obj.id);
+            for (let key in obj) {
+                existingObj[key] = obj[key];
+            }
+        } else {
+            idSet.add(obj.id);
+            resultMap.set(obj.id, obj);
+        }
+    }
+
+    let joinedArr = Array.from(resultMap.values()).sort((a, b) => a.id - b.id);
+
+    return joinedArr;
+};
