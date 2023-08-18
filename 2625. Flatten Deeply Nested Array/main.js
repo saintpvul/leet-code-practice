@@ -11,3 +11,17 @@ Please solve it without the built-in Array.flat method.
 */
 
 // solution
+
+var flat = function (arr, n) {
+    const dfs = (arr, lvl, res = []) => {
+        for (const val of arr) {
+            if (typeof val === "object" && lvl < n) {
+                dfs(val, lvl + 1, res);
+            } else {
+                res.push(val);
+            }
+        }
+        return res;
+    };
+    return dfs(arr, 0);
+};
