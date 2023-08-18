@@ -7,3 +7,21 @@ You may assume the obj is the output of JSON.parse. In other words, it is valid 
 */
 
 // solution
+
+var compactObject = function (obj) {
+    if (Array.isArray(obj)) {
+        return obj
+            .filter((val) => Boolean(val))
+            .map((val) => compactObject(val));
+    } else if (typeof obj === "object" && obj !== null) {
+        const res = {};
+        for (const key in obj) {
+            if (Boolean(obj[key])) {
+                res[key] = compactObject(obj[key]);
+            }
+        }
+        return res;
+    } else {
+        return obj;
+    }
+};
