@@ -7,3 +7,22 @@ Snail traversal order starts at the top left cell with the first value of the cu
 */
 
 //
+
+Array.prototype.snail = function (rowsCount, colsCount) {
+    if (this.length !== rowsCount * colsCount) {
+        return [];
+    }
+
+    let res = Array.from({ length: rowsCount }, () => []);
+
+    for (let j = 0; j < this.length; j++) {
+        const i = Math.floor(j / rowsCount);
+        if (!(i % 2)) {
+            res[j % rowsCount][i] = this[j];
+        } else {
+            res[rowsCount - 1 - (j % rowsCount)][i] = this[j];
+        }
+    }
+
+    return res;
+};
