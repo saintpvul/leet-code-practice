@@ -16,3 +16,31 @@ It can be shown that the resulting string will always be unique.
 */
 
 // solution
+
+// too slow
+// var removeStars = function (s) {
+//     for (let i = 0; i < s.length; i++) {
+//         if (s[i + 1] === "*") {
+//             s = s.slice(0, i) + s.slice(i + 2);
+//             i -= 2;
+//         }
+//     }
+//     return s;
+// };
+
+var removeStars = function (s) {
+    let res = "";
+    let count = 0;
+
+    for (let i = s.length - 1; i >= 0; i--) {
+        if (s[i] === "*") {
+            count++;
+        } else if (count > 0) {
+            count--;
+        } else {
+            res = s[i] + res;
+        }
+    }
+
+    return res;
+};
