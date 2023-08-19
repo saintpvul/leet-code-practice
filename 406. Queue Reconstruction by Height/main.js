@@ -7,3 +7,20 @@ Reconstruct and return the queue that is represented by the input array people. 
 */
 
 // solution
+
+var reconstructQueue = function (people) {
+    people.sort((a, b) => {
+        if (a[0] !== b[0]) {
+            return b[0] - a[0];
+        } else {
+            return a[1] - b[1];
+        }
+    });
+
+    let que = [];
+
+    for (const person of people) {
+        que.splice(person[1], 0, person);
+    }
+    return que;
+};
