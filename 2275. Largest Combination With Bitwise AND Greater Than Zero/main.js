@@ -11,3 +11,34 @@ Return the size of the largest combination of candidates with a bitwise AND grea
 */
 
 // solution
+
+// too slow
+// var largestCombination = function (candidates) {
+//     let maxCount = 0;
+
+//     for (let i = 0; i < 24; i++) {
+//         let count = candidates.reduce((s, c) => s + ((c >> i) & 1), 0);
+//         maxCount = Math.max(maxCount, count);
+//     }
+
+//     return maxCount;
+// };
+
+// without reduce
+var largestCombination = function (candidates) {
+    const max = 24;
+    let maxCount = 0;
+
+    for (let i = 0; i < max; i++) {
+        let count = 0;
+
+        for (const candidate of candidates) {
+            if (((candidate >> i) & 1) === 1) {
+                count++;
+            }
+        }
+        maxCount = Math.max(maxCount, count);
+    }
+
+    return maxCount;
+};
