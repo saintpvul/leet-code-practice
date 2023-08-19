@@ -12,3 +12,30 @@ Build the result list and return its head.
 */
 
 // solution
+
+var mergeInBetween = function (list1, a, b, list2) {
+    let dummy = new ListNode(0);
+    dummy.next = list1;
+    let nodeA = dummy;
+
+    for (let i = 0; i < a; i++) {
+        nodeA = nodeA.next;
+    }
+
+    let nodeB = nodeA.next;
+    for (let i = a; i <= b; i++) {
+        nodeB = nodeB.next;
+    }
+
+    nodeA.next = list2;
+
+    let current = list2;
+
+    while (current.next !== null) {
+        current = current.next;
+    }
+
+    current.next = nodeB;
+
+    return dummy.next;
+};
