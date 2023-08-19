@@ -23,3 +23,31 @@ Return an answer array (of length seq.length) that encodes such a choice of A an
 */
 
 // solution
+
+var maxDepthAfterSplit = function (seq) {
+    let res = [];
+
+    let depthA = 0;
+    let depthB = 0;
+
+    for (const char of seq) {
+        if (char === "(") {
+            if (depthA <= depthB) {
+                res.push(0);
+                depthA++;
+            } else {
+                res.push(1);
+                depthB++;
+            }
+        } else {
+            if (depthA > depthB) {
+                res.push(0);
+                depthA--;
+            } else {
+                res.push(1);
+                depthB--;
+            }
+        }
+    }
+    return res;
+};
