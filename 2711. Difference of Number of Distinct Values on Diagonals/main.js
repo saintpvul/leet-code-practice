@@ -17,3 +17,45 @@ A cell (r1, c1) belongs to the top-left diagonal of the cell (r, c), if both bel
 */
 
 // solution
+
+var differenceOfDistinctValues = function (grid) {
+    const m = grid.length;
+    const n = grid[0].length;
+
+    for (let i = 0; i < m; ++i) {
+        computeDiag(grid, i, 0);
+    }
+    for (let i = 1; i < n; ++i) {
+        computeDiag(grid, 0, i);
+    }
+
+    return grid;
+};
+
+function computeDiag(grid, row, col) {
+    const m = grid.length;
+    const n = grid[0].length;
+
+    let suffix = new Map();
+
+    const count = Math.min(m - row, n - col);
+
+    for (let i = 0; i < count; ++i) {
+        const val = grid[row + i][col + i];
+        suffix.set(val, (suffix.get(val) || 0) + 1);
+    }
+
+    const prefix = new Set();
+    for (let i = 0; i < count; ++i) {
+        const val = grid[row + i][col + i];
+        if (suffix.get(val) === 1) {
+            suffix.delete(val);
+        } else {
+            suffix.set(val, suffix.get(val) - 1);
+        }
+
+        grid[row + i][col + i] = Math.abs(suffix.size - prefix.size);
+
+        prefix.add(val);
+    }
+}
