@@ -13,3 +13,23 @@ Return the kth string of this list or return an empty string if there are less t
 */
 
 // solution
+
+var getHappyString = function (n, k) {
+    const ch = ["a", "b", "c"];
+    const res = [];
+
+    const getHappyStr = (curr, l) => {
+        if (l === n) {
+            res.push(curr);
+            return;
+        }
+
+        for (const char of ch) {
+            if (curr === "" || curr[curr.length - 1] !== char) {
+                getHappyStr(curr + char, l + 1);
+            }
+        }
+    };
+    getHappyStr("", 0);
+    return k <= res.length ? res[k - 1] : "";
+};
