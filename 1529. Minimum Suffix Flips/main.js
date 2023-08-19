@@ -9,3 +9,17 @@ Return the minimum number of operations needed to make s equal to target.
 */
 
 // solution
+
+var minFlips = function (target) {
+    const n = target.length;
+    let initBit = "0";
+    let count = 0;
+
+    for (let i = 0; i < n; i++) {
+        if (target[i] !== initBit) {
+            count++;
+            initBit = target[i];
+        }
+    }
+    return count;
+};
