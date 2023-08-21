@@ -25,5 +25,5 @@ var canVisitAllRooms = function (rooms) {
     };
     dfs(0);
 
-    return visited.every((isVisited) => isVisited);
+    return !visited.includes(false);
 };
