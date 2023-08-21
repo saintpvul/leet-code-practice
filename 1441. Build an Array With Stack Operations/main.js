@@ -18,3 +18,24 @@ Return the stack operations needed to build target following the mentioned rules
 */
 
 // solution
+
+var buildArray = function (target, n) {
+    const operations = [];
+    const stack = [];
+    let point = 1;
+
+    for (const num of target) {
+        while (point <= n) {
+            stack.push(point);
+            operations.push("Push");
+            if (point === num) {
+                break;
+            }
+            stack.pop();
+            operations.push("Pop");
+            point++;
+        }
+        point++;
+    }
+    return operations;
+};
