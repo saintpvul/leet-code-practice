@@ -9,3 +9,25 @@ Return the minimum number of moves required to make every node have exactly one 
 */
 
 // solution
+
+var distributeCoins = function (root) {
+    let moves = 0;
+
+    const dfs = (node) => {
+        if (!node) {
+            return 0;
+        }
+
+        const left = dfs(node.left);
+        const right = dfs(node.right);
+
+        const coins = node.val + left + right - 1;
+
+        moves += Math.abs(coins);
+
+        return coins;
+    };
+
+    dfs(root);
+    return moves;
+};
