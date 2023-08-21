@@ -9,3 +9,29 @@ An anagram of a string is a string that contains the same characters with a diff
 */
 
 // solution
+
+var minSteps = function (s, t) {
+    const freqS = {};
+    const freqT = {};
+
+    for (const char of s) {
+        freqS[char] = (freqS[char] || 0) + 1;
+    }
+
+    for (const char of t) {
+        freqT[char] = (freqT[char] || 0) + 1;
+    }
+
+    let steps = 0;
+    for (const char in freqS) {
+        steps += Math.abs(freqS[char] - (freqT[char] || 0));
+    }
+
+    for (const char in freqT) {
+        if (!freqS[char]) {
+            steps += freqT[char];
+        }
+    }
+
+    return steps;
+};
