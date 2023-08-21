@@ -9,3 +9,16 @@ Return an array answer where answer[i] is the answer to the ith query.
 */
 
 // solution
+
+var xorQueries = function (arr, queries) {
+    const res = [];
+    for (let query of queries) {
+        const [l, r] = query;
+        let xor = arr[l];
+        for (let i = l + 1; i <= r; i++) {
+            xor ^= arr[i];
+        }
+        res.push(xor);
+    }
+    return res;
+};
