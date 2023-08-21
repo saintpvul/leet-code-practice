@@ -9,3 +9,21 @@ Given an array rooms where rooms[i] is the set of keys that you can obtain if yo
 */
 
 // solution
+
+var canVisitAllRooms = function (rooms) {
+    const visited = Array.from({ length: rooms.length }, () => false);
+
+    visited[0] = true;
+
+    const dfs = (room) => {
+        for (const key of rooms[room]) {
+            if (!visited[key]) {
+                visited[key] = true;
+                dfs(key);
+            }
+        }
+    };
+    dfs(0);
+
+    return visited.every((isVisited) => isVisited);
+};
