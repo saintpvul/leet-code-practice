@@ -11,3 +11,26 @@ The intersection of two closed intervals is a set of real numbers that are eithe
 */
 
 // solution
+
+var intervalIntersection = function (firstList, secondList) {
+    const res = [];
+
+    let i = 0,
+        j = 0;
+
+    while (i < firstList.length && j < secondList.length) {
+        const [startA, endA] = firstList[i];
+        const [startB, endB] = secondList[j];
+
+        if (endA >= startB && endB >= startA) {
+            res.push([Math.max(startA, startB), Math.min(endA, endB)]);
+        }
+
+        if (endA < endB) {
+            i++;
+        } else {
+            j++;
+        }
+    }
+    return res;
+};
