@@ -13,3 +13,35 @@ Return an array answer of size n where answer[i] is the column that the ball fal
 */
 
 // solution
+
+var findBall = function (grid) {
+    const m = grid.length;
+    const n = grid[0].length;
+    let dp = [...Array(n).keys()];
+    const ans = Array.from({ length: n }, () => -1);
+
+    for (let i = 0; i < m; i++) {
+        const newDp = Array(n).fill(-1);
+        for (let j = 0; j < n; j++) {
+            if (j + grid[i][j] < 0 || j + grid[i][j] === n) {
+                continue;
+            }
+            if (
+                (grid[i][j] === 1 && grid[i][j + 1] === -1) ||
+                (grid[i][j] === -1 && grid[i][j - 1] === 1)
+            ) {
+                continue;
+            }
+            newDp[j + grid[i][j]] = dp[j];
+        }
+        dp = newDp;
+    }
+
+    dp.forEach((ball, i) => {
+        if (ball !== -1) {
+            ans[ball] = i;
+        }
+    });
+
+    return ans;
+};
