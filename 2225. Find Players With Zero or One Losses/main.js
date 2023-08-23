@@ -16,3 +16,26 @@ The testcases will be generated such that no two matches will have the same outc
 */
 
 // solution
+
+var findWinners = function (matches) {
+    const res = [[], []];
+    const loses = new Map();
+
+    for (const [winner, loser] of matches) {
+        if (!loses.has(winner)) {
+            loses.set(winner, 0);
+        }
+        if (!loses.has(loser)) {
+            loses.set(loser, 0);
+        }
+        loses.set(loser, loses.get(loser) + 1);
+    }
+
+    loses.forEach((count, player) => {
+        if (count < 2) {
+            res[count].push(player);
+        }
+    });
+
+    return [res[0].sort((a, b) => a - b), res[1].sort((a, b) => a - b)];
+};
