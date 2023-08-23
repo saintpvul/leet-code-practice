@@ -11,3 +11,14 @@ Return the minimum number of moves that you need to determine with certainty wha
 */
 
 // solution
+
+var twoEggDrop = function (n) {
+    let count = 0;
+    let i = 1;
+    while (n > 0) {
+        n -= i;
+        i++;
+        count++;
+    }
+    return count;
+};
