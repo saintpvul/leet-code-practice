@@ -10,3 +10,18 @@ Given a 0-indexed integer array nums of length n, return an array ans of length 
 */
 
 // solution
+
+var findPrefixScore = function (nums) {
+    const n = nums.length;
+    const res = [];
+    let max = -Infinity;
+    let sum = 0;
+
+    for (let i = 0; i < n; i++) {
+        max = Math.max(max, nums[i]);
+        sum += nums[i] + max;
+        res.push(sum);
+    }
+
+    return res;
+};
