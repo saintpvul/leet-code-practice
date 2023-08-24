@@ -12,8 +12,7 @@ A substring is a contiguous sequence of characters within a string.
 
 // solution
 
-.
-var countSubstrings = function(s, t) {
+var countSubstrings = function (s, t) {
     let count = 0;
 
     for (let i = 0; i < s.length; i++) {
