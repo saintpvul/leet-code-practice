@@ -12,3 +12,29 @@ You may assume that next() calls will always be valid. That is, there will be at
 */
 
 // solution
+
+class BSTIterator {
+    constructor(root) {
+        this.stack = [];
+        this._leftMost(root);
+    }
+
+    _leftMost(node) {
+        while (node !== null) {
+            this.stack.push(node);
+            node = node.left;
+        }
+    }
+
+    next() {
+        const mostNode = this.stack.pop();
+        if (mostNode.right !== null) {
+            this._leftMost(mostNode.right);
+        }
+        return mostNode.val;
+    }
+
+    hasNext() {
+        return this.stack.length > 0;
+    }
+}
