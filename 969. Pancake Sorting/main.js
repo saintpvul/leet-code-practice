@@ -13,3 +13,32 @@ Return an array of the k-values corresponding to a sequence of pancake flips tha
 */
 
 // solution
+
+var pancakeSort = function (arr) {
+    const res = [];
+
+    const reverse = (a, k) => {
+        let i = 0,
+            j = k - 1;
+
+        while (i < j) {
+            const temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+            i++;
+            j--;
+        }
+    };
+
+    for (let i = arr.length; i > 0; i--) {
+        const target = arr.indexOf(i);
+
+        if (target !== 0) {
+            res.push(target + 1);
+            reverse(arr, target + 1);
+        }
+        res.push(i);
+        reverse(arr, i);
+    }
+    return res;
+};
