@@ -15,3 +15,34 @@ Notice that for any integer x (lo <= x <= hi) it is guaranteed that x will trans
 */
 
 // solution
+
+var getKth = function (lo, hi, k) {
+    const nums = [];
+
+    const getPow = (x) => {
+        let steps = 0;
+        while (x !== 1) {
+            if (x % 2 === 0) {
+                x /= 2;
+            } else {
+                x = 3 * x + 1;
+            }
+            steps++;
+        }
+        return steps;
+    };
+
+    for (let i = lo; i <= hi; i++) {
+        nums.push([i, getPow(i)]);
+    }
+
+    nums.sort((a, b) => {
+        if (a[1] !== b[1]) {
+            return a[1] - b[1];
+        } else {
+            return a[0] - b[0];
+        }
+    });
+
+    return nums[k - 1][0];
+};
