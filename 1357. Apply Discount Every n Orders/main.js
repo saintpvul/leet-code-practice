@@ -14,3 +14,30 @@ double getBill(int[] product, int[] amount) Returns the final total of the bill 
 */
 
 // solution
+
+class Cashier {
+    constructor(n, discount, products, prices) {
+        this.n = n;
+        this.discount = discount;
+        this.products = products;
+        this.prices = prices;
+        this.customerCount = 0;
+        this.productToPrice = new Map();
+        for (let i = 0; i < products.length; i++) {
+            this.productToPrice.set(products[i], prices[i]);
+        }
+    }
+
+    getBill(product, amount) {
+        this.customerCount++;
+        let total = 0;
+        for (let i = 0; i < product.length; i++) {
+            total += this.productToPrice.get(product[i]) * amount[i];
+        }
+        if (this.customerCount === this.n) {
+            total = total * (1 - this.discount / 100);
+            this.customerCount = 0;
+        }
+        return total;
+    }
+}
