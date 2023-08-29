@@ -9,3 +9,30 @@ Return the minimum unfairness of all distributions.
 */
 
 // solution
+
+var distributeCookies = function (cookies, k) {
+    let res = Infinity;
+    let count = new Array(k).fill(0);
+
+    const dfs = (i) => {
+        if (i >= cookies.length) {
+            res = Math.max(...count);
+            return;
+        }
+        for (let j = 0; j < k; j++) {
+            if (
+                count[j] + cookies[i] >= res ||
+                (j && count[j] === count[j - 1])
+            ) {
+                continue;
+            }
+            count[j] += cookies[i];
+            dfs(i + 1);
+            count[j] -= cookies[i];
+        }
+    };
+
+    count.sort((a, b) => b - a);
+    dfs(0);
+    return res;
+};
