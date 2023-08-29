@@ -14,3 +14,15 @@ Return the minimum number of swaps to make s balanced.
 */
 
 // solution
+
+var minSwaps = function (s) {
+    let swaps = 0;
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "[") {
+            swaps += 1;
+        } else if (swaps) {
+            swaps -= 1;
+        }
+    }
+    return (swaps + 1) >> 1;
+};
