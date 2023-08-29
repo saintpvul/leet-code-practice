@@ -23,3 +23,24 @@ If your results match the answer key, your solution will be Accepted.
 */
 
 // solution
+
+var findSolution = function (customfunction, z) {
+    const result = [];
+    let x = 1;
+    let y = 1000;
+
+    while (x <= 1000 && y >= 1) {
+        const value = customfunction.f(x, y);
+
+        if (value === z) {
+            result.push([x, y]);
+            x++;
+        } else if (value < z) {
+            x++;
+        } else {
+            y--;
+        }
+    }
+
+    return result;
+};
