@@ -22,5 +22,6 @@ The result format is in the following example.
 
 */
 
--- solution
+-- solution 
 
+select product_id from Products where low_fats = 'Y' and recyclable = 'Y'
