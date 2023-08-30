@@ -11,3 +11,36 @@ The subtree of a node is a tree consisting of that node, plus the set of all des
 */
 
 // solution
+
+var subtreeWithAllDeepest = function (root) {
+    let deepestNodes = [];
+    let maxDepth = -1;
+
+    const dfs = (node, depth) => {
+        if (!node) return;
+
+        if (depth > maxDepth) {
+            deepestNodes = [node];
+            maxDepth = depth;
+        } else if (depth === maxDepth) {
+            deepestNodes.push(node);
+        }
+
+        dfs(node.left, depth + 1);
+        dfs(node.right, depth + 1);
+    };
+
+    dfs(root, 0);
+
+    const lca = (node, depth) => {
+        if (!node || depth === maxDepth) return node;
+
+        const left = lca(node.left, depth + 1);
+        const right = lca(node.right, depth + 1);
+
+        if (left && right) return node;
+        return left || right;
+    };
+
+    return lca(root, 0);
+};
