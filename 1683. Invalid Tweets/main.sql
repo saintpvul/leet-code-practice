@@ -20,4 +20,6 @@ The result format is in the following example.
 
 */
 
---
+-- solution 
+
+SELECT tweet_id FROM Tweets WHERE LENGTH(content) > 15
