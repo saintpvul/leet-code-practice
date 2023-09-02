@@ -9,3 +9,7 @@ Return true if s is an acronym of words, and false otherwise.
 */
 
 // solution
+
+var isAcronym = function (words, s) {
+    return words.map((word) => (word = word[0])).join("") === s;
+};
