@@ -38,4 +38,8 @@ Return the result table in any order.
 
 -- solution
 
-SELECT EmployeeUNI.unique_id, Employees.name FROM Employees LEFT JOIN EmployeeUNI ON Employees.id = EmployeeUNI.id;
+SELECT NAME, SUM(AMOUNT) AS BALANCE
+FROM USERS
+JOIN TRANSACTIONS ON USERS.ACCOUNT = TRANSACTIONS.ACCOUNT
+GROUP BY NAME
+HAVING BALANCE > 10000;
