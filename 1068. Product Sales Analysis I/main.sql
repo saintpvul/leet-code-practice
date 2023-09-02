@@ -37,4 +37,7 @@ The result format is in the following example.
 
 */
 
-// solution
+-- solution
+
+
+select p.product_name, s.year, s.price from Sales s join Product p on s.product_id = p.product_id
