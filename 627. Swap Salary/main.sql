@@ -22,4 +22,7 @@ Note that you must write a single update statement, do not write any select stat
 
 */
 
-// solution
+-- solution
+
+
+update Salary set sex = case when sex = 'm' then 'f' when sex = 'f' then 'm' else sex end
