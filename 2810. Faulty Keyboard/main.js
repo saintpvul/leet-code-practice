@@ -9,3 +9,21 @@ Return the final string that will be present on your laptop screen.
 */
 
 // solution
+
+var finalString = function (s) {
+    let res = [];
+    let isRev = false;
+
+    for (let i = 0; i < s.length; i++) {
+        const c = s[i];
+        if (c === "i") {
+            isRev = !isRev;
+        } else if (isRev) {
+            res.unshift(c);
+        } else {
+            res.push(c);
+        }
+    }
+
+    return isRev ? res.reverse().join("") : res.join("");
+};
