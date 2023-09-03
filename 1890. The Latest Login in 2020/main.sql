@@ -18,4 +18,10 @@ Return the result table in any order.
 
 */
 
---
+-- solution
+
+
+select user_id, MAX(time_stamp) as last_stamp
+From Logins
+where year(time_stamp) = 2020
+group by user_id
