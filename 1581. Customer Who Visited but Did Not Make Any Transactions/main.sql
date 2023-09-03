@@ -32,3 +32,9 @@ Return the result table sorted in any order.
 */
 
 --solution;
+
+
+select customer_id, count(*) as count_no_trans
+from Visits
+Where visit_id NOT in (select distinct visit_id from Transactions)
+group by customer_id
